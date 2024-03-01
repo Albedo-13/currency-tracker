@@ -1,0 +1,47 @@
+@import "../../styles/palette.scss";
+
+.header {
+  background-color: $slate-dark;
+  min-height: 50px;
+  padding: 25px 0;
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &-link {
+    display: inline-block;
+    height: 40px;
+    width: auto;
+
+    img {
+      height: 100%;
+      width: auto;
+      vertical-align: middle;
+    }
+  }
+
+  &-nav {
+    flex-grow: 0.3;
+
+    ul {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    a {
+      text-decoration: none;
+      color: $slate-white;
+      font-weight: 300;
+      font-size: 20px;
+      transition: 0.4s;
+
+      &:hover {
+        color: $slate-gray-text;
+        transition: 0.4s;
+      }
+    }
+  }
+}

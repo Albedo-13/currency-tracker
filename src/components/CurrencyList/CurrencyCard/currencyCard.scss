@@ -1,0 +1,19 @@
+@import "../../../styles/palette.scss";
+
+.currency-card {
+  padding: 35px 30px;
+  background-color: $slate-gray-card;
+  max-width: 450px;
+  border-radius: 8px;
+  border: 1px solid $slate-gray-card-border;
+
+  &-image {
+    height: 80px;
+    width: 80px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

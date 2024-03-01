@@ -1,0 +1,65 @@
+@import "../../styles/palette.scss";
+
+.welcome {
+  min-height: 300px;
+  padding: 30px 0px 60px 0px;
+  background-color: $slate-dark;
+  position: relative;
+  overflow: hidden;
+
+  &-spray {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    transform: rotate(30deg);
+    width: 50%;
+    box-shadow: 0px 0px 45em 15em $green;
+    opacity: .2;
+  }
+
+  &-wrapper {
+    display: flex;
+    gap: 65px;
+    position: relative;
+    right: 8vw;
+
+    &__left {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      gap: 25px;
+    }
+  }
+
+  &-title {
+    background: linear-gradient(92deg, $green 0%, #aedf23 49.26%, $yellow 100%);
+    font-weight: 600;
+    font-size: 76px;
+    text-align: right;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+
+  &-text {
+    font-weight: 300;
+    font-size: 25px;
+    line-height: 187%;
+    text-align: center;
+    color: #d9d9d9;
+    max-width: 400px;
+    position: relative;
+    right: -60px;
+  }
+
+  &-img {
+    min-width: 300px;
+    height: auto;
+    img {
+      width: 100%;
+      height: auto;
+      vertical-align: middle;
+    }
+  }
+}
