@@ -1,20 +1,34 @@
+import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
+
 import Header from "../Header/Header";
 import Welcome from "../Welcome/Welcome";
 import UpdateStatus from "../UpdateStatus/UpdateStatus";
-import CurrencyList from "../CurrencyList/CurrencyList";
 import Footer from "../Footer/Footer";
 
-function App() {
+import MainPage from "../../pages/MainPage";
+import TimelinePage from "../../pages/TimelinePage";
+import BankCardPage from "../../pages/BankCardPage";
 
+const router = createBrowserRouter([{ path: "*", Component: Root }]);
+
+function Root() {
+  return (
+    <Routes>
+      <Route path="/" element={<MainPage />} />
+      <Route path="/timeline" element={<TimelinePage />} />
+      <Route path="/bank-card" element={<BankCardPage />} />
+    </Routes>
+  );
+}
+
+function App() {
   return (
     <>
       <Header />
       <Welcome />
       <UpdateStatus />
-      <CurrencyList />
+      <RouterProvider router={router} />
       <Footer />
-
-      <div style={{height: "250px", backgroundColor: "gray"}}></div>
     </>
   );
 }

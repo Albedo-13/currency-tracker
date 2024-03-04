@@ -16,10 +16,10 @@ export default function Header() {
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="#">Timelone</a>
+                <a href="/timeline">Timeline</a>
               </li>
               <li>
-                <a href="#">Bank card</a>
+                <a href="/bank-card">Bank card</a>
               </li>
               <li>
                 <a href="#">Contato</a>
