@@ -62,12 +62,12 @@ export default function Footer() {
 function renderFooterLinks(linksList: TLink[]) {
   return linksList.map((section) => {
     return (
-      <nav className="footer-nav">
+      <nav className="footer-nav" key={section.label}>
         <h3 className="footer-nav-title">{section.label}</h3>
         <ul className="footer-nav-list">
           {section.links.map((link) => {
             return (
-              <li className="footer-nav-list-item">
+              <li className="footer-nav-list-item" key={link.name}>
                 <a href={link.href} className="footer-link">
                   {link.name}
                 </a>
