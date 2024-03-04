@@ -3,7 +3,7 @@
 .currency-card {
   display: block;
   flex: 1 1 0%;
-  flex-basis: 450px;
+  max-width: 450px;
   padding: 35px 30px;
   background-color: $slate-gray-card;
   border-radius: 8px;
@@ -45,5 +45,12 @@
     font-weight: 300;
     font-size: 32px;
     color: $slate-gray-text-2;
+  }
+}
+
+@media (max-width: 1120px) {
+  .currency-card {
+    max-width: 100%;
+    flex-basis: 450px;
   }
 }
