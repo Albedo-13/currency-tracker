@@ -8,7 +8,7 @@ export default function Welcome() {
       <div className="container">
         <div className="welcome-wrapper">
           <div className="welcome-wrapper__left">
-            <h1 className="welcome-title">Modsen Currency Tracker</h1>
+            <h1 className="welcome-title gradient-text">Modsen Currency Tracker</h1>
             <p className="welcome-text">Quotes for the dollar and other international currencies.</p>
           </div>
           <div className="welcome-img">

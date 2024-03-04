@@ -2,7 +2,8 @@
 
 .currency-card {
   display: block;
-  max-width: 450px;
+  flex: 1 1 0%;
+  flex-basis: 450px;
   padding: 35px 30px;
   background-color: $slate-gray-card;
   border-radius: 8px;

@@ -22,7 +22,7 @@
     display: flex;
     gap: 65px;
     position: relative;
-    right: 8vw;
+    // right: 8vw;
 
     &__left {
       display: flex;
@@ -33,13 +33,9 @@
   }
 
   &-title {
-    background: linear-gradient(92deg, $green 0%, #aedf23 49.26%, $yellow 100%);
     font-weight: 600;
     font-size: 76px;
     text-align: right;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
   }
 
   &-text {
