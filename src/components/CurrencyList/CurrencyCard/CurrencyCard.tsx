@@ -4,6 +4,7 @@ import dollar from "/currency-icons/Dollar Icon.svg";
 export default function CurrencyCard() {
   return (
     <a href="#" className="currency-card">
+      {/* TODO: change a tag to a button */}
       <div className="container">
         <div className="currency-card-wrapper">
           <div className="currency-card-image">
