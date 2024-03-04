@@ -7,18 +7,23 @@ export default function CurrencyList() {
     <section className="currency">
       <div className="container">
         <div className="currency-wrapper">
+          {/* TODO: merge currencyGroup & div with props.children */}
           <CurrencyGroup group={"Stocks"} />
-          <CurrencyCard />
-          <CurrencyCard />
-          
+          <div className="currency-cards-list">
+            <CurrencyCard />
+            <CurrencyCard />
+          </div>
+
           <CurrencyGroup group={"Quotes"} />
-          <CurrencyCard />
-          <CurrencyCard />
-          <CurrencyCard />
-          <CurrencyCard />
-          <CurrencyCard />
+          <section className="currency-cards-list">
+            <CurrencyCard />
+            <CurrencyCard />
+            <CurrencyCard />
+            <CurrencyCard />
+            <CurrencyCard />
+          </section>
         </div>
       </div>
     </section>
-  )
+  );
 }

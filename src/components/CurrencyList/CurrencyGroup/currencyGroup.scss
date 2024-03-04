@@ -1,0 +1,23 @@
+@import "../../../styles/palette.scss";
+
+.currency-group {
+  max-width: 520px;
+
+  &:not(.currency-group:first-of-type) {
+    margin-top: 85px;
+  }
+
+  &-title {
+    font-weight: 300;
+    font-size: 32px;
+    color: $slate-white;
+  }
+
+  &-separator {
+    margin-top: 25px;
+    margin-bottom: 50px;
+    height: 1px;
+    border: 0;
+    background-color: $slate-gray-card-border;
+  }
+}

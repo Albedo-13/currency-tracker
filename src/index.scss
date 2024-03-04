@@ -4,6 +4,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   color-scheme: dark;
+  background-color: $slate-dark;
 }
 
 .container {
@@ -27,6 +28,7 @@ h3,
 h4,
 h5,
 h6,
+hr,
 p {
   margin: 0;
 }

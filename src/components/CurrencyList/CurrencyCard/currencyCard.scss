@@ -1,11 +1,21 @@
 @import "../../../styles/palette.scss";
 
 .currency-card {
+  display: block;
+  max-width: 450px;
   padding: 35px 30px;
   background-color: $slate-gray-card;
-  max-width: 450px;
   border-radius: 8px;
   border: 1px solid $slate-gray-card-border;
+  text-decoration: none;
+
+  .container {
+    padding: 0;
+  }
+
+  &-wrapper {
+    display: flex;
+  }
 
   &-image {
     height: 80px;
@@ -15,5 +25,24 @@
       width: 100%;
       height: auto;
     }
+  }
+
+  &-content {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &-name {
+    font-weight: 400;
+    font-size: 35px;
+    color: $slate-light;
+  }
+
+  &-price {
+    font-weight: 300;
+    font-size: 32px;
+    color: $slate-gray-text-2;
   }
 }
