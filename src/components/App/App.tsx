@@ -8,6 +8,8 @@ import Footer from "../Footer/Footer";
 import MainPage from "../../pages/MainPage";
 import TimelinePage from "../../pages/TimelinePage";
 import BankCardPage from "../../pages/BankCardPage";
+import ThemeProvider, { ThemeContext } from "../../utils/ThemeProvider";
+import { useContext, useEffect } from "react";
 
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
 
@@ -22,13 +24,21 @@ function Root() {
 }
 
 function App() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");
+  }, [theme]);
+
   return (
     <>
-      <Header />
-      <Welcome />
-      <UpdateStatus />
-      <RouterProvider router={router} />
-      <Footer />
+      <ThemeProvider>
+        <Header />
+        <Welcome />
+        <UpdateStatus />
+        <RouterProvider router={router} />
+        <Footer />
+      </ThemeProvider>
     </>
   );
 }

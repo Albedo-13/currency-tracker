@@ -1,0 +1,11 @@
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background-color: #{$slate-black};
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --background-color: #{$slate-gray-card};
+}
