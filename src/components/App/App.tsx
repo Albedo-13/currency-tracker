@@ -25,20 +25,18 @@ function Root() {
 
 function App() {
   const { theme, toggleTheme } = useContext(ThemeContext);
-
+  console.log("theme changed");
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");
   }, [theme]);
 
   return (
     <>
-      <ThemeProvider>
         <Header />
         <Welcome />
         <UpdateStatus />
         <RouterProvider router={router} />
         <Footer />
-      </ThemeProvider>
     </>
   );
 }
