@@ -24,7 +24,7 @@ function Root() {
 }
 
 function App() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   console.log("theme changed");
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");
@@ -32,11 +32,11 @@ function App() {
 
   return (
     <>
-        <Header />
-        <Welcome />
-        <UpdateStatus />
-        <RouterProvider router={router} />
-        <Footer />
+      <Header />
+      <Welcome />
+      <UpdateStatus />
+      <RouterProvider router={router} />
+      <Footer />
     </>
   );
 }
