@@ -30,15 +30,7 @@ function App() {
     document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");
   }, [theme]);
 
-  return (
-    <>
-      <Header />
-      <Welcome />
-      <UpdateStatus />
-      <RouterProvider router={router} />
-      <Footer />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
