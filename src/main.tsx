@@ -11,5 +11,3 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </ThemeProvider>
   </React.StrictMode>
 );
-
-// TODO: спросить у Ильи, почему провайдер работает в руте, но не работает в App
