@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "last_updated_at": "2024-03-02T23:59:59Z"
+  },
+  "data": {
+    "EUR": {
+      "code": "EUR",
+      "value": 0.922010151
+    },
+    "RUB": {
+      "code": "RUB",
+      "value": 91.6981542836
+    }
+  }
+}
