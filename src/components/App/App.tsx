@@ -35,22 +35,18 @@ function App() {
     axios({
       method: "get",
       maxBodyLength: Infinity,
-      // url: "https://api.currencyapi.com/v3/latest?apikey=cur_live_McVPn095O6nn3dK3OZmnrHf7puqxlPHC7YdDhrBY&currencies=EUR%2CUSD%2CCAD",
+      url: "https://api.currencyapi.com/v3/latest?apikey=cur_live_McVPn095O6nn3dK3OZmnrHf7puqxlPHC7YdDhrBY&currencies=EUR%2CUSD%2CCAD",
       headers: {
-        // Accept: "text/plain",
-        // "X-CoinAPI-Key": "695E3884-E0A1-4E9E-A3DF-2C41D2F1BA60",
+        Accept: "text/plain",
+        "X-CoinAPI-Key": "695E3884-E0A1-4E9E-A3DF-2C41D2F1BA60",
       },
     })
       .then((response) => {
-        console.log(JSON.stringify(response.data));
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-
-    // axios.get("https://pokeapi.co/api/v2/pokemon/pikachu/").then((res) => {
-    //   console.log(res.data);
-    // });
   }, []);
 
   return <RouterProvider router={router} />;
