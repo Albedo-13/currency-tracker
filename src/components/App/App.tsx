@@ -24,6 +24,7 @@ function App() {
   useEffect(() => {
     console.log("theme changed");
     document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");
+    localStorage.setItem("currency-tracker-theme", theme ? "dark" : "light");
   }, [theme]);
 
   return <RouterProvider router={router} />;
