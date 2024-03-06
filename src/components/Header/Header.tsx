@@ -7,7 +7,7 @@ const headerLinks = [
   { route: "/", text: "Home" },
   { route: "/timeline", text: "Timeline" },
   { route: "/bank-card", text: "Bank card" },
-  { route: "/#", text: "Contato" },
+  { route: "/#", text: "Contact" },
 ];
 
 export default function Header() {
