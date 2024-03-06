@@ -1,7 +1,7 @@
 import "./currencyCard.scss";
 import dollar from "/currency-icons/Dollar Icon.svg";
 
-export default function CurrencyCard() {
+export default function CurrencyCard({ currency }: any) {
   return (
     <a href="#" className="currency-card">
       {/* TODO: change a tag to a button */}
@@ -12,7 +12,7 @@ export default function CurrencyCard() {
             <img src={dollar} alt="currency card" />
           </div>
           <div className="currency-card-content">
-            <p className="currency-card-name">Commercial Dollar</p>
+            <p className="currency-card-name">{currency.name}</p>
             <p className="currency-card-price">R$ 5,13</p>
           </div>
         </div>

@@ -1,9 +1,9 @@
 import { HttpResponse, http } from "msw";
-import { apiKey } from "../../api/currencyapi.api";
+import { baseUrl, apiKey } from "../../api/currencyapi.api";
 import { currenciesCodes } from "../../constants/constants";
 
-export default http.get(`https://api.currencyapi.com/v3/currencies?apikey=&${apiKey}currencies=${currenciesCodes}`, (req) => {
-  console.log('Captured a "GET" request', req.request.url);
+export default http.get(`${baseUrl}/currencies?apikey=&${apiKey}currencies=${currenciesCodes}`, (req) => {
+  console.log('Captured a "currencies" request', req.request.url);
   return HttpResponse.json({
     "data": {
       "ARS": {
