@@ -4,10 +4,12 @@
 import axios from "axios";
 import { currenciesCodes } from "../constants/constants";
 
-export const baseUrl = "https://api.currencyapi.com/v3/";
+export const baseUrl = "https://api.currencyapi.com/v3";
 export const apiKey = "cur_live_McVPn095O6nn3dK3OZmnrHf7puqxlPHC7YdDhrBY";
 
-export function getCurrencyData() {
+export async function getCurrencyData() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   return axios({
     method: "get",
     maxBodyLength: Infinity,
@@ -15,11 +17,13 @@ export function getCurrencyData() {
     params: {
       apikey: apiKey,
       currencies: currenciesCodes,
-    }
-  })
+    },
+  });
 }
 
-export function getExchangeRate() {
+export async function getExchangeRate() {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+
   return axios({
     method: "get",
     maxBodyLength: Infinity,
@@ -27,6 +31,6 @@ export function getExchangeRate() {
     params: {
       apikey: apiKey,
       currencies: currenciesCodes,
-    }
-  })
+    },
+  });
 }

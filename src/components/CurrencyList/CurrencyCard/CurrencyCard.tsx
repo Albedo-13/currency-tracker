@@ -1,22 +1,30 @@
 import "./currencyCard.scss";
-import dollar from "/currency-icons/Dollar Icon.svg";
+import { currenciesIcons } from "../../../constants/constants";
 
-export default function CurrencyCard({ currency }: any) {
+export default function CurrencyCard({ currency, exchangeValue }: any) {
+  console.log(currency);
   return (
-    <a href="#" className="currency-card">
-      {/* TODO: change a tag to a button */}
+    <section className="currency-card">
+      {/* TODO: change tag to button */}
       <div className="container">
         <div className="currency-card-wrapper">
           <div className="currency-card-image">
             {/* TODO: change alt tag from input data */}
-            <img src={dollar} alt="currency card" />
+            <img src={currenciesIcons[currency.code as keyof typeof currenciesIcons]} alt="currency card" />
           </div>
           <div className="currency-card-content">
             <p className="currency-card-name">{currency.name}</p>
-            <p className="currency-card-price">R$ 5,13</p>
+            <p className="currency-card-price">
+              {exchangeValue?.toLocaleString("en-US", {
+                style: "currency",
+                currency: currency.code,
+                minFractionDigits: currency.decimal_digits,
+                maxFractionDigits: currency.decimal_digits,
+              })}
+            </p>
           </div>
         </div>
       </div>
-    </a>
+    </section>
   );
 }
