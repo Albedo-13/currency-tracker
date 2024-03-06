@@ -2,10 +2,12 @@ html[data-theme="dark"] {
   color-scheme: dark;
 
   --background-color: #{$slate-black};
+  transition: 0.5s all;
 }
 
 html[data-theme="light"] {
   color-scheme: light;
 
   --background-color: #{$slate-gray-card};
+  transition: 0.5s all;
 }
