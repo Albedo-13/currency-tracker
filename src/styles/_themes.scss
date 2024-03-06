@@ -6,6 +6,7 @@ html[data-theme="dark"] {
 }
 
 html[data-theme="light"] {
+  // TODO: fix light theme flickers
   color-scheme: light;
 
   --background-color: #{$slate-gray-card};
