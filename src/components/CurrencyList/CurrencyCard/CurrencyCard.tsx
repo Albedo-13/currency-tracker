@@ -9,8 +9,7 @@ export default function CurrencyCard({ currency, exchangeValue }: any) {
       <div className="container">
         <div className="currency-card-wrapper">
           <div className="currency-card-image">
-            {/* TODO: change alt tag from input data */}
-            <img src={currenciesIcons[currency.code as keyof typeof currenciesIcons]} alt="currency card" />
+            <img src={currenciesIcons[currency.code as keyof typeof currenciesIcons]} alt={`${currency.name}`} />
           </div>
           <div className="currency-card-content">
             <p className="currency-card-name">{currency.name}</p>
