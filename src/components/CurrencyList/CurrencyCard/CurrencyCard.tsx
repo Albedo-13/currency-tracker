@@ -1,8 +1,8 @@
 import "./currencyCard.scss";
 import { currenciesIcons } from "../../../constants/constants";
+import { formatCurrency } from "../../../utils/currencyFormatter";
 
 export default function CurrencyCard({ currency, exchangeValue }: any) {
-  console.log(currency);
   return (
     <section className="currency-card">
       {/* TODO: change tag to button */}
@@ -14,12 +14,7 @@ export default function CurrencyCard({ currency, exchangeValue }: any) {
           <div className="currency-card-content">
             <p className="currency-card-name">{currency.name}</p>
             <p className="currency-card-price">
-              {exchangeValue?.toLocaleString("en-US", {
-                style: "currency",
-                currency: currency.code,
-                minFractionDigits: currency.decimal_digits,
-                maxFractionDigits: currency.decimal_digits,
-              })}
+              {formatCurrency(exchangeValue, currency.code, currency.decimal_digits)}
             </p>
           </div>
         </div>

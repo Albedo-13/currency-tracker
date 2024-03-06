@@ -3,10 +3,11 @@ import CurrencyGroup from "./CurrencyGroup/CurrencyGroup";
 import CurrencyCard from "./CurrencyCard/CurrencyCard";
 import { getCurrencyData, getExchangeRate } from "../../api/currencyapi.api";
 import "./currencyList.scss";
+import type { TCurrency, TExchangeRate } from "../../types/types";
 
 export default function CurrencyList() {
-  const [currencies, setCurrencies] = useState<any>(null);
-  const [exchangeRates, setExchangeRates] = useState<any>(null);
+  const [currencies, setCurrencies] = useState<{ [key: string]: TCurrency } | null>(null);
+  const [exchangeRates, setExchangeRates] = useState<{ [key: string]: TExchangeRate } | null>(null);
   // TODO: type any
 
   useEffect(() => {
