@@ -6,7 +6,11 @@ import BankCardPage from "../../pages/BankCardPage";
 import { ThemeContext } from "../../utils/ThemeProvider";
 import { useContext, useEffect } from "react";
 
+import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
+const queryClient = new QueryClient();
 
 function Root() {
   return (
@@ -26,7 +30,14 @@ function App() {
     localStorage.setItem("currency-tracker-theme", theme ? "dark" : "light");
   }, [theme]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <>
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />;
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </>
+  );
 }
 
 export default App;
