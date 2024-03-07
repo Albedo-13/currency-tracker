@@ -12,6 +12,8 @@
   text-decoration: none;
   transition: 0.4s;
 
+  text-align: left;
+
   &:hover {
     cursor: pointer;
     transform: scale(1.05);
@@ -33,7 +35,7 @@
 
   &-image {
     height: 80px;
-    width: 80px;
+    min-width: 80px;
 
     img {
       width: 100%;
@@ -51,6 +53,7 @@
   &-name {
     font-weight: 400;
     font-size: 35px;
+    line-height: 1.3;
     color: $slate-light;
     white-space: nowrap;
     width: 300px;

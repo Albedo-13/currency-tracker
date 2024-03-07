@@ -10,7 +10,7 @@ type TProps = {
 
 export default function CurrencyCard({ currency, exchangeValue }: TProps) {
   return (
-    <section className="currency-card">
+    <button className="currency-card">
       {/* TODO: change tag to button */}
       <div className="container">
         <div className="currency-card-wrapper">
@@ -25,6 +25,6 @@ export default function CurrencyCard({ currency, exchangeValue }: TProps) {
           </div>
         </div>
       </div>
-    </section>
+    </button>
   );
 }
