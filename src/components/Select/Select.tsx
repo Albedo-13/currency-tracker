@@ -1,10 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
 import "./select.scss";
-import { getCurrencyData } from "../../api/currencyapi.api";
 
-export default function Select() {
-  const currencies = useQuery({ queryKey: ["currencies"], queryFn: getCurrencyData });
-  console.log("currencies from select", currencies);
+export default function Select({ currencies }) {
+  // {currenciesData &&
+  //   Object.keys(currenciesData).map((key) => {
+  //     return (
+  //       <option value={currenciesData[key].code} key={currenciesData[key].code}>
+  //         {currenciesData[key].name}
+  //       </option>
+  //     );
+  //   })}
+  
   return (
     <span className="ui-select-base ui-select-extended-icon ui-select-basic">
       <select name="select-four" className="ui-select">

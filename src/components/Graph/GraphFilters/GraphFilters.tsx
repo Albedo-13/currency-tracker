@@ -3,6 +3,10 @@ import "./graphFilters.scss";
 import Select from "../../Select/Select";
 
 export default class GraphFilters extends Component {
+  // TODO: logic from select to here
+  // const currencies = useQuery({ queryKey: ["currencies"], queryFn: getCurrencyData });
+  // const currenciesData = currencies.data?.data.data;
+
   render() {
     return (
       <section className="graph-filters">
