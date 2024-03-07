@@ -1,0 +1,35 @@
+.overlay {
+  position: fixed;
+  background-color: red;
+  color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: #bbbb52, $alpha: 0.5);
+}
+
+.modal {
+  background-color: red;
+  position: relative;
+  width: 300px;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 30px;
+  border-radius: 8px;
+
+  &-close {
+    position: absolute;
+    top: 3px;
+    right: 10px;
+    font-size: 35px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    transition: 0.3s;
+    }
+  }
+}

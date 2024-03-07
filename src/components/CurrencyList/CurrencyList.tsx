@@ -4,11 +4,12 @@ import CurrencyCard from "./CurrencyCard/CurrencyCard";
 import { getCurrencyData, getExchangeRate } from "../../api/currencyapi.api";
 import "./currencyList.scss";
 import type { TCurrency, TExchangeRate } from "../../types/types";
+import ExchangeModal from "../ExchangeModal/ExchangeModal";
 
 export default function CurrencyList() {
   const [currencies, setCurrencies] = useState<{ [key: string]: TCurrency } | null>(null);
   const [exchangeRates, setExchangeRates] = useState<{ [key: string]: TExchangeRate } | null>(null);
-  // TODO: type any
+  const [showModal, setShowModal] = useState(true);
 
   useEffect(() => {
     getCurrencyData().then((res) => setCurrencies(res.data.data));
@@ -33,12 +34,14 @@ export default function CurrencyList() {
                     key={currencies[key].code}
                     currency={currencies[key]}
                     exchangeValue={exchangeRates[key]?.value}
+                    onClick={() => setShowModal(true)}
                   />
                 ))
               : null}
           </section>
         </div>
       </div>
+      <ExchangeModal showModal={showModal} setShowModal={setShowModal} />
     </section>
   );
 }

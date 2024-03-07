@@ -6,12 +6,12 @@ import type { TCurrency } from "../../../types/types";
 type TProps = {
   currency: TCurrency;
   exchangeValue: number;
+  onClick: () => void;
 };
 
-export default function CurrencyCard({ currency, exchangeValue }: TProps) {
+export default function CurrencyCard({ currency, exchangeValue, onClick }: TProps) {
   return (
-    <button className="currency-card">
-      {/* TODO: change tag to button */}
+    <button className="currency-card" onClick={onClick}>
       <div className="container">
         <div className="currency-card-wrapper">
           <div className="currency-card-image">
