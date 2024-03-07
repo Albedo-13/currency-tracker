@@ -1,8 +1,14 @@
 import "./currencyCard.scss";
 import { currenciesIcons } from "../../../constants/constants";
 import { formatCurrency } from "../../../utils/currencyFormatter";
+import type { TCurrency } from "../../../types/types";
 
-export default function CurrencyCard({ currency, exchangeValue }: any) {
+type TProps = {
+  currency: TCurrency;
+  exchangeValue: number;
+};
+
+export default function CurrencyCard({ currency, exchangeValue }: TProps) {
   return (
     <section className="currency-card">
       {/* TODO: change tag to button */}
