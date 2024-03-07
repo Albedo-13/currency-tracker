@@ -6,11 +6,21 @@ import BankCardPage from "../../pages/BankCardPage";
 import { ThemeContext } from "../../utils/ThemeProvider";
 import { useContext, useEffect } from "react";
 
-import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { staleTime } from "../../constants/constants";
 
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      retry: false,
+      staleTime: staleTime,
+    },
+  },
+});
 
 function Root() {
   return (

@@ -7,7 +7,6 @@ type TProps = {
 
 export default function ExchangeModal({ showModal, setShowModal }: TProps) {
   return showModal ? (
-    
     <div className="overlay" onClick={(e) => {
       if (e.target === e.currentTarget) {
         e.stopPropagation();

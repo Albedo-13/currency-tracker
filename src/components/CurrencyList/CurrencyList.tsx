@@ -1,25 +1,19 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CurrencyGroup from "./CurrencyGroup/CurrencyGroup";
 import CurrencyCard from "./CurrencyCard/CurrencyCard";
 import { getCurrencyData, getExchangeRate } from "../../api/currencyapi.api";
 import "./currencyList.scss";
-import type { TCurrency, TExchangeRate } from "../../types/types";
 import ExchangeModal from "../ExchangeModal/ExchangeModal";
-import { useQuery, useMutation, useQueryClient, QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 export default function CurrencyList() {
-  // TODO: rewrite types
-  const [currencies, setCurrencies] = useState<{ [key: string]: TCurrency } | null>(null);
-  const [exchangeRates, setExchangeRates] = useState<{ [key: string]: TExchangeRate } | null>(null);
-  const [showModal, setShowModal] = useState(true);
+  const currencies = useQuery({ queryKey: ["currencies"], queryFn: getCurrencyData });
+  const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
+  const [showModal, setShowModal] = useState(false);
 
-  useEffect(() => {
-    getCurrencyData().then((res) => setCurrencies(res.data.data));
-    getExchangeRate().then((res) => setExchangeRates(res.data.data));
-  }, []);
+  const currenciesData = currencies.data?.data.data;
+  const exchangeRatesData = exchangeRates.data?.data.data;
 
-  // console.log("currencies", currencies);
-  // console.log("rates", exchangeRates);
   return (
     <section className="currency">
       <div className="container">
@@ -29,13 +23,13 @@ export default function CurrencyList() {
 
           <CurrencyGroup group={"Quotes"} />
           <section className="currency-cards-list">
-            {currencies &&
-              exchangeRates &&
-              Object.keys(currencies).map((key) => (
+            {currenciesData &&
+              exchangeRatesData &&
+              Object.keys(currenciesData).map((key) => (
                 <CurrencyCard
-                  key={currencies[key].code}
-                  currency={currencies[key]}
-                  exchangeValue={exchangeRates[key]?.value}
+                  key={currenciesData[key]?.code}
+                  currency={currenciesData[key]}
+                  exchangeValue={exchangeRatesData[key]?.value}
                   onClick={() => setShowModal(true)}
                   // TODO: wrap setShowModal
                 />

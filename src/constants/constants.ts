@@ -11,3 +11,5 @@ export const currenciesIcons = {
   BTC: "/currency-icons/Bitcoin Icon.svg",
   GBP: "/currency-icons/Pound Icon.svg",
 };
+
+export const staleTime = 1000 * 60 * 2;
