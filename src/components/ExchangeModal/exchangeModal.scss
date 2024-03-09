@@ -16,13 +16,13 @@
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  padding: 30px;
+  padding: 40px 30px 30px 30px;
   border-radius: 8px;
 
   &-close {
     position: absolute;
-    top: 3px;
-    right: 10px;
+    top: 0px;
+    right: 7px;
     font-size: 35px;
     cursor: pointer;
     transition: 0.3s;

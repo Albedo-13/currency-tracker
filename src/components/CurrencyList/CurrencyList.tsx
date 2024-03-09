@@ -9,7 +9,7 @@ import { currenciesStaticInfo } from "../../constants/constants";
 
 export default function CurrencyList() {
   const [showModal, setShowModal] = useState(false);
-
+  
   const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
   const exchangeRatesData = exchangeRates.data?.data.data;
 
@@ -38,7 +38,7 @@ export default function CurrencyList() {
           </section>
         </div>
       </div>
-      {showModal && <ExchangeModal showModal={showModal} setShowModal={setShowModal} />}
+      {showModal && <ExchangeModal setShowModal={setShowModal} />}
     </section>
   );
 }

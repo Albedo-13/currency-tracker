@@ -9,7 +9,6 @@ type TProps = {
 };
 
 export default function CurrencyCard({ currency, exchangeValue, onClick }: TProps) {
-  console.log(currency);
   return (
     <button className="currency-card" onClick={onClick}>
       <div className="container">

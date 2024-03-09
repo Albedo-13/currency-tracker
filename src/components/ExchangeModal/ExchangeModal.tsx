@@ -1,12 +1,12 @@
 import { SyntheticEvent } from "react";
 import "./exchangeModal.scss";
+import Select from "../Select/Select";
 
 type TProps = {
-  showModal: boolean;
   setShowModal: (showModal: boolean) => void;
 };
 
-export default function ExchangeModal({ showModal, setShowModal }: TProps) {
+export default function ExchangeModal({ setShowModal }: TProps) {
   const handleCloseClick = (e: SyntheticEvent) => {
     if (e.target === e.currentTarget) {
       e.stopPropagation();
@@ -20,8 +20,12 @@ export default function ExchangeModal({ showModal, setShowModal }: TProps) {
         <span className="modal-close" onClick={() => setShowModal(false)}>
           &times;
         </span>
-        <h2>Hello World</h2>
-        <p>Some text in the Modal..</p>
+        <h3>FROM:</h3>
+        <Select pickedCurrency="CAD" />
+        <input type="number" />
+        <h3>TO:</h3>
+        <Select />
+        <input type="number" disabled />
       </div>
     </div>
   );
