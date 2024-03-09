@@ -44,7 +44,7 @@
   }
 
   &-content {
-    margin-left: 30px;
+    margin-left: 25px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -65,6 +65,10 @@
     font-weight: 300;
     font-size: 32px;
     color: $slate-gray-text-2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 300px;
   }
 }
 

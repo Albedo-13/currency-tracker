@@ -14,6 +14,8 @@ export default function CurrencyList() {
   const currenciesData = currencies.data?.data.data;
   const exchangeRatesData = exchangeRates.data?.data.data;
 
+  // TODO: modal through portal
+
   return (
     <section className="currency">
       <div className="container">

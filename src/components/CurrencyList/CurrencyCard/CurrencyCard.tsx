@@ -20,7 +20,7 @@ export default function CurrencyCard({ currency, exchangeValue, onClick }: TProp
           <div className="currency-card-content">
             <p className="currency-card-name">{currency.name}</p>
             <p className="currency-card-price">
-              {formatCurrency(exchangeValue, currency.code, currency.decimal_digits)}
+              1 USD = {formatCurrency(exchangeValue, currency.code, currency.decimal_digits)}
             </p>
           </div>
         </div>
