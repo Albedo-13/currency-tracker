@@ -1,9 +1,9 @@
-export function formatCurrency(value: number, currencyCode: string): string {
+export function formatCurrency(value: number, currencyCode: string, decimalDigits: number): string {
   const options = {
     style: "currency",
     currency: currencyCode,
-    // minimumFractionDigits: decimalDigits,
-    // maximumFractionDigits: decimalDigits,
+    minimumFractionDigits: decimalDigits,
+    maximumFractionDigits: decimalDigits,
   };
   const notSupportedCurrencyCodes = ["BTC"];
 
