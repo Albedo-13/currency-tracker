@@ -1,17 +1,16 @@
 import { useState } from "react";
 import CurrencyGroup from "./CurrencyGroup/CurrencyGroup";
 import CurrencyCard from "./CurrencyCard/CurrencyCard";
-import { getCurrencyData, getExchangeRate } from "../../api/currencyapi.api";
+import { getExchangeRate } from "../../api/currencyapi.api";
 import "./currencyList.scss";
 import ExchangeModal from "../ExchangeModal/ExchangeModal";
 import { useQuery } from "@tanstack/react-query";
+import { currenciesStaticInfo } from "../../constants/constants";
 
 export default function CurrencyList() {
-  const currencies = useQuery({ queryKey: ["currencies"], queryFn: getCurrencyData });
-  const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
   const [showModal, setShowModal] = useState(false);
 
-  const currenciesData = currencies.data?.data.data;
+  const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
   const exchangeRatesData = exchangeRates.data?.data.data;
 
   // TODO: modal through portal
@@ -25,12 +24,12 @@ export default function CurrencyList() {
 
           <CurrencyGroup group={"Quotes"} />
           <section className="currency-cards-list">
-            {currenciesData &&
+            {
               exchangeRatesData &&
-              Object.keys(currenciesData).map((key) => (
+              Object.keys(currenciesStaticInfo).map((key) => (
                 <CurrencyCard
-                  key={currenciesData[key]?.code}
-                  currency={currenciesData[key]}
+                  key={currenciesStaticInfo[key as keyof typeof currenciesStaticInfo]?.code}
+                  currency={currenciesStaticInfo[key as keyof typeof currenciesStaticInfo]}
                   exchangeValue={exchangeRatesData[key]?.value}
                   onClick={() => setShowModal(true)}
                   // TODO: wrap setShowModal
@@ -39,7 +38,7 @@ export default function CurrencyList() {
           </section>
         </div>
       </div>
-      <ExchangeModal showModal={showModal} setShowModal={setShowModal} />
+      {showModal && <ExchangeModal showModal={showModal} setShowModal={setShowModal} />}
     </section>
   );
 }

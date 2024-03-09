@@ -1,6 +1,6 @@
 import "./select.scss";
 
-export default function Select({ currencies }) {
+export default function Select() {
   // {currenciesData &&
   //   Object.keys(currenciesData).map((key) => {
   //     return (
