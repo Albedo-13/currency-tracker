@@ -14,6 +14,10 @@ export function formatCurrency(value: number, currencyCode: string, decimalDigit
     : value.toLocaleString("en-US", options);
 }
 
-export function convertCurrency(value: number, fromCurrencyCode: string, toCurrencyCode: string): number {
+export function convertCurrency(value: number, fromCurrencyCode: string, toCurrencyCode: string, exchangeRates): number {
+  // const fromCurrency = currenciesStaticInfo[fromCurrencyCode as keyof typeof currenciesStaticInfo];
+  // const toCurrency = currenciesStaticInfo[toCurrencyCode as keyof typeof currenciesStaticInfo];
+  console.log(exchangeRates, fromCurrencyCode, toCurrencyCode, value);
+
 
 }

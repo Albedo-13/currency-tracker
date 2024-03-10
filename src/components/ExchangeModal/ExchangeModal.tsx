@@ -1,4 +1,4 @@
-import { ChangeEvent, RefObject, SyntheticEvent, useEffect, useRef, useState } from "react";
+import { ChangeEvent, SyntheticEvent, useEffect, useRef, useState } from "react";
 import "./exchangeModal.scss";
 import Select from "../Select/Select";
 import { convertCurrency } from "../../utils/currencyFormatter";
@@ -11,9 +11,12 @@ type TProps = {
 };
 
 export default function ExchangeModal({ currencyCode, onClose }: TProps) {
-  // const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
+  const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
+  const exchangeRatesData = exchangeRates.data?.data.data;
 
   const [textInputFrom, setTextInputFrom] = useState("");
+  const [selectInputFrom, setSelectInputFrom] = useState(currencyCode);
+  const [selectInputTo, setSelectInputTo] = useState("USD");
 
   const textInputFromRef = useRef<HTMLInputElement | null>(null);
   const textInputToRef = useRef<HTMLInputElement | null>(null);
@@ -29,11 +32,12 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
     }
   };
 
+  // TODO: rerender on select change
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // convertCurrency();
     setTextInputFrom(() => e.target.value);
     if (textInputToRef.current) {
-      textInputToRef.current.value = e.target.value;
+      textInputToRef.current.value = convertCurrency(+e.target.value, selectInputFrom, selectInputTo, exchangeRatesData);
+      // textInputToRef.current.value = e.target.value;
     }
   };
 
@@ -50,6 +54,7 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
     };
   });
 
+  console.log("from", selectInputFrom, "to", selectInputTo);
   return (
     <aside aria-modal="true" className="overlay" onMouseDown={handleCloseClick}>
       <div className="modal">
@@ -58,7 +63,7 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
         </span>
         <label className="modal-label">
           FROM:
-          <Select currencyCode={currencyCode} />
+          <Select select={selectInputFrom} setSelect={setSelectInputFrom} />
           <input
             value={textInputFrom}
             onChange={handleInputChange}
@@ -72,12 +77,11 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
         </label>
         <label className="modal-label">
           TO:
-          <Select />
+          <Select select={selectInputTo} setSelect={setSelectInputTo} />
           <input
             onFocus={handleDisabledInputClick}
             ref={textInputToRef}
             id="text-input-to"
-            onChange={() => {}}
             className="modal-input modal-input_readonly"
             type="number"
             readOnly={true}
