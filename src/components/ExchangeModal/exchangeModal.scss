@@ -44,6 +44,11 @@
     padding: 0 10px;
     font-size: 30px;
 
+    &_readonly {
+      color: $slate-gray-text;
+      outline: none;
+    }
+
     &::-webkit-outer-spin-button,
     &::-webkit-inner-spin-button {
       -webkit-appearance: none;

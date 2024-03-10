@@ -1,3 +1,5 @@
+import { currenciesStaticInfo } from "../constants/constants";
+
 export function formatCurrency(value: number, currencyCode: string, decimalDigits: number): string {
   const options = {
     style: "currency",
@@ -10,4 +12,8 @@ export function formatCurrency(value: number, currencyCode: string, decimalDigit
   return notSupportedCurrencyCodes.includes(currencyCode)
     ? value.toLocaleString(undefined, options)
     : value.toLocaleString("en-US", options);
+}
+
+export function convertCurrency(value: number, fromCurrencyCode: string, toCurrencyCode: string): number {
+
 }

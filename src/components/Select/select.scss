@@ -45,6 +45,7 @@
   border-radius: 3px;
   box-shadow: 0 0 3px rgba(#000, 0.22);
   transition: all 0.25s ease;
+
   &:after {
     content: "⮟";
     display: block;
@@ -61,6 +62,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   select {
     width: 92%;
     color: inherit;
