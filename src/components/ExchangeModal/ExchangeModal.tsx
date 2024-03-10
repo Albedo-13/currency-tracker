@@ -48,6 +48,12 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
   }
 
   useEffect(() => {
+    convertCurrency(+textInputFrom, selectInputFrom, selectInputTo, exchangeRatesData)
+
+  }, [textInputFrom, selectInputFrom, selectInputTo]);
+  
+
+  useEffect(() => {
     document.body.addEventListener("keydown", handleEscapeClick);
     return () => {
       document.body.removeEventListener("keydown", handleEscapeClick);
@@ -66,7 +72,7 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
           <Select select={selectInputFrom} setSelect={setSelectInputFrom} />
           <input
             value={textInputFrom}
-            onChange={handleInputChange}
+            onChange={(e) => setTextInputFrom(e.target.value)}
             ref={textInputFromRef}
             id="text-input-from"
             placeholder="Start typing..."
