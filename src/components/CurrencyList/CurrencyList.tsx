@@ -20,6 +20,10 @@ export default function CurrencyList() {
     setCurrencyCode(key);
   };
 
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
   return (
     <section className="currency">
       <div className="container">
@@ -42,7 +46,7 @@ export default function CurrencyList() {
         </div>
       </div>
       {showModal && (
-        <ModalPortal children={<ExchangeModal currencyCode={currencyCode} setShowModal={setShowModal} />} />
+        <ModalPortal children={<ExchangeModal currencyCode={currencyCode} onClose={handleModalClose} />} />
       )}
     </section>
   );
