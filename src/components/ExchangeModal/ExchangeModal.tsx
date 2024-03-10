@@ -3,10 +3,11 @@ import "./exchangeModal.scss";
 import Select from "../Select/Select";
 
 type TProps = {
+  currencyCode: string;
   setShowModal: (showModal: boolean) => void;
 };
 
-export default function ExchangeModal({ setShowModal }: TProps) {
+export default function ExchangeModal({ currencyCode, setShowModal }: TProps) {
   const handleCloseClick = (e: SyntheticEvent) => {
     if (e.target === e.currentTarget) {
       e.stopPropagation();
@@ -21,10 +22,10 @@ export default function ExchangeModal({ setShowModal }: TProps) {
           &times;
         </span>
         <h3>FROM:</h3>
-        <Select pickedCurrency="CAD" />
+        <Select currencyCode={currencyCode} />
         <input type="number" />
         <h3>TO:</h3>
-        <Select />
+        <Select currencyCode="USD" />
         <input type="number" disabled />
       </div>
     </div>

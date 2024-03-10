@@ -1,13 +1,13 @@
 import { createPortal } from "react-dom";
+import { modalRoot } from "../../constants/constants";
 
 type TProps = {
   children: React.ReactNode;
-  selector: HTMLElement;
 }
 
-export default function ModalPortal({ children, selector }: TProps) {
+export default function ModalPortal({ children }: TProps) {
   return createPortal(
     children,
-    selector
+    modalRoot as HTMLElement
   );
 }

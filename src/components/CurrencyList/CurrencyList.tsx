@@ -7,16 +7,17 @@ import ExchangeModal from "../ExchangeModal/ExchangeModal";
 import { useQuery } from "@tanstack/react-query";
 import { currenciesStaticInfo } from "../../constants/constants";
 import ModalPortal from "../ExchangeModal/ModalPortal";
-import { modalRoot } from "../../constants/constants";
 
 export default function CurrencyList() {
   const [showModal, setShowModal] = useState(false);
+  const [currencyCode, setCurrencyCode] = useState<string>("");
 
   const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
   const exchangeRatesData = exchangeRates.data?.data.data;
 
-  const handleModalShow = () => {
+  const handleModalShow = (key: string) => {
     setShowModal(true);
+    setCurrencyCode(key);
   };
 
   return (
@@ -34,15 +35,14 @@ export default function CurrencyList() {
                   key={currenciesStaticInfo[key as keyof typeof currenciesStaticInfo]?.code}
                   currency={currenciesStaticInfo[key as keyof typeof currenciesStaticInfo]}
                   exchangeValue={exchangeRatesData[key]?.value}
-                  onClick={handleModalShow}
-                  // TODO: wrap setShowModal
+                  onClick={() => handleModalShow(key)}
                 />
               ))}
           </section>
         </div>
       </div>
       {showModal && (
-        <ModalPortal selector={modalRoot as HTMLElement} children={<ExchangeModal setShowModal={setShowModal} />} />
+        <ModalPortal children={<ExchangeModal currencyCode={currencyCode} setShowModal={setShowModal} />} />
       )}
     </section>
   );
