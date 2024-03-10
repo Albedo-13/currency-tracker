@@ -10,7 +10,7 @@
     align-items: center;
   }
 
-  &-link {
+    &-link {
     display: inline-block;
     height: 40px;
     width: auto;
@@ -19,6 +19,13 @@
       height: 100%;
       width: auto;
       vertical-align: middle;
+    }
+
+    &-active {
+      background: $main-text-gradient;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
     }
   }
 

@@ -1,13 +1,13 @@
 import "./header.scss";
 import Switch from "../Switch/Switch";
 import logo from "/logo.svg";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const headerLinks = [
   { route: "/", text: "Home" },
   { route: "/timeline", text: "Timeline" },
   { route: "/bank-card", text: "Bank card" },
-  { route: "/#", text: "Contact" },
+  { route: "/contact", text: "Contact" },
 ];
 
 export default function Header() {
@@ -23,7 +23,9 @@ export default function Header() {
               {headerLinks.map((link) => {
                 return (
                   <li key={link.route}>
-                    <Link to={link.route}>{link.text}</Link>
+                    <NavLink to={link.route} className={({ isActive }) => (isActive ? "header-link-active" : "")}>
+                      {link.text}
+                    </NavLink>
                   </li>
                 );
               })}

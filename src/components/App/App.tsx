@@ -3,6 +3,7 @@ import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router
 import MainPage from "../../pages/MainPage";
 import TimelinePage from "../../pages/TimelinePage";
 import BankCardPage from "../../pages/BankCardPage";
+import ContactPage from "../../pages/ContactPage";
 import { ThemeContext } from "../../utils/ThemeProvider";
 import { useContext, useEffect } from "react";
 
@@ -28,6 +29,7 @@ function Root() {
       <Route path="/" element={<MainPage />} />
       <Route path="/timeline" element={<TimelinePage />} />
       <Route path="/bank-card" element={<BankCardPage />} />
+      <Route path="/contact" element={<ContactPage />} />
     </Routes>
   );
 }
@@ -43,7 +45,7 @@ function App() {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />;
+        <RouterProvider router={router} />
         <ReactQueryDevtools />
       </QueryClientProvider>
     </>
