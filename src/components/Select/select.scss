@@ -8,9 +8,11 @@
   border: none;
   line-height: inherit;
   font-size: inherit;
-  padding: 0 15px;
+  padding-right: 15px;
   font-size: 30px;
   font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .ui-select-base {
@@ -60,7 +62,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   select {
-    width: 100%;
+    width: 92%;
     color: inherit;
     cursor: pointer; // this now applies to the entire wrapped element.
   }

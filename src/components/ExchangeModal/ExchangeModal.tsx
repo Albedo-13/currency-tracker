@@ -8,31 +8,41 @@ type TProps = {
 };
 
 export default function ExchangeModal({ currencyCode, onClose }: TProps) {
-  const handleCloseClick = (e: SyntheticEvent | KeyboardEvent) => {
-    if (e.target === e.currentTarget || (e as KeyboardEvent).key === "Escape") {
+  const handleCloseClick = (e: SyntheticEvent) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  const handleEscapeClick = (e: KeyboardEvent) => {
+    if ((e as KeyboardEvent).key === "Escape") {
       onClose();
     }
   };
 
   useEffect(() => {
-    document.body.addEventListener("keydown", handleCloseClick);
+    document.body.addEventListener("keydown", handleEscapeClick);
     return () => {
-      document.body.removeEventListener("keydown", handleCloseClick);
+      document.body.removeEventListener("keydown", handleEscapeClick);
     };
   });
 
   return (
     <aside aria-modal="true" className="overlay" onClick={handleCloseClick}>
       <div className="modal">
-        <span className="modal-close" onClick={onClose}>
+        <span className="modal-close" onClick={handleCloseClick}>
           &times;
         </span>
-        <h3>FROM:</h3>
-        <Select currencyCode={currencyCode} />
-        <input autoFocus={true} type="number" />
-        <h3>TO:</h3>
-        <Select currencyCode="USD" />
-        <input type="number" disabled />
+        <label className="modal-label">
+          FROM:
+          <Select currencyCode={currencyCode} />
+          <input placeholder="Start typing..." className="modal-input" autoFocus={true} type="number" />
+        </label>
+        <label className="modal-label">
+          TO:
+          <Select />
+          <input className="modal-input" type="number" disabled />
+        </label>
       </div>
     </aside>
   );
