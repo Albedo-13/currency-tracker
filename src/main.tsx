@@ -11,10 +11,11 @@ async function enableMocking() {
   return worker.start();
 }
 
-enableMocking().then(() => {
-  ReactDOM.createRoot(document.getElementById("root")!).render(
-    <ThemeProvider>
-      <App />
-    </ThemeProvider>
-  );
-});
+enableMocking()
+  .then(() => {
+    ReactDOM.createRoot(document.getElementById("root")!).render(
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    );
+  });
