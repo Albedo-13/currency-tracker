@@ -1,8 +1,11 @@
 import "./select.scss";
 import { currenciesStaticInfo } from "../../constants/constants";
+import type { Dispatch, SetStateAction } from "react";
 
 type TProps = {
+  select: string;
   currencyCode?: string;
+  setSelect: Dispatch<SetStateAction<string>>;
 };
 
 export default function Select({ select, setSelect }: TProps) {

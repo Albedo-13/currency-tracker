@@ -45,6 +45,7 @@ export default function CurrencyList() {
           </section>
         </div>
       </div>
+      {/* TODO: showModal, state & methods to ModalPortal method */}
       {showModal && (
         <ModalPortal children={<ExchangeModal currencyCode={currencyCode} onClose={handleModalClose} />} />
       )}

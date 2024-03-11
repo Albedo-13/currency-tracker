@@ -10,6 +10,7 @@ type TProps = {
   onClose: () => void;
 };
 
+
 export default function ExchangeModal({ currencyCode, onClose }: TProps) {
   const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
   const exchangeRatesData = exchangeRates.data?.data.data;
@@ -33,25 +34,29 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
   };
 
   // TODO: rerender on select change
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setTextInputFrom(() => e.target.value);
-    if (textInputToRef.current) {
-      textInputToRef.current.value = convertCurrency(+e.target.value, selectInputFrom, selectInputTo, exchangeRatesData);
-      // textInputToRef.current.value = e.target.value;
+  const handleInputFromChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // TODO: 16 to constants
+    if (e.target.value.length < 16) {
+      setTextInputFrom(() => e.target.value);
+      handleInputToChange(e.target.value);
     }
   };
 
-  function handleDisabledInputClick() {
+  const handleInputToChange = (newInput: string) => {
+    if (textInputToRef.current) {
+      textInputToRef.current.value = convertCurrency(+newInput, selectInputFrom, selectInputTo, exchangeRatesData);
+    }
+  };
+
+  const handleDisabledInputClick = () => {
     if (textInputFromRef.current) {
       textInputFromRef.current.focus();
     }
-  }
+  };
 
   useEffect(() => {
-    convertCurrency(+textInputFrom, selectInputFrom, selectInputTo, exchangeRatesData)
-
-  }, [textInputFrom, selectInputFrom, selectInputTo]);
-  
+    handleInputToChange(textInputFrom);
+  }, [selectInputFrom, selectInputTo]);
 
   useEffect(() => {
     document.body.addEventListener("keydown", handleEscapeClick);
@@ -72,7 +77,7 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
           <Select select={selectInputFrom} setSelect={setSelectInputFrom} />
           <input
             value={textInputFrom}
-            onChange={(e) => setTextInputFrom(e.target.value)}
+            onChange={handleInputFromChange}
             ref={textInputFromRef}
             id="text-input-from"
             placeholder="Start typing..."
