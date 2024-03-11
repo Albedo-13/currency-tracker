@@ -15,3 +15,5 @@ export const currenciesStaticInfo = {
 export const staleTime = 1000 * 60 * 2;
 
 export const modalRoot = document.getElementById('modal-root');
+
+export const maxInputLength = 16;

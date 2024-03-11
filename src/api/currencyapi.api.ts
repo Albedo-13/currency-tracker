@@ -24,9 +24,6 @@ export async function getCurrencyData() {
   });
 }
 
-// TODO: get getCurrencyData data as mock data from constants, 
-// getExchangeRate depends on this mock
-
 export async function getExchangeRate() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 

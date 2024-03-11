@@ -4,12 +4,12 @@ import Select from "../Select/Select";
 import { convertCurrency } from "../../utils/currencyFormatter";
 import { useQuery } from "@tanstack/react-query";
 import { getExchangeRate } from "../../api/currencyapi.api";
+import { maxInputLength } from "../../constants/constants";
 
 type TProps = {
   currencyCode: string;
   onClose: () => void;
 };
-
 
 export default function ExchangeModal({ currencyCode, onClose }: TProps) {
   const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
@@ -33,10 +33,8 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
     }
   };
 
-  // TODO: rerender on select change
   const handleInputFromChange = (e: ChangeEvent<HTMLInputElement>) => {
-    // TODO: 16 to constants
-    if (e.target.value.length < 16) {
+    if (e.target.value.length < maxInputLength) {
       setTextInputFrom(() => e.target.value);
       handleInputToChange(e.target.value);
     }
@@ -65,7 +63,6 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
     };
   });
 
-  console.log("from", selectInputFrom, "to", selectInputTo);
   return (
     <aside aria-modal="true" className="overlay" onMouseDown={handleCloseClick}>
       <div className="modal">

@@ -14,11 +14,9 @@ export default function Select({ select, setSelect }: TProps) {
       <select
         name="select-four"
         className="ui-select"
-        // defaultValue={currencyCode}
         value={select}
         onChange={(e) => setSelect(e.target.value)}
       >
-        {/* <option className="select-option-disabled" value="empty" disabled={true}>--pick curr--</option> */}
         {Object.entries(currenciesStaticInfo).map(([key, value]) => {
           return (
             <option value={value.code} key={key}>

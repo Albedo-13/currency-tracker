@@ -1,4 +1,4 @@
-import { currenciesStaticInfo } from "../constants/constants";
+import { TExchangeRatesData } from "../types/types";
 
 export function formatCurrency(value: number, currencyCode: string, decimalDigits: number): string {
   const options = {
@@ -14,10 +14,6 @@ export function formatCurrency(value: number, currencyCode: string, decimalDigit
     : value.toLocaleString("en-US", options);
 }
 
-export function convertCurrency(value: number, fromCurrencyCode: string, toCurrencyCode: string, exchangeRates): string {
-  // const fromCurrency = currenciesStaticInfo[fromCurrencyCode as keyof typeof currenciesStaticInfo];
-  // const toCurrency = currenciesStaticInfo[toCurrencyCode as keyof typeof currenciesStaticInfo];
-  console.log(exchangeRates, fromCurrencyCode, toCurrencyCode, value);
-
+export function convertCurrency(value: number, fromCurrencyCode: string, toCurrencyCode: string, exchangeRates: TExchangeRatesData): string {
   return (value / exchangeRates[fromCurrencyCode].value * exchangeRates[toCurrencyCode].value).toFixed(4);
 }

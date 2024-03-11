@@ -9,3 +9,7 @@ export type TExchangeRate = {
   code: string;
   value: number;
 };
+
+export type TExchangeRatesData = {
+  [key: string]: TExchangeRate;
+};
