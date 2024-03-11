@@ -1,14 +1,29 @@
 html[data-theme="dark"] {
+  transition: 0.25s all;
   color-scheme: dark;
 
-  --background-color: #{$slate-black};
-  transition: 0.25s all;
+  --gradient-color: #{$main-text-gradient};
+  --background-color: #{$slate-dark};
+  --text-color-main: #{$slate-white};
+  --text-color-minor: #{$slate-gray-text};
+  --text-color-minor-2: #{$slate-gray-text-2};
+
+  --accent-color: #{$slate-light};
+  --card-color: #{$slate-gray-card}; //
+  --card-border-color: #{$slate-gray-card-border};
 }
 
 html[data-theme="light"] {
-  // TODO: fix light theme flickers
+  transition: 0.25s all;
   color-scheme: light;
 
-  --background-color: #{$slate-gray-card};
-  transition: 0.25s all;
+  --gradient-color: #{$green};
+  --background-color: #{$slate-white};
+  --text-color-main: #{$slate-black};
+  --text-color-minor: #{$slate-gray-text};
+  --text-color-minor-2: #{$slate-gray-text}; //
+
+  --accent-color: #{$slate-gray-card-border}; // TODO: can be changed
+  --card-color: #{$slate-white}; //
+  --card-border-color: #{$slate-gray-card-border};
 }

@@ -23,7 +23,7 @@ export default function Header() {
               {headerLinks.map((link) => {
                 return (
                   <li key={link.route}>
-                    <NavLink to={link.route} className={({ isActive }) => (isActive ? "header-link-active" : "")}>
+                    <NavLink to={link.route} className={({ isActive }) => (isActive ? "gradient-text" : "")}>
                       {link.text}
                     </NavLink>
                   </li>

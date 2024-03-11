@@ -35,7 +35,7 @@ p {
 }
 
 .gradient-text {
-  background: linear-gradient(92deg, $green 0%, #aedf23 49.26%, $yellow 100%);
+  background: var(--gradient-color);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
