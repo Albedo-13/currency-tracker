@@ -1,8 +1,7 @@
 import Header from "../components/Header/Header";
 import Welcome from "../components/Welcome/Welcome";
 import UpdateStatus from "../components/UpdateStatus/UpdateStatus";
-import BankMap from "../components/BankMap/BankMap";
-import BankSearch from "../components/BankSearch/BankSearch";
+import MapSearch from "../components/MapSearch/MapSearch";
 import Footer from "../components/Footer/Footer";
 
 export default function BankCardPage() {
@@ -11,8 +10,7 @@ export default function BankCardPage() {
       <Header />
       <Welcome />
       <UpdateStatus />
-      <BankSearch />
-      <BankMap />
+      <MapSearch />
       <Footer />
     </>
   );

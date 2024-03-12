@@ -1,8 +1,8 @@
 import { Component } from "react";
 import searchIcon from "/icons/search-icon.svg";;
-import "./bankSearch.scss";
+import "./elasticSearch.scss";
 
-export default class BankSearch extends Component {
+export default class ElasticSearch extends Component {
   render() {
     return (
       <section className="bank-search">
