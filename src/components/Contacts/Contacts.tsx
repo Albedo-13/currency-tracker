@@ -14,7 +14,6 @@ export default class Contacts extends Component {
                 8 017 204-71-94
               </a>
             </div>
-
             <div className="contacts-wrapper-item">
               <p className="contacts-subtitle">Address</p>
               <p className="contacts-info">10 Olshevsky Street, Minsk, Minsk region 220073</p>

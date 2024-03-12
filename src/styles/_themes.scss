@@ -7,11 +7,11 @@ html[data-theme="dark"] {
   
   --text-color-main: #{$slate-white};
   --text-color-minor: #{$slate-gray-text};
-  --text-color-minor-2: #{$slate-gray-text-2}; // 1
+  --text-color-minor-2: #{$slate-gray-text-2};
 
   --accent-color: #{$slate-light};
   --card-color: #{$slate-gray-card};
-  --card-blue-color: #{$slate-blue}; // 1
+  --card-blue-color: #{$slate-blue};
   --card-border-color: #{$slate-gray-card-border};
 }
 
@@ -24,7 +24,7 @@ html[data-theme="light"] {
 
   --text-color-main: #{$slate-black};
   --text-color-minor: #{$slate-gray-card-border};
-  --text-color-minor-2: #{$slate-gray-text};
+  --text-color-minor-2: #{$slate-gray-card-border};
 
   --accent-color: #{$slate-gray-card};
   --card-color: #{$slate-light};
