@@ -4,12 +4,14 @@ html[data-theme="dark"] {
 
   --gradient-color: #{$main-text-gradient};
   --background-color: #{$slate-dark};
+  
   --text-color-main: #{$slate-white};
   --text-color-minor: #{$slate-gray-text};
   --text-color-minor-2: #{$slate-gray-text-2}; //
 
-  --accent-color: #{$slate-light}; //
+  --accent-color: #{$slate-light};
   --card-color: #{$slate-gray-card};
+  --card-blue-color: #{$slate-blue};
   --card-border-color: #{$slate-gray-card-border};
 }
 
@@ -19,11 +21,13 @@ html[data-theme="light"] {
 
   --gradient-color: #{$green};
   --background-color: #{$slate-white};
+
   --text-color-main: #{$slate-black};
   --text-color-minor: #{$slate-gray-card-border};
   --text-color-minor-2: #{$slate-gray-text}; //
 
-  --accent-color: #{$slate-gray-card-border}; // TODO: can be changed
+  --accent-color: #{$slate-gray-card};
   --card-color: #{$slate-light};
+  --card-blue-color: #{$slate-light};
   --card-border-color: #{$slate-gray-card-border};
 }

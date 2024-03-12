@@ -9,7 +9,7 @@
 
 // INPUT DATE
 input[type="date"] {
-  background-color: $slate-gray-card;
+  background-color: var(--card-color);
   border: none;
   padding: 0 15px;
   border-radius: 3px;

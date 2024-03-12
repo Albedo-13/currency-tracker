@@ -26,12 +26,13 @@
   &-name {
     font-weight: 400;
     font-size: 35px;
-    color: $slate-light;
+    color: var(--accent-color);
   }
 
   &-short {
     font-weight: 500;
-    color: $slate-white;
+    color: var(--text-color-main);
     opacity: .7;
+    font-size: 22px;
   }
 }
