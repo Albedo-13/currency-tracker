@@ -9,8 +9,6 @@ import { banksStaticInfo } from "../../../constants/constants";
 const accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
 mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
 
-// SOURCE: https://stackoverflow.com/questions/55012454/the-correct-way-to-update-props-with-mapbox
-
 export default class Mapbox extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +18,7 @@ export default class Mapbox extends Component {
       // zoom: 8,
       zoom: 0,
     };
+    this.markersList = [];
     this.mapContainer = React.createRef();
   }
 
@@ -47,15 +46,31 @@ export default class Mapbox extends Component {
       })
     );
 
-    banksStaticInfo.map((feature) => new mapboxgl.Marker().setLngLat(feature.coordinates).addTo(map));
+    banksStaticInfo.map((feature) => {
+      const marker = new mapboxgl.Marker().setLngLat(feature.coordinates).addTo(map);
+      this.markersList.push(marker);
+    });
 
     this.map = map;
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const { lng, lat, zoom } = prevState;
+  removeAllMarkers = () => {
+    for (let i = this.markersList.length - 1; i >= 0; i--) {
+      this.markersList[i].remove();
+    }
+  };
 
-    // banksStaticInfo.map((feature) => new mapboxgl.Marker().setLngLat([Math.random() * 10, Math.random() * 10]).addTo(this.map));
+  updateMarkers = () => {
+    this.removeAllMarkers();
+    banksStaticInfo.map((feature) => {
+      const marker = new mapboxgl.Marker().setLngLat([Math.random() * 10, Math.random() * 10]).addTo(this.map);
+      this.markersList.push(marker);
+    });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // rerenders on map move, do not use on self state change
+    this.updateMarkers();
   }
 
   render() {

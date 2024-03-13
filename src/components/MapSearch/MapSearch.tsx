@@ -13,6 +13,10 @@ export default class MapSearch extends Component {
     this.setState({ searchString: e.target.value });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    
+  }
+
   render() {
     console.log(this.state.searchString); //-
     return (
