@@ -6,6 +6,7 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { banksStaticInfo } from "../../../constants/constants";
 import { findBanksByCurrencyCodeOrName } from "../../../utils/currencyFormatter";
+import { TBank } from "../../../types/types";
 
 const accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
 mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
@@ -32,13 +33,24 @@ export default class Mapbox extends Component {
       })
     );
 
-    banksStaticInfo.map((feature) => {
-      const marker = new mapboxgl.Marker().setLngLat(feature.coordinates).addTo(map);
+    this.map = map;
+    this.createMarkersBasedOnBanks(banksStaticInfo);
+  }
+
+  componentDidUpdate() {
+    this.updateMarkers();
+  }
+
+  createMarkersBasedOnBanks = (banks: TBank[]) => {
+    banks.map((bank) => {
+      const popup = new mapboxgl.Popup({ offset: 25 }).setText(bank.name);
+      const marker = new mapboxgl.Marker()
+        .setLngLat([bank.coordinates[0], bank.coordinates[1]])
+        .setPopup(popup)
+        .addTo(this.map);
       this.markersList.push(marker);
     });
-
-    this.map = map;
-  }
+  };
 
   removeAllMarkers = () => {
     for (let i = this.markersList.length - 1; i >= 0; i--) {
@@ -50,15 +62,8 @@ export default class Mapbox extends Component {
     this.removeAllMarkers();
 
     this.filteredBanks = findBanksByCurrencyCodeOrName(this.props.searchString, banksStaticInfo);
-    this.filteredBanks.map((bank) => {
-      const marker = new mapboxgl.Marker().setLngLat([bank.coordinates[0], bank.coordinates[1]]).addTo(this.map);
-      this.markersList.push(marker);
-    });
+    this.createMarkersBasedOnBanks(this.filteredBanks);
   };
-
-  componentDidUpdate() {
-    this.updateMarkers();
-  }
 
   render() {
     console.log("mapbox render");

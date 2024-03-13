@@ -7,7 +7,7 @@ type TProps = {
   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const debounceDelay = 800;
+const debounceDelay = 700;
 
 export default class ElasticSearch extends Component<TProps> {
   render() {

@@ -6,3 +6,12 @@
 .map-container {
   height: 460px;
 }
+
+.mapboxgl-popup-content {
+  color: black; // TODO: palette
+}
+
+.mapboxgl-popup-close-button {
+  color: black;
+  outline: none;
+}
