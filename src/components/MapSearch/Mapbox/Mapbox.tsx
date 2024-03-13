@@ -1,10 +1,11 @@
 import React, { Component, createRef } from "react";
 import "./mapbox.scss";
 import "mapbox-gl/dist/mapbox-gl.css";
-import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from "mapbox-gl";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { banksStaticInfo } from "../../../constants/constants";
+import { findBanksByCurrencyCodeOrName } from "../../../utils/currencyFormatter";
 
 const accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
 mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
@@ -47,15 +48,15 @@ export default class Mapbox extends Component {
 
   updateMarkers = () => {
     this.removeAllMarkers();
-    this.props.filteredBanks.map((bank) => {
+
+    this.filteredBanks = findBanksByCurrencyCodeOrName(this.props.searchString, banksStaticInfo);
+    this.filteredBanks.map((bank) => {
       const marker = new mapboxgl.Marker().setLngLat([bank.coordinates[0], bank.coordinates[1]]).addTo(this.map);
       this.markersList.push(marker);
     });
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    // rerenders on map move, do not use on self state change
-    // console.log("filtered banks", this.props.filteredBanks);
+  componentDidUpdate() {
     this.updateMarkers();
   }
 

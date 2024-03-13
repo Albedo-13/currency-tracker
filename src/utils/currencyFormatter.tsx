@@ -18,7 +18,7 @@ export function convertCurrency(value: number, fromCurrencyCode: string, toCurre
   return (value / exchangeRates[fromCurrencyCode].value * exchangeRates[toCurrencyCode].value).toFixed(4);
 }
 
-export function findBanksByCurrencyCodeOrName(searchString: string, banks: TBank[]) {
+export function findBanksByCurrencyCodeOrName(searchString = "", banks: TBank[]): TBank[] {
   return banks.filter((bank) => {
     return bank.currencies.some((currency) => {
       return (
