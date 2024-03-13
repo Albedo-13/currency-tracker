@@ -3,9 +3,9 @@ import ElasticSearch from "./ElasticSearch/ElasticSearch";
 import Mapbox from "./Mapbox/Mapbox";
 import { banksStaticInfo } from "../../constants/constants";
 
-// TODO: tooltips on hover
-// TODO?: rearrange camera on update
-// TODO: elastic search
+// TODO: extend banks static info with real data
+// TODO: rearrange camera (center of Minsk)
+// TODO: TS types
 
 export default class MapSearch extends Component {
   constructor(props) {

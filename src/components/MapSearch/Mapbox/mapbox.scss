@@ -1,3 +1,5 @@
+@import "../../../styles/palette.scss";
+
 .bank-map {
   padding: 25px 0 80px 0;
   position: relative;
@@ -7,11 +9,38 @@
   height: 460px;
 }
 
-.mapboxgl-popup-content {
-  color: black; // TODO: palette
+.mapboxgl-marker {
+  cursor: pointer;
 }
 
-.mapboxgl-popup-close-button {
-  color: black;
-  outline: none;
+.mapboxgl-popup {
+  .mapboxgl-popup-content {
+    color: $slate-dark;
+    padding: 20px 20px 15px;
+  }
+
+  .mapboxgl-popup-name {
+    color: $slate-black;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .mapboxgl-popup-address {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+    color: $slate-gray-card-border;
+  }
+
+  .mapboxgl-popup-currencies {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 400;
+  }
+
+  .mapboxgl-popup-close-button {
+    font-size: 24px;
+    color: $slate-black;
+    outline: none;
+  }
 }

@@ -1,8 +1,7 @@
-import React, { Component, createRef } from "react";
+import React, { Component } from "react";
 import "./mapbox.scss";
 import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { banksStaticInfo } from "../../../constants/constants";
 import { findBanksByCurrencyCodeOrName } from "../../../utils/currencyFormatter";
@@ -26,13 +25,6 @@ export default class Mapbox extends Component {
       zoom: 8,
     });
 
-    map.addControl(
-      new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl,
-      })
-    );
-
     this.map = map;
     this.createMarkersBasedOnBanks(banksStaticInfo);
   }
@@ -43,7 +35,15 @@ export default class Mapbox extends Component {
 
   createMarkersBasedOnBanks = (banks: TBank[]) => {
     banks.map((bank) => {
-      const popup = new mapboxgl.Popup({ offset: 25 }).setText(bank.name);
+      const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
+        `
+        <p class="mapboxgl-popup-name">${bank.name}</p>
+        <p class="mapboxgl-popup-address">${bank.address}</p>
+        <p class="mapboxgl-popup-currencies">
+          ${bank.currencies.map((currency) => `${currency.code}`).join(", ")}
+        </p>
+        `
+      );
       const marker = new mapboxgl.Marker()
         .setLngLat([bank.coordinates[0], bank.coordinates[1]])
         .setPopup(popup)

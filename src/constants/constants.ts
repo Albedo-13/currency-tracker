@@ -26,26 +26,20 @@ export const maxInputLength = 16;
 export const banksStaticInfo = [
   {
     name: "Tinkoff",
-    location: "location 1",
     address: "Минск, Данилы Сердича, 25",
-    description: "A downtown park known for its art installations and unique architecture",
     currencies: [
       currenciesStaticInfo["USD"],
       currenciesStaticInfo["EUR"],
     ],
     coordinates: [27.6, 53.9],
-    type: "Point",
   },
   {
-    name: "BSB",
-    location: "location 2",
+    name: "BSB Bank",
     address: "Минск, Данилы Сердича, 25",
-    description: "A downtown park known for its art installations and unique architecture",
     currencies: [
       currenciesStaticInfo["BTC"],
       currenciesStaticInfo["USD"],
     ],
     coordinates: [27.4, 53.7],
-    type: "Point",
   },
 ];

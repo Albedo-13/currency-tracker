@@ -16,10 +16,7 @@ export type TExchangeRatesData = {
 
 export type TBank = {
   name: string;
-  location: string;
   address: string;
-  description: string;
   currencies: TCurrency[];
   coordinates: number[];
-  type: string;
 };
