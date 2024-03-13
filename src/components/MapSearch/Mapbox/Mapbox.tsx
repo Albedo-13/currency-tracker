@@ -12,31 +12,16 @@ mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oN
 export default class Mapbox extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      lng: 27.5,
-      lat: 53.8,
-      // zoom: 8,
-      zoom: 0,
-    };
     this.markersList = [];
     this.mapContainer = React.createRef();
   }
 
   componentDidMount() {
-    const { lng, lat, zoom } = this.state;
     const map = new mapboxgl.Map({
       container: this.mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [lng, lat],
-      zoom: zoom,
-    });
-
-    map.on("move", () => {
-      this.setState({
-        lng: map.getCenter().lng.toFixed(4),
-        lat: map.getCenter().lat.toFixed(4),
-        zoom: map.getZoom().toFixed(2),
-      });
+      center: [27.6, 53.9],
+      zoom: 8,
     });
 
     map.addControl(
@@ -62,27 +47,24 @@ export default class Mapbox extends Component {
 
   updateMarkers = () => {
     this.removeAllMarkers();
-    banksStaticInfo.map((feature) => {
-      const marker = new mapboxgl.Marker().setLngLat([Math.random() * 10, Math.random() * 10]).addTo(this.map);
+    this.props.filteredBanks.map((bank) => {
+      const marker = new mapboxgl.Marker().setLngLat([bank.coordinates[0], bank.coordinates[1]]).addTo(this.map);
       this.markersList.push(marker);
     });
-  }
+  };
 
   componentDidUpdate(prevProps, prevState) {
     // rerenders on map move, do not use on self state change
+    // console.log("filtered banks", this.props.filteredBanks);
     this.updateMarkers();
   }
 
   render() {
-    const { lng, lat, zoom } = this.state;
+    console.log("mapbox render");
+
     return (
       <div className="bank-map">
-        <div>
-          <div className="sidebar">
-            Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-          </div>
-          <div ref={this.mapContainer} className="map-container" />
-        </div>
+        <div ref={this.mapContainer} className="map-container" />
       </div>
     );
   }

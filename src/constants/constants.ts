@@ -29,7 +29,10 @@ export const banksStaticInfo = [
     location: "location 1",
     address: "Минск, Данилы Сердича, 25",
     description: "A downtown park known for its art installations and unique architecture",
-    currenciesCodes: ["USD", "EUR"],
+    currencies: [
+      currenciesStaticInfo["USD"],
+      currenciesStaticInfo["EUR"],
+    ],
     coordinates: [27.6, 53.9],
     type: "Point",
   },
@@ -38,7 +41,10 @@ export const banksStaticInfo = [
     location: "location 2",
     address: "Минск, Данилы Сердича, 25",
     description: "A downtown park known for its art installations and unique architecture",
-    currenciesCodes: ["BTC", "USD"],
+    currencies: [
+      currenciesStaticInfo["BTC"],
+      currenciesStaticInfo["USD"],
+    ],
     coordinates: [27.4, 53.7],
     type: "Point",
   },

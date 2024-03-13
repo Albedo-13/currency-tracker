@@ -13,3 +13,13 @@ export type TExchangeRate = {
 export type TExchangeRatesData = {
   [key: string]: TExchangeRate;
 };
+
+export type TBank = {
+  name: string;
+  location: string;
+  address: string;
+  description: string;
+  currencies: TCurrency[];
+  coordinates: number[];
+  type: string;
+};
