@@ -1,31 +1,44 @@
-import React, { Component } from "react";
+import React, { Component, MutableRefObject } from "react";
 import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
-import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { banksStaticInfo } from "../../../constants/constants";
 import { findBanksByCurrencyCodeOrName } from "../../../utils/currencyFormatter";
 import { TBank } from "../../../types/types";
+import "mapbox-gl/dist/mapbox-gl.css";
+import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import "./mapbox.scss";
 
 mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
 
-export default class Mapbox extends Component {
-  constructor(props) {
+type TProps = {
+  searchString: string;
+};
+const lngLat: [number, number] = [27.6, 53.9];
+const zoom: number = 10;
+
+export default class Mapbox extends Component<TProps> {
+  markersList: mapboxgl.Marker[];
+  mapContainer: MutableRefObject<HTMLDivElement | null>;
+  map: mapboxgl.Map | null;
+  filteredBanks: TBank[];
+
+  constructor(props: TProps) {
     super(props);
     this.markersList = [];
     this.mapContainer = React.createRef();
+    this.map = null;
+    this.filteredBanks = banksStaticInfo;
   }
 
   componentDidMount() {
     const map = new mapboxgl.Map({
-      container: this.mapContainer.current,
+      container: this.mapContainer.current as HTMLDivElement,
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [27.6, 53.9],
-      zoom: 10,
+      center: lngLat,
+      zoom: zoom,
     });
 
     this.map = map;
-    this.createMarkersBasedOnBanks(banksStaticInfo);
+    this.createMarkersBasedOnBanks(this.filteredBanks);
   }
 
   componentDidUpdate() {
@@ -46,7 +59,7 @@ export default class Mapbox extends Component {
       const marker = new mapboxgl.Marker()
         .setLngLat([bank.coordinates[0], bank.coordinates[1]])
         .setPopup(popup)
-        .addTo(this.map);
+        .addTo(this.map as mapboxgl.Map);
       this.markersList.push(marker);
     });
   };
@@ -64,8 +77,6 @@ export default class Mapbox extends Component {
   };
 
   render() {
-    console.log("mapbox render");
-
     return (
       <div className="bank-map">
         <div ref={this.mapContainer} className="map-container" />
