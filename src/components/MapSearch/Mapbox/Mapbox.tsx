@@ -1,4 +1,4 @@
-import React, { Component, MutableRefObject } from "react";
+import { Component, MutableRefObject, createRef } from "react";
 import mapboxgl from "mapbox-gl";
 import { banksStaticInfo } from "../../../constants/constants";
 import { findBanksByCurrencyCodeOrName } from "../../../utils/currencyFormatter";
@@ -24,7 +24,7 @@ export default class Mapbox extends Component<TProps> {
   constructor(props: TProps) {
     super(props);
     this.markersList = [];
-    this.mapContainer = React.createRef();
+    this.mapContainer = createRef();
     this.map = null;
     this.filteredBanks = banksStaticInfo;
   }
