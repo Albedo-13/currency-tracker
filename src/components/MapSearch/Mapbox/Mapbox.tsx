@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import "./mapbox.scss";
-import "mapbox-gl/dist/mapbox-gl.css";
 import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { banksStaticInfo } from "../../../constants/constants";
 import { findBanksByCurrencyCodeOrName } from "../../../utils/currencyFormatter";
 import { TBank } from "../../../types/types";
+import "./mapbox.scss";
 
-const accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
 mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
 
 export default class Mapbox extends Component {
@@ -22,7 +21,7 @@ export default class Mapbox extends Component {
       container: this.mapContainer.current,
       style: "mapbox://styles/mapbox/streets-v12",
       center: [27.6, 53.9],
-      zoom: 8,
+      zoom: 10,
     });
 
     this.map = map;
@@ -60,7 +59,6 @@ export default class Mapbox extends Component {
 
   updateMarkers = () => {
     this.removeAllMarkers();
-
     this.filteredBanks = findBanksByCurrencyCodeOrName(this.props.searchString, banksStaticInfo);
     this.createMarkersBasedOnBanks(this.filteredBanks);
   };
