@@ -28,9 +28,6 @@ export default function CurrencyList() {
     <section className="currency">
       <div className="container">
         <div className="currency-wrapper">
-          <CurrencyGroup group={"Stocks"} />
-          <div className="currency-cards-list">{/* TODO: Stocks */}</div>
-
           <CurrencyGroup group={"Quotes"} />
           <section className="currency-cards-list">
             {exchangeRatesData &&
@@ -46,9 +43,7 @@ export default function CurrencyList() {
         </div>
       </div>
       {/* TODO: showModal, state & methods to ModalPortal method */}
-      {showModal && (
-        <ModalPortal children={<ExchangeModal currencyCode={currencyCode} onClose={handleModalClose} />} />
-      )}
+      {showModal && <ModalPortal children={<ExchangeModal currencyCode={currencyCode} onClose={handleModalClose} />} />}
     </section>
   );
 }
