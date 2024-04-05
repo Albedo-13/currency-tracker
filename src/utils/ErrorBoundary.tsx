@@ -23,7 +23,6 @@ export default class ErrorBoundary extends React.Component<TProps, TState> {
   }
 
   render() {
-    console.log(process.env.NODE_ENV);
     if (this.state.errorInfo && process.env.NODE_ENV !== "development") {
       return (
         <div>
