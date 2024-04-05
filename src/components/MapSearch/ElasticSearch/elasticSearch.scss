@@ -1,14 +1,14 @@
 @import "../../../styles/palette.scss";
-
+@import "../../../styles/variables.scss";
 .bank-search {
   text-align: center;
-  padding: 55px 0;
+  padding: $s-11 0;
 
   &-title {
     font-weight: 400;
     font-size: 38px;
     color: var(--text-color-main);
-    margin-bottom: 24px;
+    margin-bottom: calc($s-5 - 1px);
   }
 
   &-wrapper {
@@ -18,7 +18,7 @@
   &-input {
     border-radius: 8px;
     border: none;
-    padding: 20px;
+    padding: $s-4;
     min-width: 450px;
     background-color: var(--card-blue-color);
 

@@ -1,10 +1,11 @@
 @import "../../../styles/palette.scss";
+@import "../../../styles/variables.scss";
 
 .currency-group {
   max-width: 520px;
 
   &:not(.currency-group:first-of-type) {
-    margin-top: 85px;
+    margin-top: $s-17;
   }
 
   &-title {
@@ -14,8 +15,8 @@
   }
 
   &-separator {
-    margin-top: 25px;
-    margin-bottom: 50px;
+    margin-top: $s-5;
+    margin-bottom: $s-10;
     height: 1px;
     border: 0;
     background-color: var(--card-border-color);

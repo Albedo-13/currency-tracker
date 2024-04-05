@@ -1,8 +1,9 @@
 @import "../../styles/palette.scss";
+@import "../../styles/variables.scss";
 
 .welcome {
   min-height: 300px;
-  padding: 30px 0px 60px 0px;
+  padding: $s-6 0px $s-12 0px;
   position: relative;
   overflow: hidden;
 
@@ -19,7 +20,7 @@
 
   &-wrapper {
     display: flex;
-    gap: 65px;
+    gap: $s-12;
     position: relative;
     // right: 8vw;
 
@@ -27,7 +28,7 @@
       display: flex;
       flex-direction: column;
       align-items: end;
-      gap: 25px;
+      gap: $s-5;
     }
   }
 
@@ -45,7 +46,7 @@
     color: var(--accent-color);
     max-width: 400px;
     position: relative;
-    right: -60px;
+    right: -$s-12;
   }
 
   &-img {

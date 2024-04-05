@@ -1,11 +1,13 @@
+@import "../../styles/variables.scss";
+
 .update-status {
-  padding: 55px 0;
+  padding: $s-11 0;
   
   &-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: $s-5;
   }
 
   &-lamp {

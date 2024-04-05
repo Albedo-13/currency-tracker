@@ -1,12 +1,14 @@
+@import "../../styles/variables.scss";
+
 .contacts {
-  padding-bottom: 100px;
+  padding-bottom: $s-20;
   text-align: center;
 
   &-wrapper {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin: 30px auto 0 auto;
+    gap: $s-6;
+    margin: $s-6 auto 0 auto;
 
     &-item {
       flex: 1 1 0px;
@@ -27,8 +29,8 @@
   &-info {
     font-style: normal;
     display: block;
-    margin-top: 10px;
+    margin-top: $s-2;
     color: var(--text-color-minor);
-    font-size: 20px;
+    font-size: $fs-m-0;
   }
 }

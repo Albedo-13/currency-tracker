@@ -1,9 +1,10 @@
 @import "../../../styles/palette.scss";
+@import "../../../styles/variables.scss";
 
 .graph-filters {
   &-wrapper {
     display: flex;
-    gap: 30px;
+    gap: $s-6;
   }
 }
 
@@ -11,7 +12,7 @@
 input[type="date"] {
   background-color: var(--card-color);
   border: none;
-  padding: 0 15px;
+  padding: 0 $s-3;
   border-radius: 3px;
   font-size: 30px;
   font-weight: 500;
