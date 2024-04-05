@@ -1,4 +1,5 @@
 @import "../../styles/palette.scss";
+@import "../../styles/variables.scss";
 
 .footer {
   &-img {
@@ -36,7 +37,7 @@
   }
 
   &-description {
-    margin-top: 18px;
+    margin-top: calc($s-4 - 2px);
     font-weight: 300;
     font-size: 24px;
     line-height: 150%;
@@ -51,13 +52,13 @@
     }
 
     &-list {
-      margin-top: 40px;
+      margin-top: $s-8;
 
       &-item {
         font-size: 24px;
 
         &:not(:first-of-type) {
-          margin-top: 28px;
+          margin-top: calc($s-6 - 2px);
         }
       }
     }
@@ -78,6 +79,6 @@
     font-size: 24px;
     color: $slate-gray-text;
     text-align: center;
-    padding: 54px 0 40px 0;
+    padding: $s-11 0 $s-8 0;
   }
 }

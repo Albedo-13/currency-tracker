@@ -1,10 +1,12 @@
+@import "../../styles/variables.scss";
+
 .currency-cards-list {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 55px;
+  gap: $s-11;
 
   &:last-child {
-    padding-bottom: 95px;
+    padding-bottom: $s-19;
   }
 }
