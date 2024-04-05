@@ -34,13 +34,13 @@
 
   &-title {
     font-weight: 600;
-    font-size: 76px;
+    font-size: $fs-7xl-6;
     text-align: right;
   }
 
   &-text {
     font-weight: 300;
-    font-size: 25px;
+    font-size: $fs-m-5;
     line-height: 187%;
     text-align: center;
     color: var(--accent-color);

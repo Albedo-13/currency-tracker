@@ -10,7 +10,7 @@
   line-height: inherit;
   font-size: inherit;
   padding-right: $s-3;
-  font-size: 30px;
+  font-size: $fs-l-0;
   font-weight: 500;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -21,7 +21,7 @@
   height: 44px;
   min-width: 250px;
   padding: 0 $s-2;
-  font-size: 18px;
+  font-size: $fs-s-8;
   line-height: 44px;
 
   select {

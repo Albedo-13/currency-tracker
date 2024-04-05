@@ -16,13 +16,13 @@
   &-logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 17px;
+    gap: calc($s-4 - 3px);
   }
 
   &-wrapper {
     display: flex;
     justify-content: space-between;
-    gap: 100px;
+    gap: $s-20;
 
     &-left {
       flex-basis: 482px;
@@ -32,14 +32,14 @@
       display: flex;
       justify-content: space-between;
       flex-grow: 1;
-      gap: 40px;
+      gap: $s-8;
     }
   }
 
   &-description {
     margin-top: calc($s-4 - 2px);
     font-weight: 300;
-    font-size: 24px;
+    font-size: $fs-m-4;
     line-height: 150%;
     color: var(--text-color-main);
   }
@@ -47,7 +47,7 @@
   &-nav {
     &-title {
       font-weight: 400;
-      font-size: 28px;
+      font-size: $fs-m-8;
       color: var(--text-color-main);
     }
 
@@ -55,7 +55,7 @@
       margin-top: $s-8;
 
       &-item {
-        font-size: 24px;
+        font-size: $fs-m-4;
 
         &:not(:first-of-type) {
           margin-top: calc($s-6 - 2px);
@@ -76,7 +76,7 @@
 
   &-copyright {
     font-weight: 400;
-    font-size: 24px;
+    font-size: $fs-m-4;
     color: $slate-gray-text;
     text-align: center;
     padding: $s-11 0 $s-8 0;

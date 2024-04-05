@@ -1,12 +1,13 @@
 @import "../../../styles/palette.scss";
 @import "../../../styles/variables.scss";
+
 .bank-search {
   text-align: center;
   padding: $s-11 0;
 
   &-title {
     font-weight: 400;
-    font-size: 38px;
+    font-size: $fs-l-8;
     color: var(--text-color-main);
     margin-bottom: calc($s-5 - 1px);
   }
@@ -24,7 +25,9 @@
 
     &::placeholder {
       color: var(--text-color-minor);
-      font-size: 18px;
+      font-size: $fs-s-8;
+      
+    font-size: $fs-s-8;
     }
   }
 
