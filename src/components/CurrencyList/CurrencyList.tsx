@@ -3,10 +3,11 @@ import CurrencyGroup from "./CurrencyGroup/CurrencyGroup";
 import CurrencyCard from "./CurrencyCard/CurrencyCard";
 import { getExchangeRate } from "../../api/currencyapi.api";
 import "./currencyList.scss";
-import ExchangeModal from "../ExchangeModal/ExchangeModal";
+import Modal from "../Modal/Modal";
 import { useQuery } from "@tanstack/react-query";
 import { currenciesStaticInfo } from "../../constants/constants";
-import ModalPortal from "../ExchangeModal/ModalPortal";
+import ModalPortal from "../Modal/ModalPortal";
+import ExchangeModal from "../Modal/ExchangeModal/ExchangeModal";
 
 export default function CurrencyList() {
   const [showModal, setShowModal] = useState(false);
@@ -42,8 +43,15 @@ export default function CurrencyList() {
           </section>
         </div>
       </div>
-      {/* TODO: showModal, state & methods to ModalPortal method */}
-      {showModal && <ModalPortal children={<ExchangeModal currencyCode={currencyCode} onClose={handleModalClose} />} />}
+      {showModal && (
+        <ModalPortal
+          children={
+            <Modal currencyCode={currencyCode} onClose={handleModalClose}>
+              <ExchangeModal />
+            </Modal>
+          }
+        />
+      )}
     </section>
   );
 }

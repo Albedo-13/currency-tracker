@@ -1,5 +1,5 @@
 import { ChangeEvent, SyntheticEvent, useEffect, useRef, useState } from "react";
-import "./exchangeModal.scss";
+import "./modal.scss";
 import Select from "../Select/Select";
 import { convertCurrency } from "../../utils/currencyFormatter";
 import { useQuery } from "@tanstack/react-query";
@@ -9,9 +9,10 @@ import { maxInputLength } from "../../constants/constants";
 type TProps = {
   currencyCode: string;
   onClose: () => void;
+  children: React.ReactNode;
 };
 
-export default function ExchangeModal({ currencyCode, onClose }: TProps) {
+export default function Modal({ currencyCode, onClose, children }: TProps) {
   const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
   const exchangeRatesData = exchangeRates.data?.data.data;
 
@@ -69,6 +70,7 @@ export default function ExchangeModal({ currencyCode, onClose }: TProps) {
         <span className="modal-close" onMouseDown={handleCloseClick} tabIndex={0}>
           &times;
         </span>
+        {children}
         <label className="modal-label">
           FROM:
           <Select select={selectInputFrom} setSelect={setSelectInputFrom} />
