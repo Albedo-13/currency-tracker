@@ -46,8 +46,8 @@ export default function CurrencyList() {
       {showModal && (
         <ModalPortal
           children={
-            <Modal currencyCode={currencyCode} onClose={handleModalClose}>
-              <ExchangeModal />
+            <Modal onClose={handleModalClose}>
+              <ExchangeModal currencyCode={currencyCode} />
             </Modal>
           }
         />
