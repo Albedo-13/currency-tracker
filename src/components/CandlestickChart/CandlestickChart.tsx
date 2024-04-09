@@ -50,7 +50,7 @@ const dateAdapter = (value: number | string | Date) => {
 const CHART_DAYS = 14;
 //!
 
-export default function Graph() {
+export default function CandlestickChart() {
   const pickedCurrency = currenciesChartData["USD"];
   const [chartData, setChartData] = useState<TXOHLC[]>(pickedCurrency);
 
