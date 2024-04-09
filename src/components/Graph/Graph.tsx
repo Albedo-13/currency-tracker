@@ -1,127 +1,215 @@
-import { Component } from "react";
-import dollar from "/currency-icons/Dollar Icon.svg";
-import "./graph.scss";
+import { useState } from "react";
+import type { ChangeEvent, Dispatch, SetStateAction } from "react";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-// // import Chart from 'chart.js/auto'
-// import '../../utils/chartjs-chart-financial.js';
-
-// import { Chart } from "chart.js";
-// import { Line } from "react-chartjs-2";
-// import { OhlcElement, OhlcController, CandlestickElement, CandlestickController } from "chartjs-chart-financial";
-
+import "chartjs-adapter-moment";
 import { OhlcElement, OhlcController, CandlestickElement, CandlestickController } from "chartjs-chart-financial";
-import Chart from "chart.js/auto"; // Easy way of importing everything
-import "../../../public/chartjs-chart-financial";
+import Chart from "chart.js/auto";
+import { Chart as ChartComponent } from "react-chartjs-2";
+import currenciesChartData from "../../constants/chartData";
+Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
-// ChartJS.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
-
-// import {
-//   elderRay,
-//   ema,
-//   discontinuousTimeScaleProviderBuilder,
-//   Chart,
-//   ChartCanvas,
-//   CurrentCoordinate,
-//   BarSeries,
-//   CandlestickSeries,
-//   ElderRaySeries,
-//   LineSeries,
-//   MovingAverageTooltip,
-//   OHLCTooltip,
-//   SingleValueTooltip,
-//   lastVisibleItemBasedZoomAnchor,
-//   XAxis,
-//   YAxis,
-//   CrossHairCursor,
-//   EdgeIndicator,
-//   MouseCoordinateX,
-//   MouseCoordinateY,
-//   ZoomButtons,
-//   withDeviceRatio,
-//   withSize,
-// } from "react-financial-charts";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-  OhlcElement,
-  OhlcController,
-  CandlestickElement,
-  CandlestickController
-);
-
-export const options = {
-  // type: 'candlestick',
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "top" as const,
-    },
-    title: {
-      display: true,
-      text: "Chart.js Line Chart",
-    },
-  },
-};
-
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-
-// TODO: установить Chart js financial Обычный и смерджить код на фоне
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: "Dataset 1",
-      data: [50, 10, 20, 10, 30, 15, 40],
-      borderColor: "rgb(255, 99, 132)",
-      backgroundColor: "rgba(255, 99, 132, 0.5)",
-    },
-    {
-      label: "Dataset 2",
-      data: [80, 20, 30, 40, 10, 25, 30],
-      borderColor: "rgb(53, 162, 235)",
-      backgroundColor: "rgba(53, 162, 235, 0.5)",
-    },
-  ],
-};
-
-export default class Graph extends Component {
-  render() {
-    return (
-      <section className="graph">
-        <div className="container">
-          <div className="graph-info-wrapper">
-            <div className="graph-info-image">
-              {/* TODO: change alt tag from input data */}
-              <img src={dollar} alt="currency graph info" />
-            </div>
-            <div className="graph-info-content">
-              <p className="graph-info-name">Commercial Dollar</p>
-              <p className="graph-info-short">USD</p>
-            </div>
-          </div>
-          <div>{/* <Line options={options} data={data} /> */}</div>
-          <div>
-            <canvas id="chart"></canvas>
-          </div>
-        </div>
-      </section>
-    );
-  }
+//!
+function randomNumber(min: number, max: number) {
+  return Math.random() * (max - min) + min;
 }
+
+function randomBar(target: Record<number, unknown>, index: number, date: Date, lastClose: number) {
+  const open = +randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
+  const close = +randomNumber(open * 0.95, open * 1.05).toFixed(2);
+  const high = +randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
+  const low = +randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
+
+  if (!target[index]) {
+    target[index] = {};
+  }
+
+  return {
+    x: date.valueOf(),
+    o: open,
+    h: high,
+    l: low,
+    c: close,
+  };
+}
+
+type TXOHLC = {
+  x?: number;
+  o?: number;
+  h?: number;
+  l?: number;
+  c?: number;
+};
+
+const zeroPrefix = (value: number) => (value < 10 ? `0${value}` : `${value}`);
+
+const dateAdapter = (value: number | string | Date) => {
+  const date = new Date(value);
+  return `${zeroPrefix(date.getFullYear())}-${zeroPrefix(date.getMonth() + 1)}-${zeroPrefix(date.getDate())}`;
+};
+
+const CHART_DAYS = 14;
+//!
+
+export default function Graph() {
+  const pickedCurrency = currenciesChartData["USD"];
+  const [chartData, setChartData] = useState<TXOHLC[]>(pickedCurrency);
+
+  const data = {
+    datasets: [
+      {
+        type: "candlestick" as const,
+        label: "Candlestick Chart",
+        data: chartData,
+        borderColor: "rgba(255, 99, 132, 1)",
+        borderWidth: 2,
+      },
+    ],
+  };
+
+  function handleRandomClick() {
+    const newGeneratedData: { x: number; o: number; h: number; l: number; c: number }[] = [];
+    for (let i = 0; i < CHART_DAYS; i++) {
+      newGeneratedData.push(randomBar(chartData, i, new Date(`2024-04-${i + 1}`), 221.13));
+    }
+
+    console.log(chartData);
+    setChartData(newGeneratedData);
+  }
+
+  function handleFilterClick(from: number, to: number) {
+    if (!from || !to) {
+      return;
+    }
+
+    const newFilteredData = pickedCurrency.filter((item) => {
+      const date = new Date(item.x);
+      return date.getTime() >= from && date.getTime() <= to;
+    });
+
+    console.log("filtered data", newFilteredData);
+    setChartData(newFilteredData);
+  }
+
+  function handleBuildClick(inputs: TXOHLC[]) {
+    console.log(inputs);
+    const newChartData = [];
+
+    for (let i = 0; i < inputs.length; i++) {
+      let { o, h, l, c } = inputs[i];
+      l = l > h ? h : l;
+      newChartData.push({ x: Date.parse(dateAdapter(Date.now() - i * 24 * 60 * 60 * 1000)), o, h, l, c });
+    }
+    console.log(newChartData);
+    setChartData(newChartData);
+  }
+
+  return (
+    <>
+      <ChartFilters onFilterClick={handleFilterClick} />
+
+      <ChartInputList onBuildClick={handleBuildClick} />
+
+      <button onClick={handleRandomClick}>RANDOM</button>
+      <div style={{ width: "1000px" }}>
+        <ChartComponent type="candlestick" data={data} datasetIdKey="id" />
+      </div>
+    </>
+  );
+}
+
+type TChartFiltersProps = { onFilterClick: (from: number, to: number) => void };
+
+const ChartFilters = ({ onFilterClick }: TChartFiltersProps) => {
+  const [from, setFrom] = useState<number>(0);
+  const [to, setTo] = useState<number>(0);
+
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>, setter: Dispatch<SetStateAction<number>>) => {
+    const inputDate = new Date(e.target.value);
+    const dateString = `${inputDate.getFullYear()}-${zeroPrefix(inputDate.getMonth() + 1)}-${zeroPrefix(
+      inputDate.getDate()
+    )}`;
+    setter(Date.parse(dateString));
+  };
+
+  console.log(from, to);
+  return (
+    <>
+      <label>
+        from:
+        <input type="date" onChange={(e) => handleDateChange(e, setFrom)} />
+      </label>
+      <label>
+        to:
+        <input type="date" onChange={(e) => handleDateChange(e, setTo)} />
+      </label>
+      <button onClick={() => onFilterClick(from, to)}>Filter</button>
+    </>
+  );
+};
+
+type TChartInputListProps = { onBuildClick: (inputs: TXOHLC[]) => void };
+
+const ChartInputList = ({ onBuildClick }: TChartInputListProps) => {
+  const [inputsList, setInputsList] = useState<TXOHLC[]>([{}, {}, {}, {}]);
+
+  const onChange = (index: number) => (someNewData: TXOHLC) => {
+    const newInputsList = [...inputsList];
+    newInputsList[index] = { ...newInputsList[index], ...someNewData };
+    setInputsList(newInputsList);
+  };
+
+  console.log("inputsList", inputsList);
+  return (
+    <>
+      {inputsList.map((e, index) => (
+        <ChartInputLine data={e} onChange={onChange(index)} index={index} key={index} />
+      ))}
+      <button
+        onClick={() => {
+          console.log("trying ;(");
+          onBuildClick(inputsList);
+          console.log("click");
+        }}
+      >
+        Build
+      </button>
+    </>
+  );
+};
+
+type TChartInputLineProps = {
+  data: TXOHLC;
+  onChange: (someNewData: TXOHLC) => void;
+  index: number;
+};
+
+const ChartInputLine = ({ data, onChange, index }: TChartInputLineProps) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange({ [e.target.name]: e.target.value });
+  };
+
+  return (
+    <>
+      <p>{dateAdapter(Date.now() - index * 24 * 60 * 60 * 1000)}</p>
+      <ChartInputItem value="o" data={data} onInputChange={handleInputChange} />
+      <ChartInputItem value="h" data={data} onInputChange={handleInputChange} />
+      <ChartInputItem value="l" data={data} onInputChange={handleInputChange} />
+      <ChartInputItem value="c" data={data} onInputChange={handleInputChange} />
+    </>
+  );
+};
+
+type TChartInputItemProps = {
+  data: TXOHLC;
+  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+};
+
+const ChartInputItem = ({ data, onInputChange, value }: TChartInputItemProps) => {
+  return (
+    <label>
+      {value}:
+      <input value={data[value as keyof TXOHLC] || ""} onChange={onInputChange} name={value} type="number" required />
+    </label>
+  );
+};
