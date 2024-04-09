@@ -8,6 +8,17 @@ import { Chart as ChartComponent } from "react-chartjs-2";
 import currenciesChartData from "../../constants/chartData";
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
+// TODO: split to different files
+// TODO: chartData in constants: check and replace?
+// TODO: split modal content and overlay
+// TODO: styles and theme change, theme colors
+// TODO: with observer shows toastify about successful chart build
+
+// TOMORROW:
+// TODO: caching on the client. Ask how it is done with react query
+// TODO: migration to class components
+// TODO: Adaptive of all pages
+
 //!
 function randomNumber(min: number, max: number) {
   return Math.random() * (max - min) + min;
