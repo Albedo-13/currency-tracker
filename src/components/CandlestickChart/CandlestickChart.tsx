@@ -4,6 +4,7 @@ import "chartjs-adapter-moment";
 import { OhlcElement, OhlcController, CandlestickElement, CandlestickController } from "chartjs-chart-financial";
 import Chart from "chart.js/auto";
 import { Chart as ChartComponent } from "react-chartjs-2";
+import { ToastContainer, toast } from "react-toastify";
 import currenciesChartData from "../../constants/chartData";
 import ModalPortal from "../Modal/ModalPortal";
 import Modal from "../Modal/Modal";
@@ -13,16 +14,28 @@ import { dateAdapter, randomBar } from "../../utils/chartAdapter";
 import { chartDays } from "../../constants/constants";
 import ChartFilters from "./ChartFilters/ChartFilters";
 import Select from "../Select/Select";
+import observable from "../../utils/toastObserver";
+import "react-toastify/dist/ReactToastify.css";
+
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
 // TODO: chartData in constants: check and replace?
 // TODO: styles and theme change, theme colors
-// TODO: with observer shows toastify about successful chart build
 
 // TOMORROW:
 // TODO: caching on the client. Ask how it is done with react query
 // TODO: migration to class components
 // TODO: Adaptive of all pages
+
+function toastify(data: string) {
+  toast.success(data, {
+    position: "top-center",
+    closeButton: false,
+    autoClose: 2000,
+  });
+}
+
+observable.subscribe(toastify);
 
 export default function CandlestickChart() {
   const [selectCurrencyInput, setSelectCurrencyInput] = useState("USD");
@@ -94,6 +107,8 @@ export default function CandlestickChart() {
     }
     console.log(newChartData);
     setChartData(newChartData);
+    handleModalClose();
+    observable.notify("Chart build successful");
   }
 
   return (
@@ -116,6 +131,8 @@ export default function CandlestickChart() {
       <div style={{ width: "1000px" }}>
         <ChartComponent type="candlestick" data={data} datasetIdKey="id" />
       </div>
+
+      <ToastContainer theme={localStorage.getItem("currency-tracker-theme") || ""} />
     </>
   );
 }
