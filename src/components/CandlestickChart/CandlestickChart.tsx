@@ -20,8 +20,7 @@ import "./candlestickChart.scss";
 
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
-// TODO: V| migration to class components
-// TODO: V| Adaptive of all pages
+// TODO: Adaptive of all pages
 
 function toastify(data: string) {
   toast.success(data, {
