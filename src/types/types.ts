@@ -20,3 +20,11 @@ export type TBank = {
   currencies: TCurrency[];
   coordinates: number[];
 };
+
+export type TXOHLC = {
+  x?: number;
+  o?: number;
+  h?: number;
+  l?: number;
+  c?: number;
+};

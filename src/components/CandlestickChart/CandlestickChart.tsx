@@ -1,11 +1,16 @@
-import { useState } from "react";
-import type { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { useState, type ChangeEvent, type Dispatch, type SetStateAction } from "react";
 
 import "chartjs-adapter-moment";
 import { OhlcElement, OhlcController, CandlestickElement, CandlestickController } from "chartjs-chart-financial";
 import Chart from "chart.js/auto";
 import { Chart as ChartComponent } from "react-chartjs-2";
 import currenciesChartData from "../../constants/chartData";
+import ModalPortal from "../Modal/ModalPortal";
+import Modal from "../Modal/Modal";
+import { TXOHLC } from "../../types/types";
+import ChartInputList from "../Modal/BuildGraphModal/BuildGraphModal";
+import { dateAdapter, randomBar, zeroPrefix } from "../../utils/chartAdapter";
+import { chartDays } from "../../constants/constants";
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
 // TODO: split to different files
@@ -19,51 +24,21 @@ Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickContr
 // TODO: migration to class components
 // TODO: Adaptive of all pages
 
-//!
-function randomNumber(min: number, max: number) {
-  return Math.random() * (max - min) + min;
-}
-
-function randomBar(target: Record<number, unknown>, index: number, date: Date, lastClose: number) {
-  const open = +randomNumber(lastClose * 0.95, lastClose * 1.05).toFixed(2);
-  const close = +randomNumber(open * 0.95, open * 1.05).toFixed(2);
-  const high = +randomNumber(Math.max(open, close), Math.max(open, close) * 1.1).toFixed(2);
-  const low = +randomNumber(Math.min(open, close) * 0.9, Math.min(open, close)).toFixed(2);
-
-  if (!target[index]) {
-    target[index] = {};
-  }
-
-  return {
-    x: date.valueOf(),
-    o: open,
-    h: high,
-    l: low,
-    c: close,
-  };
-}
-
-type TXOHLC = {
-  x?: number;
-  o?: number;
-  h?: number;
-  l?: number;
-  c?: number;
-};
-
-const zeroPrefix = (value: number) => (value < 10 ? `0${value}` : `${value}`);
-
-const dateAdapter = (value: number | string | Date) => {
-  const date = new Date(value);
-  return `${zeroPrefix(date.getFullYear())}-${zeroPrefix(date.getMonth() + 1)}-${zeroPrefix(date.getDate())}`;
-};
-
-const CHART_DAYS = 14;
-//!
-
 export default function CandlestickChart() {
-  const pickedCurrency = currenciesChartData["USD"];
+  const pickedCurrency = currenciesChartData["USD"]; // TODO: switcher
   const [chartData, setChartData] = useState<TXOHLC[]>(pickedCurrency);
+
+  const [showModal, setShowModal] = useState(false);
+  // const [currencyCode, setCurrencyCode] = useState<string>("");
+
+  const handleModalShow = () => {
+    setShowModal(true);
+    // setCurrencyCode(key);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
 
   const data = {
     datasets: [
@@ -79,7 +54,7 @@ export default function CandlestickChart() {
 
   function handleRandomClick() {
     const newGeneratedData: { x: number; o: number; h: number; l: number; c: number }[] = [];
-    for (let i = 0; i < CHART_DAYS; i++) {
+    for (let i = 0; i < chartDays; i++) {
       newGeneratedData.push(randomBar(chartData, i, new Date(`2024-04-${i + 1}`), 221.13));
     }
 
@@ -120,6 +95,17 @@ export default function CandlestickChart() {
 
       <ChartInputList onBuildClick={handleBuildClick} />
 
+      <button onClick={handleModalShow}>custom data</button>
+      {showModal && (
+        <ModalPortal
+          children={
+            <Modal onClose={handleModalClose}>
+              <ChartInputList onBuildClick={handleBuildClick} />
+            </Modal>
+          }
+        />
+      )}
+
       <button onClick={handleRandomClick}>RANDOM</button>
       <div style={{ width: "1000px" }}>
         <ChartComponent type="candlestick" data={data} datasetIdKey="id" />
@@ -155,72 +141,5 @@ const ChartFilters = ({ onFilterClick }: TChartFiltersProps) => {
       </label>
       <button onClick={() => onFilterClick(from, to)}>Filter</button>
     </>
-  );
-};
-
-type TChartInputListProps = { onBuildClick: (inputs: TXOHLC[]) => void };
-
-const ChartInputList = ({ onBuildClick }: TChartInputListProps) => {
-  const [inputsList, setInputsList] = useState<TXOHLC[]>([{}, {}, {}, {}]);
-
-  const onChange = (index: number) => (someNewData: TXOHLC) => {
-    const newInputsList = [...inputsList];
-    newInputsList[index] = { ...newInputsList[index], ...someNewData };
-    setInputsList(newInputsList);
-  };
-
-  console.log("inputsList", inputsList);
-  return (
-    <>
-      {inputsList.map((e, index) => (
-        <ChartInputLine data={e} onChange={onChange(index)} index={index} key={index} />
-      ))}
-      <button
-        onClick={() => {
-          console.log("trying ;(");
-          onBuildClick(inputsList);
-          console.log("click");
-        }}
-      >
-        Build
-      </button>
-    </>
-  );
-};
-
-type TChartInputLineProps = {
-  data: TXOHLC;
-  onChange: (someNewData: TXOHLC) => void;
-  index: number;
-};
-
-const ChartInputLine = ({ data, onChange, index }: TChartInputLineProps) => {
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange({ [e.target.name]: e.target.value });
-  };
-
-  return (
-    <>
-      <p>{dateAdapter(Date.now() - index * 24 * 60 * 60 * 1000)}</p>
-      <ChartInputItem value="o" data={data} onInputChange={handleInputChange} />
-      <ChartInputItem value="h" data={data} onInputChange={handleInputChange} />
-      <ChartInputItem value="l" data={data} onInputChange={handleInputChange} />
-      <ChartInputItem value="c" data={data} onInputChange={handleInputChange} />
-    </>
-  );
-};
-
-type TChartInputItemProps = {
-  data: TXOHLC;
-  onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  value: string;
-};
-
-const ChartInputItem = ({ data, onInputChange, value }: TChartInputItemProps) => {
-  return (
-    <label>
-      {value}:
-      <input value={data[value as keyof TXOHLC] || ""} onChange={onInputChange} name={value} type="number" required />
-    </label>
   );
 };

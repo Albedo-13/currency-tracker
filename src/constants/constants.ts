@@ -6,6 +6,8 @@ export const modalRoot = document.getElementById("modal-root");
 
 export const maxInputLength = 16;
 
+export const chartDays = 14;
+
 export const currenciesStaticInfo = {
   USD: { code: "USD", name: "US Dollar", decimal_digits: 2, thumb: "/currency-icons/Dollar Icon.svg" },
   ARS: { code: "ARS", name: "Argentine Peso", decimal_digits: 2, thumb: "/currency-icons/Peso Argentino Icon.svg" },
