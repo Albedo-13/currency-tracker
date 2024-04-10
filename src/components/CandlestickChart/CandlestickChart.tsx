@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { Component } from "react";
 
 import "chartjs-adapter-moment";
 import { OhlcElement, OhlcController, CandlestickElement, CandlestickController } from "chartjs-chart-financial";
@@ -33,73 +33,66 @@ function toastify(data: string) {
 
 observable.subscribe(toastify);
 
-export default function CandlestickChart() {
-  const [selectCurrencyInput, setSelectCurrencyInput] = useState("USD");
-  const [chartData, setChartData] = useState<TXOHLC[]>(
-    currenciesChartData[selectCurrencyInput as keyof typeof currenciesChartData]
-  );
 
-  useEffect(() => {
-    setChartData(currenciesChartData[selectCurrencyInput as keyof typeof currenciesChartData]);
-  }, [selectCurrencyInput]);
+type TCandlestickChartProps = {};
 
-  console.log("selectCurrencyInput", selectCurrencyInput);
-  console.log("chartData", chartData);
+type TCandlestickChartState = {
+  selectCurrencyInput: string;
+  chartData: TXOHLC[];
+  showModal: boolean;
+};
 
-  const [showModal, setShowModal] = useState(false);
+class CandlestickChart extends Component<TCandlestickChartProps, TCandlestickChartState> {
+  constructor(props: TCandlestickChartProps) {
+    super(props);
+    this.state = {
+      selectCurrencyInput: "USD",
+      chartData: currenciesChartData["USD"],
+      showModal: false,
+    };
+  }
 
-  const handleModalShow = () => {
-    setShowModal(true);
+  componentDidMount() {
+    const { selectCurrencyInput } = this.state;
+    this.setChartData(selectCurrencyInput);
+  }
+
+  componentDidUpdate(_: TCandlestickChartProps, prevState: TCandlestickChartState) {
+    const { selectCurrencyInput } = this.state;
+    if (prevState.selectCurrencyInput !== selectCurrencyInput) {
+      this.setChartData(selectCurrencyInput);
+    }
+  }
+
+  setChartData = (currency: string) => {
+    const chartData = currenciesChartData[currency as keyof typeof currenciesChartData];
+    this.setState({ chartData });
   };
 
-  const handleModalClose = () => {
-    setShowModal(false);
+  setSelectCurrencyInput = (value: string) => {
+    this.setState({ selectCurrencyInput: value });
   };
 
-  const data = {
-    datasets: [
-      {
-        type: "candlestick" as const,
-        label: "Candlestick Chart",
-        data: chartData,
-        borderColor: "rgba(128, 128, 128, 1)",
-        borderWidth: 2,
-      },
-    ],
+  handleModalShow = () => {
+    this.setState({ showModal: true });
   };
 
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-    scales: {
-      yAxes: {
-        grid: {
-          color: "#A6A6A630",
-        },
-      },
-      xAxes: {
-        grid: {
-          color: "#A6A6A630",
-        },
-      },
-    },
+  handleModalClose = () => {
+    this.setState({ showModal: false });
   };
 
-  function handleRandomClick() {
+  handleRandomClick = () => {
+    const { chartData } = this.state;
     const newGeneratedData: TXOHLC[] = [];
     for (let i = chartDays; i > 0; i--) {
       newGeneratedData.push(randomBar(chartData, i, new Date(`2024-04-${i + 1}`), 221.13));
     }
 
-    console.log(chartData);
-    setChartData(newGeneratedData);
-  }
+    this.setState({ chartData: newGeneratedData });
+  };
 
-  function handleFilterClick(from: number, to: number) {
+  handleFilterClick = (from: number, to: number) => {
+    const { chartData } = this.state;
     if (!from || !to) {
       return;
     }
@@ -109,12 +102,10 @@ export default function CandlestickChart() {
       return date.getTime() >= from && date.getTime() <= to;
     });
 
-    console.log("filtered data", newFilteredData);
-    setChartData(newFilteredData);
-  }
+    this.setState({ chartData: newFilteredData });
+  };
 
-  function handleBuildClick(inputs: TXOHLC[]) {
-    console.log(inputs);
+  handleBuildClick = (inputs: TXOHLC[]) => {
     const newChartData = [];
 
     for (let i = 0; i < inputs.length; i++) {
@@ -122,42 +113,81 @@ export default function CandlestickChart() {
       l = l > h ? h : l;
       newChartData.push({ x: Date.parse(dateAdapter(Date.now() - i * 24 * 60 * 60 * 1000)), o, h, l, c });
     }
-    console.log(newChartData);
-    setChartData(newChartData);
-    handleModalClose();
+
+    this.setState({ chartData: newChartData });
+    this.handleModalClose();
     observable.notify("Chart build successful");
+  };
+
+  render() {
+    const { selectCurrencyInput, chartData, showModal } = this.state;
+
+    const data = {
+      datasets: [
+        {
+          type: "candlestick" as const,
+          label: "Candlestick Chart",
+          data: chartData,
+          borderColor: "rgba(128, 128, 128, 1)",
+          borderWidth: 2,
+        },
+      ],
+    };
+
+    const options = {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
+      scales: {
+        yAxes: {
+          grid: {
+            color: "#A6A6A630",
+          },
+        },
+        xAxes: {
+          grid: {
+            color: "#A6A6A630",
+          },
+        },
+      },
+    };
+
+    return (
+      <section className="chart">
+        <div className="container">
+          <div className="chart-block">
+            <Select select={selectCurrencyInput} setSelect={this.setSelectCurrencyInput} />
+          </div>
+          <div className="chart-block">
+            <ChartFilters onFilterClick={this.handleFilterClick} />
+          </div>
+
+          <div className="chart-block chart-button-group">
+            <button onClick={this.handleModalShow} className="chart-button">✏️Custom data</button>
+            <button onClick={this.handleRandomClick} className="chart-button">🎲Random</button>
+          </div>
+
+          <div className="chart-wrapper">
+            <ChartComponent type="candlestick" data={data} options={options} />
+          </div>
+
+          {showModal && (
+            <ModalPortal
+              children={
+                <Modal onClose={this.handleModalClose}>
+                  <ChartInputList onBuildClick={this.handleBuildClick} />
+                </Modal>
+              }
+            />
+          )}
+          <ToastContainer theme={localStorage.getItem("currency-tracker-theme") || ""} />
+        </div>
+      </section>
+    );
   }
-
-  return (
-    <section className="chart">
-      <div className="container">
-        <div className="chart-block">
-          <Select select={selectCurrencyInput} setSelect={setSelectCurrencyInput} />
-        </div>
-        <div className="chart-block">
-          <ChartFilters onFilterClick={handleFilterClick} />
-        </div>
-
-        <div className="chart-block chart-button-group">
-          <button onClick={handleModalShow} className="chart-button">✏️Custom data</button>
-          <button onClick={handleRandomClick} className="chart-button">🎲Random</button>
-        </div>
-
-        <div className="chart-wrapper">
-          <ChartComponent type="candlestick" data={data} options={options} />
-        </div>
-
-        {showModal && (
-          <ModalPortal
-            children={
-              <Modal onClose={handleModalClose}>
-                <ChartInputList onBuildClick={handleBuildClick} />
-              </Modal>
-            }
-          />
-        )}
-        <ToastContainer theme={localStorage.getItem("currency-tracker-theme") || ""} />
-      </div>
-    </section>
-  );
 }
+
+export default CandlestickChart;
