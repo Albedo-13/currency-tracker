@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./footer.scss";
 import logo from "/logo.svg";
 
@@ -55,6 +56,10 @@ export default function Footer() {
         </div>
         <p className="footer-copyright">Startsup © 2023-2024, All Rights Reserved</p>
       </div>
+      <Accordion title="test">
+        <h1>h1</h1>
+        <h2>h2</h2>
+      </Accordion>
     </footer>
   );
 }
@@ -79,3 +84,29 @@ function renderFooterLinks(linksList: TLink[]) {
     );
   });
 }
+
+
+type TAccordionProps = {
+  title: string;
+  children: React.ReactNode;
+};
+
+const Accordion: React.FC<TAccordionProps> = ({ title, children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleAccordion = () => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  };
+
+  return (
+    <div className="accordion">
+      <div className="accordion-header" onClick={toggleAccordion}>
+        <h2 className="accordion-title">{title}</h2>
+        <span className={`accordion-icon ${isOpen ? 'open' : ''}`}></span>
+      </div>
+      {isOpen && <div className="accordion-content">{children}</div>}
+    </div>
+  );
+};
+
+export{ Accordion};
