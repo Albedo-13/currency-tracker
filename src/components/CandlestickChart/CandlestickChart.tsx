@@ -19,10 +19,11 @@ import "react-toastify/dist/ReactToastify.css";
 
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
-// TODO: styles and theme change, theme colors
 
 // TOMORROW:
+// TODO: real Last update
 // TODO: caching on the client. Ask how it is done with react query
+// TODO: styles and theme change, theme colors
 // TODO: migration to class components
 // TODO: Adaptive of all pages
 
@@ -72,8 +73,8 @@ export default function CandlestickChart() {
   };
 
   function handleRandomClick() {
-    const newGeneratedData: { x: number; o: number; h: number; l: number; c: number }[] = [];
-    for (let i = 0; i < chartDays; i++) {
+    const newGeneratedData: TXOHLC[] = [];
+    for (let i = chartDays; i > 0; i++) {
       newGeneratedData.push(randomBar(chartData, i, new Date(`2024-04-${i + 1}`), 221.13));
     }
 
