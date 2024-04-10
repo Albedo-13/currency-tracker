@@ -19,7 +19,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
-// TODO: chartData in constants: check and replace?
 // TODO: styles and theme change, theme colors
 
 // TOMORROW:
