@@ -1,6 +1,7 @@
 import { type ChangeEvent, useState } from "react";
 import type { TXOHLC } from "../../../types/types";
 import { dateAdapter } from "../../../utils/chartAdapter";
+import "./buildChartModal.scss";
 
 type TChartInputListProps = { onBuildClick: (inputs: TXOHLC[]) => void };
 
@@ -29,14 +30,7 @@ export default function ChartInputList({ onBuildClick }: TChartInputListProps) {
       {inputsList.map((e, index) => (
         <ChartInputLine data={e} onChange={onChange(index)} index={index} key={index} />
       ))}
-      <button
-        onClick={() => {
-          handleBuildClick(inputsList);
-          console.log("click");
-        }}
-      >
-        Build
-      </button>
+      <button onClick={() => handleBuildClick(inputsList)} className="chart-button modal-build">🔨Build</button>
     </>
   );
 }
@@ -53,13 +47,15 @@ export const ChartInputLine = ({ data, onChange, index }: TChartInputLineProps) 
   };
 
   return (
-    <>
-      <p>{dateAdapter(Date.now() - index * 24 * 60 * 60 * 1000)}</p>
-      <ChartInputItem value="o" data={data} onInputChange={handleInputChange} />
-      <ChartInputItem value="h" data={data} onInputChange={handleInputChange} />
-      <ChartInputItem value="l" data={data} onInputChange={handleInputChange} />
-      <ChartInputItem value="c" data={data} onInputChange={handleInputChange} />
-    </>
+    <div className="modal-input-line">
+      <p className="modal-input-line-date">{dateAdapter(Date.now() - index * 24 * 60 * 60 * 1000)}</p>
+      <div className="modal-input-group">
+        <ChartInputItem value="o" data={data} onInputChange={handleInputChange} />
+        <ChartInputItem value="h" data={data} onInputChange={handleInputChange} />
+        <ChartInputItem value="l" data={data} onInputChange={handleInputChange} />
+        <ChartInputItem value="c" data={data} onInputChange={handleInputChange} />
+      </div>
+    </div>
   );
 };
 
@@ -71,9 +67,16 @@ type TChartInputItemProps = {
 
 export const ChartInputItem = ({ data, onInputChange, value }: TChartInputItemProps) => {
   return (
-    <label>
+    <label className="modal-label_small">
       {value}:
-      <input value={data[value as keyof TXOHLC] || ""} onChange={onInputChange} name={value} type="number" required />
+      <input
+        className="modal-input modal-input_small"
+        value={data[value as keyof TXOHLC] || ""}
+        onChange={onInputChange}
+        name={value}
+        type="number"
+        required
+      />
     </label>
   );
 };

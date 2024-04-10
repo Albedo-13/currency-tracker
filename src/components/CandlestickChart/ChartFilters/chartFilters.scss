@@ -1,10 +1,8 @@
 @import "../../../styles/variables.scss";
 
-// TODO: CONSTANTS!
-
 .chart-filters {
   display: flex;
-  gap: 30px;
+  gap: $s-6;
   align-items: center;
 
   &-wrapper {

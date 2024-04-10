@@ -4,7 +4,6 @@ import Select from "../../Select/Select";
 import { convertCurrency } from "../../../utils/currencyFormatter";
 import { getExchangeRate } from "../../../api/currencyapi.api";
 import { maxInputLength } from "../../../constants/constants";
-import "./exchangeModal.scss";
 
 type TProps = {
   currencyCode: string;
