@@ -21,7 +21,6 @@ Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickContr
 
 
 // TOMORROW:
-// TODO: real Last update
 // TODO: caching on the client. Ask how it is done with react query
 // TODO: styles and theme change, theme colors
 // TODO: migration to class components
