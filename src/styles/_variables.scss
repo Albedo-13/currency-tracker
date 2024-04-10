@@ -33,7 +33,6 @@ $s-20: 100px;
 
 // FONT SIZES (small=10+, medium=20+, large=30+)
 // 18, 20, 22, 24, 28, 30, 32, 35, 76
-// $fs-default: 16px;
 $fs-s-8: 18px;
 $fs-m-0: 20px;
 $fs-m-2: 22px;
@@ -46,26 +45,6 @@ $fs-l-5: 35px;
 $fs-l-8: 38px;
 $fs-7xl-6: 76px;
 
-// TODO: cleanup if not needed
-
-// $font-sizes: 100;
-// $margin-sizes: 25;
-// $padding-sizes: 25;
-// $columns: 12;
-// $colum-size: 100px;
-
-// Tailwind-like classes (not used, stick to the same writing style)
-// @for $i from 1 through $margin-sizes {
-//   .m-#{$i} {
-//     @include background-colorx(yellow);
-//     @include margin($i, $i, $i, $i);
-//   }
-//   .ml-#{$i} {
-//     @include background-colorx(pink);
-//     @include margin(0, 0, 0, $i);
-//   }
-//   .mr-#{$i} {
-//     @include background-colorx(Magenta);
-//     @include margin(0, $i, 0, 0);
-//   }
-// }
+// SCREENS WIDTH
+$notebook: 1024px;
+$tablet: 768px;

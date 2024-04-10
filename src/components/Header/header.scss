@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import "../../styles/variables.scss";
 
 .header {
   min-height: 50px;
@@ -30,8 +30,6 @@
   }
 
   &-nav {
-    flex-grow: 0.3;
-
     ul {
       display: flex;
       justify-content: space-between;
@@ -47,6 +45,52 @@
       &:hover {
         color: var(--text-color-minor);
         transition: 0.4s;
+      }
+    }
+
+    &-desktop {
+      flex-grow: 0.3;
+    }
+
+    &-mobile {
+      display: none;
+    }
+
+    &-vertical {
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $s-6;
+      }
+    }
+  }
+
+  &-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &-line {
+      width: 100%;
+      height: 3px;
+      background-color: var(--text-color-main);
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .header {
+    &-nav {
+      &-desktop {
+        display: none;
+      }
+
+      &-mobile {
+        display: block;
       }
     }
   }
