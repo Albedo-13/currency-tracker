@@ -9,16 +9,16 @@ import currenciesChartData from "../../constants/chartData";
 import ModalPortal from "../Modal/ModalPortal";
 import Modal from "../Modal/Modal";
 import { TXOHLC } from "../../types/types";
-import ChartInputList from "../Modal/BuildGraphModal/BuildGraphModal";
+import ChartInputList from "../Modal/BuildChartModal/BuildChartModal";
 import { dateAdapter, randomBar } from "../../utils/chartAdapter";
 import { chartDays } from "../../constants/constants";
 import ChartFilters from "./ChartFilters/ChartFilters";
 import Select from "../Select/Select";
 import observable from "../../utils/toastObserver";
 import "react-toastify/dist/ReactToastify.css";
+import "./candlestickChart.scss";
 
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
-
 
 // TOMORROW:
 // TODO: caching on the client. Ask how it is done with react query
@@ -65,15 +65,36 @@ export default function CandlestickChart() {
         type: "candlestick" as const,
         label: "Candlestick Chart",
         data: chartData,
-        borderColor: "rgba(255, 99, 132, 1)",
+        borderColor: "rgba(128, 128, 128, 1)",
         borderWidth: 2,
       },
     ],
   };
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+    scales: {
+      yAxes: {
+        grid: {
+          color: "#A6A6A630",
+        },
+      },
+      xAxes: {
+        grid: {
+          color: "#A6A6A630",
+        },
+      },
+    },
+  };
+
   function handleRandomClick() {
     const newGeneratedData: TXOHLC[] = [];
-    for (let i = chartDays; i > 0; i++) {
+    for (let i = chartDays; i > 0; i--) {
       newGeneratedData.push(randomBar(chartData, i, new Date(`2024-04-${i + 1}`), 221.13));
     }
 
@@ -111,27 +132,35 @@ export default function CandlestickChart() {
   }
 
   return (
-    <>
-      <ChartFilters onFilterClick={handleFilterClick} />
+    <section className="chart">
+      <div className="container">
+        <div className="chart-block">
+          <Select select={selectCurrencyInput} setSelect={setSelectCurrencyInput} />
+        </div>
+        <div className="chart-block">
+          <ChartFilters onFilterClick={handleFilterClick} />
+        </div>
 
-      <Select select={selectCurrencyInput} setSelect={setSelectCurrencyInput} />
-      <button onClick={handleModalShow}>custom data</button>
-      {showModal && (
-        <ModalPortal
-          children={
-            <Modal onClose={handleModalClose}>
-              <ChartInputList onBuildClick={handleBuildClick} />
-            </Modal>
-          }
-        />
-      )}
+        <div className="chart-block chart-button-group">
+          <button onClick={handleModalShow} className="chart-button">✏️Custom data</button>
+          <button onClick={handleRandomClick} className="chart-button">🎲Random</button>
+        </div>
 
-      <button onClick={handleRandomClick}>RANDOM</button>
-      <div style={{ width: "1000px" }}>
-        <ChartComponent type="candlestick" data={data} datasetIdKey="id" />
+        <div className="chart-wrapper">
+          <ChartComponent type="candlestick" data={data} options={options} />
+        </div>
+
+        {showModal && (
+          <ModalPortal
+            children={
+              <Modal onClose={handleModalClose}>
+                <ChartInputList onBuildClick={handleBuildClick} />
+              </Modal>
+            }
+          />
+        )}
+        <ToastContainer theme={localStorage.getItem("currency-tracker-theme") || ""} />
       </div>
-
-      <ToastContainer theme={localStorage.getItem("currency-tracker-theme") || ""} />
-    </>
+    </section>
   );
 }

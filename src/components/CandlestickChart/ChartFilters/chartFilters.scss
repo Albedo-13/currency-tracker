@@ -1,18 +1,29 @@
 @import "../../../styles/variables.scss";
 
+// TODO: CONSTANTS!
+
 .chart-filters {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+
   &-wrapper {
     display: flex;
     gap: $s-6;
   }
-}
 
-// INPUT DATE
-input[type="date"] {
-  background-color: var(--card-color);
-  border: none;
-  padding: 0 $s-3;
-  border-radius: 3px;
-  font-size: $fs-l-0;
-  font-weight: 500;
+  &-date {
+    background-color: var(--card-color);
+    border: none;
+    padding: 0 $s-3;
+    border-radius: 3px;
+    font-size: $fs-l-0;
+    font-weight: 500;
+  }
+
+  &-label {
+    font-size: $fs-m-8;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
 }

@@ -17,16 +17,16 @@ export default function ChartFilters({ onFilterClick }: TChartFiltersProps) {
   };
 
   return (
-    <>
-      <label>
+    <section className="chart-filters">
+      <label className="chart-filters-label">
         from:
-        <input type="date" onChange={(e) => handleDateChange(e, setFrom)} />
+        <input type="date" onChange={(e) => handleDateChange(e, setFrom)} className="chart-filters-date"/>
       </label>
-      <label>
+      <label className="chart-filters-label">
         to:
-        <input type="date" onChange={(e) => handleDateChange(e, setTo)} />
+        <input type="date" onChange={(e) => handleDateChange(e, setTo)} className="chart-filters-date" />
       </label>
-      <button onClick={() => onFilterClick(from, to)}>Filter</button>
-    </>
+      <button onClick={() => onFilterClick(from, to)} className="chart-button">Filter</button>
+    </section>
   );
 }
