@@ -1,23 +1,32 @@
-import { Component } from "react";
+import { useState, type ChangeEvent, type Dispatch, type SetStateAction } from "react";
 import "./chartFilters.scss";
-// import Select from "../../Select/Select";
+import { zeroPrefix } from "../../../utils/chartAdapter";
 
-export default class ChartFilters extends Component {
-  // TODO: logic from select to here
-  // const currencies = useQuery({ queryKey: ["currencies"], queryFn: getCurrencyData });
-  // const currenciesData = currencies.data?.data.data;
+type TChartFiltersProps = { onFilterClick: (from: number, to: number) => void };
 
-  render() {
-    return (
-      <section className="chart-filters">
-        <div className="container">
-          <div className="chart-filters-wrapper">
-            {/* <Select /> */}
-            <input name="chart-start-date" type="date" min="2018-01-01" />
-            <input name="chart-end-date" type="date" min="2018-01-01" />
-          </div>
-        </div>
-      </section>
-    );
-  }
+export default function ChartFilters({ onFilterClick }: TChartFiltersProps) {
+  const [from, setFrom] = useState<number>(0);
+  const [to, setTo] = useState<number>(0);
+
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>, setter: Dispatch<SetStateAction<number>>) => {
+    const inputDate = new Date(e.target.value);
+    const dateString = `${inputDate.getFullYear()}-${zeroPrefix(inputDate.getMonth() + 1)}-${zeroPrefix(
+      inputDate.getDate()
+    )}`;
+    setter(Date.parse(dateString));
+  };
+
+  return (
+    <>
+      <label>
+        from:
+        <input type="date" onChange={(e) => handleDateChange(e, setFrom)} />
+      </label>
+      <label>
+        to:
+        <input type="date" onChange={(e) => handleDateChange(e, setTo)} />
+      </label>
+      <button onClick={() => onFilterClick(from, to)}>Filter</button>
+    </>
+  );
 }

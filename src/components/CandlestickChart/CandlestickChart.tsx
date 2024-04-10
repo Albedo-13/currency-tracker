@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent, type Dispatch, type SetStateAction } from "react";
+import { useState, useEffect } from "react";
 
 import "chartjs-adapter-moment";
 import { OhlcElement, OhlcController, CandlestickElement, CandlestickController } from "chartjs-chart-financial";
@@ -9,8 +9,10 @@ import ModalPortal from "../Modal/ModalPortal";
 import Modal from "../Modal/Modal";
 import { TXOHLC } from "../../types/types";
 import ChartInputList from "../Modal/BuildGraphModal/BuildGraphModal";
-import { dateAdapter, randomBar, zeroPrefix } from "../../utils/chartAdapter";
+import { dateAdapter, randomBar } from "../../utils/chartAdapter";
 import { chartDays } from "../../constants/constants";
+import ChartFilters from "./ChartFilters/ChartFilters";
+import Select from "../Select/Select";
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
 // TODO: split to different files
@@ -25,8 +27,17 @@ Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickContr
 // TODO: Adaptive of all pages
 
 export default function CandlestickChart() {
-  const pickedCurrency = currenciesChartData["USD"]; // TODO: switcher
-  const [chartData, setChartData] = useState<TXOHLC[]>(pickedCurrency);
+  const [selectCurrencyInput, setSelectCurrencyInput] = useState("USD");
+  const [chartData, setChartData] = useState<TXOHLC[]>(
+    currenciesChartData[selectCurrencyInput as keyof typeof currenciesChartData]
+  );
+
+  useEffect(() => {
+    setChartData(currenciesChartData[selectCurrencyInput as keyof typeof currenciesChartData]);
+  }, [selectCurrencyInput]);
+
+  console.log("selectCurrencyInput", selectCurrencyInput);
+  console.log("chartData", chartData);
 
   const [showModal, setShowModal] = useState(false);
   // const [currencyCode, setCurrencyCode] = useState<string>("");
@@ -67,8 +78,8 @@ export default function CandlestickChart() {
       return;
     }
 
-    const newFilteredData = pickedCurrency.filter((item) => {
-      const date = new Date(item.x);
+    const newFilteredData = chartData.filter((item) => {
+      const date = new Date(item.x as number);
       return date.getTime() >= from && date.getTime() <= to;
     });
 
@@ -93,8 +104,8 @@ export default function CandlestickChart() {
     <>
       <ChartFilters onFilterClick={handleFilterClick} />
 
-      <ChartInputList onBuildClick={handleBuildClick} />
-
+      <Select select={selectCurrencyInput} setSelect={setSelectCurrencyInput} />
+      {/* TODO: rename usestate */}
       <button onClick={handleModalShow}>custom data</button>
       {showModal && (
         <ModalPortal
@@ -113,33 +124,3 @@ export default function CandlestickChart() {
     </>
   );
 }
-
-type TChartFiltersProps = { onFilterClick: (from: number, to: number) => void };
-
-const ChartFilters = ({ onFilterClick }: TChartFiltersProps) => {
-  const [from, setFrom] = useState<number>(0);
-  const [to, setTo] = useState<number>(0);
-
-  const handleDateChange = (e: ChangeEvent<HTMLInputElement>, setter: Dispatch<SetStateAction<number>>) => {
-    const inputDate = new Date(e.target.value);
-    const dateString = `${inputDate.getFullYear()}-${zeroPrefix(inputDate.getMonth() + 1)}-${zeroPrefix(
-      inputDate.getDate()
-    )}`;
-    setter(Date.parse(dateString));
-  };
-
-  console.log(from, to);
-  return (
-    <>
-      <label>
-        from:
-        <input type="date" onChange={(e) => handleDateChange(e, setFrom)} />
-      </label>
-      <label>
-        to:
-        <input type="date" onChange={(e) => handleDateChange(e, setTo)} />
-      </label>
-      <button onClick={() => onFilterClick(from, to)}>Filter</button>
-    </>
-  );
-};
