@@ -15,9 +15,7 @@ import ChartFilters from "./ChartFilters/ChartFilters";
 import Select from "../Select/Select";
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
-// TODO: split to different files
 // TODO: chartData in constants: check and replace?
-// TODO: split modal content and overlay
 // TODO: styles and theme change, theme colors
 // TODO: with observer shows toastify about successful chart build
 
@@ -40,11 +38,9 @@ export default function CandlestickChart() {
   console.log("chartData", chartData);
 
   const [showModal, setShowModal] = useState(false);
-  // const [currencyCode, setCurrencyCode] = useState<string>("");
 
   const handleModalShow = () => {
     setShowModal(true);
-    // setCurrencyCode(key);
   };
 
   const handleModalClose = () => {
@@ -105,7 +101,6 @@ export default function CandlestickChart() {
       <ChartFilters onFilterClick={handleFilterClick} />
 
       <Select select={selectCurrencyInput} setSelect={setSelectCurrencyInput} />
-      {/* TODO: rename usestate */}
       <button onClick={handleModalShow}>custom data</button>
       {showModal && (
         <ModalPortal

@@ -13,6 +13,16 @@ export default function ChartInputList({ onBuildClick }: TChartInputListProps) {
     setInputsList(newInputsList);
   };
 
+  const handleBuildClick = (inputsList: TXOHLC[]) => {
+    onBuildClick(inputsList);
+    inputsList.map((input) => {
+      input.o = input.o ?? 0;
+      input.h = input.h ?? 0;
+      input.l = input.l ?? 0;
+      input.c = input.c ?? 0;
+    });
+  };
+
   console.log("inputsList", inputsList);
   return (
     <>
@@ -21,7 +31,7 @@ export default function ChartInputList({ onBuildClick }: TChartInputListProps) {
       ))}
       <button
         onClick={() => {
-          onBuildClick(inputsList);
+          handleBuildClick(inputsList);
           console.log("click");
         }}
       >
@@ -29,7 +39,7 @@ export default function ChartInputList({ onBuildClick }: TChartInputListProps) {
       </button>
     </>
   );
-};
+}
 
 type TChartInputLineProps = {
   data: TXOHLC;
