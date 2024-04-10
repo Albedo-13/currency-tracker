@@ -20,11 +20,8 @@ import "./candlestickChart.scss";
 
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
-// TOMORROW:
-// TODO: caching on the client. Ask how it is done with react query
-// TODO: styles and theme change, theme colors
-// TODO: migration to class components
-// TODO: Adaptive of all pages
+// TODO: V| migration to class components
+// TODO: V| Adaptive of all pages
 
 function toastify(data: string) {
   toast.success(data, {
