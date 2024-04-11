@@ -45,3 +45,9 @@
     outline: none;
   }
 }
+
+@media (max-width: $tablet) {
+  .bank-map {
+    padding-bottom: $s-10;
+  }
+}
