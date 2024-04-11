@@ -35,6 +35,27 @@ const footerLinks: TLink[] = [
 ];
 
 export default function Footer() {
+  function renderFooterLinks(linksList: TLink[]) {
+    return linksList.map((section) => {
+      return (
+        <div className="footer-nav" key={section.label}>
+          <h3 className="footer-nav-title">{section.label}</h3>
+          <ul className="footer-nav-list">
+            {section.links.map((link) => {
+              return (
+                <li className="footer-nav-list-item" key={link.name}>
+                  <a href={link.href} className="footer-link">
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    });
+  }
+
   return (
     <footer className="footer">
       <div className="container">
@@ -52,46 +73,37 @@ export default function Footer() {
               worldwide.
             </p>
           </div>
-          <div className="footer-wrapper-right">{renderFooterLinks(footerLinks)}</div>
+          <nav className="footer-wrapper-right footer-desktop">{renderFooterLinks(footerLinks)}</nav>
+          <nav className="footer-wrapper-right footer-mobile">
+            {footerLinks.map((section) => {
+              return (
+                <Accordion title={section.label} key={section.label}>
+                  {section.links.map((link) => {
+                    return (
+                      <div className="footer-nav-list-item" key={link.name}>
+                        <a href={link.href} className="footer-link">
+                          {link.name}
+                        </a>
+                      </div>
+                    );
+                  })}
+                </Accordion>
+              );
+            })}
+          </nav>
         </div>
         <p className="footer-copyright">Startsup © 2023-2024, All Rights Reserved</p>
       </div>
-      <Accordion title="test">
-        <h1>h1</h1>
-        <h2>h2</h2>
-      </Accordion>
     </footer>
   );
 }
-
-function renderFooterLinks(linksList: TLink[]) {
-  return linksList.map((section) => {
-    return (
-      <nav className="footer-nav" key={section.label}>
-        <h3 className="footer-nav-title">{section.label}</h3>
-        <ul className="footer-nav-list">
-          {section.links.map((link) => {
-            return (
-              <li className="footer-nav-list-item" key={link.name}>
-                <a href={link.href} className="footer-link">
-                  {link.name}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
-    );
-  });
-}
-
 
 type TAccordionProps = {
   title: string;
   children: React.ReactNode;
 };
 
-const Accordion: React.FC<TAccordionProps> = ({ title, children }) => {
+function Accordion({ title, children }: TAccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {
@@ -102,11 +114,11 @@ const Accordion: React.FC<TAccordionProps> = ({ title, children }) => {
     <div className="accordion">
       <div className="accordion-header" onClick={toggleAccordion}>
         <h2 className="accordion-title">{title}</h2>
-        <span className={`accordion-icon ${isOpen ? 'open' : ''}`}></span>
+        <span className={`accordion-icon ${isOpen ? "accordion-open" : ""}`}></span>
       </div>
       {isOpen && <div className="accordion-content">{children}</div>}
     </div>
   );
-};
+}
 
-export{ Accordion};
+export { Accordion };
