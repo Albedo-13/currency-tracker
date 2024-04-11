@@ -14,14 +14,13 @@
     transform: rotate(30deg);
     width: 50%;
     box-shadow: 0px 0px 45em 15em $green;
-    opacity: .2;
+    opacity: 0.2;
   }
 
   &-wrapper {
     display: flex;
     gap: $s-12;
     position: relative;
-    // right: 8vw;
 
     &__left {
       display: flex;
@@ -55,6 +54,29 @@
       width: 100%;
       height: auto;
       vertical-align: middle;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .welcome {
+    min-height: auto;
+    &-wrapper {
+      justify-content: center;
+    }
+
+    &-img {
+      display: none;
+    }
+
+    &-title {
+      text-align: center;
+      font-size: 50px;
+    }
+
+    &-text {
+      right: 0;
+      margin: 0 auto;
     }
   }
 }

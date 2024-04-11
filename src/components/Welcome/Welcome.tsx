@@ -12,7 +12,7 @@ export default function Welcome() {
             <p className="welcome-text">Quotes for the dollar and other international currencies.</p>
           </div>
           <div className="welcome-img">
-            <img className="welcome-img" src={logo} alt="welcome currency tracker logo" />
+            <img src={logo} alt="welcome currency tracker logo" />
           </div>
         </div>
       </div>

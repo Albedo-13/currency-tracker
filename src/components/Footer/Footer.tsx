@@ -14,22 +14,22 @@ const footerLinks: TLink[] = [
   {
     label: "General",
     links: [
-      { name: "Market", href: "/market" },
-      { name: "Service", href: "/service" },
+      { name: "Market", href: "#" },
+      { name: "Service", href: "#" },
     ],
   },
   {
     label: "Product",
     links: [
-      { name: "Sparks", href: "/sparks" },
-      { name: "Snaps", href: "/snaps" },
+      { name: "Sparks", href: "#" },
+      { name: "Snaps", href: "#" },
     ],
   },
   {
     label: "Community",
     links: [
-      { name: "Ideas", href: "/ideas" },
-      { name: "Streams", href: "/streams" },
+      { name: "Ideas", href: "#" },
+      { name: "Streams", href: "#" },
     ],
   },
 ];
