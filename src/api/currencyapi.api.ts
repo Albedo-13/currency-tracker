@@ -19,7 +19,7 @@ export async function getCurrencyData() {
       currencies: currenciesCodes,
     },
   }).then((res) => {
-    console.log("PING THE CURRENCIES");
+    console.log("ping /currencies api route");
     return res;
   });
 }
@@ -36,7 +36,7 @@ export async function getExchangeRate() {
       currencies: currenciesCodes,
     },
   }).then((res) => {
-    console.log("PING THE LATEST");
+    console.log("ping /latest api route");
     return res;
   });
 }

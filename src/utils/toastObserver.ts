@@ -1,5 +1,6 @@
 class Observable {
-  observers: any[]; //TODO: change
+  private observers: ((data?: string) => unknown)[];
+
   constructor() {
     this.observers = [];
   }

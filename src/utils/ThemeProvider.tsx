@@ -16,8 +16,6 @@ export default function ThemeProvider({ children }: TThemeProvider) {
     setTheme((prevState) => !prevState);
   };
 
-  console.log(theme); //-
-
   return (
     <ThemeContext.Provider value={{ theme: theme, toggleTheme: toggleThemeHandler }}>{children}</ThemeContext.Provider>
   );
