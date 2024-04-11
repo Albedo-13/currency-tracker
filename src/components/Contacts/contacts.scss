@@ -38,6 +38,7 @@
 
 @media (max-width: $notebook) {
   .contacts {
+    padding-bottom: $s-16;
     &-wrapper {
       flex-direction: column;
     }

@@ -46,7 +46,7 @@
     margin-top: $s-6;
   }
 
-  &-block {
+  &-block:not(:first-child) {
     margin-top: $s-4;
   }
 
@@ -72,5 +72,24 @@
     display: flex;
     align-items: center;
     gap: $s-6;
+  }
+}
+
+@media (max-width: $notebook) {
+  .chart {
+    &-block {
+      text-align: center;
+      // margin-top: 0;
+    }
+
+    &-button-group {
+      flex-direction: column;
+      align-items: center;
+      margin-top: $s-6;
+    }
+
+    &-block:not(:first-child) {
+      margin-top: $s-6;
+    }
   }
 }
