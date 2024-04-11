@@ -106,8 +106,8 @@ class CandlestickChart extends Component<TCandlestickChartProps, TCandlestickCha
     const newChartData = [];
 
     for (let i = 0; i < inputs.length; i++) {
-      let { o, h, l, c } = inputs[i];
-      l = l > h ? h : l;
+      let { o, h, l, c }: TXOHLC = inputs[i];
+      l = l && h ? (l > h ? h : l) : l;
       newChartData.push({ x: Date.parse(dateAdapter(Date.now() - i * 24 * 60 * 60 * 1000)), o, h, l, c });
     }
 
