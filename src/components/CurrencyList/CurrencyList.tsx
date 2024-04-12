@@ -1,14 +1,14 @@
-import { useState } from "react";
-import CurrencyGroup from "./CurrencyGroup/CurrencyGroup";
-import CurrencyCard from "./CurrencyCard/CurrencyCard";
-import { getExchangeRate } from "../../api/currencyapi.api";
-import "./currencyList.scss";
-import Modal from "../Modal/Modal";
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { getExchangeRate } from "../../api/currencyapi.api";
 import { currenciesStaticInfo } from "../../constants/constants";
-import ModalPortal from "../Modal/ModalPortal";
-import ExchangeModal from "../Modal/ExchangeModal/ExchangeModal";
 import { shouldDisableScroll } from "../../utils/modalHelpers";
+import ExchangeModal from "../Modal/ExchangeModal/ExchangeModal";
+import Modal from "../Modal/Modal";
+import ModalPortal from "../Modal/ModalPortal";
+import CurrencyCard from "./CurrencyCard/CurrencyCard";
+import CurrencyGroup from "./CurrencyGroup/CurrencyGroup";
+import "./currencyList.scss";
 
 export default function CurrencyList() {
   const [showModal, setShowModal] = useState(false);

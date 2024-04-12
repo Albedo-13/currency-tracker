@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
-import Header from "../Header/Header";
-import Welcome from "../Welcome/Welcome";
-import Footer from "../Footer/Footer";
-import UpdateStatus from "../UpdateStatus/UpdateStatus";
-import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
-import MainPage from "../../pages/MainPage";
-import TimelinePage from "../../pages/TimelinePage";
 import BankCardPage from "../../pages/BankCardPage";
 import ContactPage from "../../pages/ContactPage";
+import MainPage from "../../pages/MainPage";
+import TimelinePage from "../../pages/TimelinePage";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
+import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
+import UpdateStatus from "../UpdateStatus/UpdateStatus";
+import Welcome from "../Welcome/Welcome";
 
 export const BrowserRoutes = [
   {

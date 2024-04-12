@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import "./updateStatus.scss";
 import { getExchangeRate } from "../../api/currencyapi.api";
+import "./updateStatus.scss";
 
 export default function UpdateStatus() {
   const { dataUpdatedAt } = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });

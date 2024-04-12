@@ -1,23 +1,23 @@
 import { Component } from "react";
 
-import "chartjs-adapter-moment";
-import { OhlcElement, OhlcController, CandlestickElement, CandlestickController } from "chartjs-chart-financial";
 import Chart from "chart.js/auto";
+import "chartjs-adapter-moment";
+import { CandlestickController, CandlestickElement, OhlcController, OhlcElement } from "chartjs-chart-financial";
 import { Chart as ChartComponent } from "react-chartjs-2";
 import { ToastContainer, toast } from "react-toastify";
-import currenciesChartData from "../../constants/chartData";
-import ModalPortal from "../Modal/ModalPortal";
-import Modal from "../Modal/Modal";
-import { TXOHLC } from "../../types/types";
-import ChartInputList from "../Modal/BuildChartModal/BuildChartModal";
-import { dateAdapter, randomBar } from "../../utils/chartAdapter";
-import { chartDays } from "../../constants/constants";
-import ChartFilters from "./ChartFilters/ChartFilters";
-import Select from "../Select/Select";
-import observable from "../../utils/toastObserver";
 import "react-toastify/dist/ReactToastify.css";
-import "./candlestickChart.scss";
+import currenciesChartData from "../../constants/chartData";
+import { chartDays } from "../../constants/constants";
+import { TXOHLC } from "../../types/types";
+import { dateAdapter, randomBar } from "../../utils/chartAdapter";
 import { shouldDisableScroll } from "../../utils/modalHelpers";
+import observable from "../../utils/toastObserver";
+import ChartInputList from "../Modal/BuildChartModal/BuildChartModal";
+import Modal from "../Modal/Modal";
+import ModalPortal from "../Modal/ModalPortal";
+import Select from "../Select/Select";
+import ChartFilters from "./ChartFilters/ChartFilters";
+import "./candlestickChart.scss";
 
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 

@@ -1,4 +1,4 @@
-import { type ChangeEvent, Component } from "react";
+import { Component, type ChangeEvent } from "react";
 import type { TXOHLC } from "../../../types/types";
 import { dateAdapter } from "../../../utils/chartAdapter";
 import "./buildChartModal.scss";

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import "./switch.scss";
 import { ThemeContext } from "../../utils/ThemeProvider";
+import "./switch.scss";
 
 export default function Switch() {
   const { theme, toggleTheme } = useContext(ThemeContext);

@@ -1,11 +1,11 @@
-import "./header.scss";
-import Switch from "../Switch/Switch";
-import logo from "/logo.svg";
-import { Link, NavLink } from "react-router-dom";
-import ModalPortal from "../Modal/ModalPortal";
-import Modal from "../Modal/Modal";
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { shouldDisableScroll } from "../../utils/modalHelpers";
+import Modal from "../Modal/Modal";
+import ModalPortal from "../Modal/ModalPortal";
+import Switch from "../Switch/Switch";
+import "./header.scss";
+import logo from "/logo.svg";
 
 const headerLinks = [
   { route: "/", text: "Home" },

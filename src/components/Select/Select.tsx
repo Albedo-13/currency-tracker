@@ -1,6 +1,6 @@
-import "./select.scss";
-import { currenciesStaticInfo } from "../../constants/constants";
 import type { Dispatch, SetStateAction } from "react";
+import { currenciesStaticInfo } from "../../constants/constants";
+import "./select.scss";
 
 type TProps = {
   select: string;

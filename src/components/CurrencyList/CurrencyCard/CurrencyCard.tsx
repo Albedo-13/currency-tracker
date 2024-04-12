@@ -1,6 +1,6 @@
-import "./currencyCard.scss";
-import { formatCurrency } from "../../../utils/currencyFormatter";
 import type { TCurrency } from "../../../types/types";
+import { formatCurrency } from "../../../utils/currencyFormatter";
+import "./currencyCard.scss";
 
 type TProps = {
   currency: TCurrency;

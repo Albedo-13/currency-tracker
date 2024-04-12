@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { useQuery } from "@tanstack/react-query";
-import Select from "../../Select/Select";
-import { convertCurrency } from "../../../utils/currencyFormatter";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import { getExchangeRate } from "../../../api/currencyapi.api";
 import { maxInputLength } from "../../../constants/constants";
+import { convertCurrency } from "../../../utils/currencyFormatter";
+import Select from "../../Select/Select";
 
 type TProps = {
   currencyCode: string;

@@ -1,6 +1,6 @@
 import { Component } from "react";
-import "./chartFilters.scss";
 import { zeroPrefix } from "../../../utils/chartAdapter";
+import "./chartFilters.scss";
 
 type TChartFiltersProps = {
   onFilterClick: (from: number, to: number) => void;

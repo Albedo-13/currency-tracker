@@ -1,7 +1,7 @@
-import { Component } from "react";
 import debounce from "debounce";
-import searchIcon from "/icons/search-icon.svg";
+import { Component } from "react";
 import "./elasticSearch.scss";
+import searchIcon from "/icons/search-icon.svg";
 
 type TProps = {
   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
