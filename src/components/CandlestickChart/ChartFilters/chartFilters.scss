@@ -1,0 +1,35 @@
+@import "@styles/variables.scss";
+
+.chart-filters {
+  display: flex;
+  gap: $s-6;
+  align-items: center;
+
+  &-wrapper {
+    display: flex;
+    gap: $s-6;
+  }
+
+  &-date {
+    background-color: $card-color;
+    border: none;
+    padding: 0 $s-3;
+    border-radius: 3px;
+    font-size: $fs-l-0;
+    font-weight: $fw-500;
+  }
+
+  &-label {
+    font-size: $fs-m-8;
+    font-weight: $fw-600;
+    text-transform: uppercase;
+  }
+}
+
+
+@media (max-width: $notebook) {
+  .chart-filters {
+    flex-direction: column;
+    gap: $s-3;
+  }
+}

@@ -1,0 +1,164 @@
+@import "@styles/variables.scss";
+
+.footer {
+  &-img {
+    height: auto;
+    width: $s-8;
+    display: inline-block;
+
+    img {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  &-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: calc($s-4 - 3px);
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: $s-20;
+
+    &-left {
+      flex-basis: 482px;
+    }
+
+    &-right {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+      gap: $s-8;
+    }
+  }
+
+  &-description {
+    margin-top: calc($s-4 - 2px);
+    font-weight: $fw-300;
+    font-size: $fs-m-4;
+    line-height: 150%;
+    color: $text-color-main;
+  }
+
+  &-nav {
+    &-title {
+      font-weight: $fw-400;
+      font-size: $fs-m-8;
+      color: $text-color-main;
+    }
+
+    &-list {
+      margin-top: $s-8;
+
+      &-item {
+        font-size: $fs-m-4;
+
+        &:not(:first-of-type) {
+          margin-top: calc($s-6 - 2px);
+        }
+      }
+    }
+  }
+
+  &-link {
+    text-decoration: none;
+    color: $slate-gray-text;
+    transition: 0.4s;
+
+    &:hover {
+      color: $gradient-color;
+    }
+  }
+
+  &-copyright {
+    font-weight: $fw-400;
+    font-size: $fs-m-4;
+    color: $slate-gray-text;
+    text-align: center;
+    padding: $s-11 0 $s-8 0;
+  }
+
+  &-mobile {
+    display: none;
+  }
+}
+
+.accordion {
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid $text-color-minor;
+    padding: $s-3 $s-8 $s-3 0;
+    margin-bottom: 5px;
+  }
+
+  &-title {
+    font-weight: $fw-400;
+  }
+
+  &-icon {
+    &::after {
+      content: "⮞";
+    }
+  }
+
+  &-open {
+    &::after {
+      content: "⮟";
+    }
+  }
+}
+
+@media (max-width: $notebook) {
+  .footer {
+    &-img.footer-link {
+      padding-left: 0;
+    }
+
+    &-link {
+      padding-left: $s-10;
+    }
+
+    &-description {
+      display: none;
+    }
+
+    &-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: $s-6;
+
+      &-left {
+        flex-basis: auto;
+      }
+
+      &-right {
+        flex-direction: column;
+        gap: 0px;
+        width: 100%;
+        max-width: 500px;
+      }
+    }
+
+    &-nav-list-item:not(:first-of-type) {
+      margin-top: $s-3;
+    }
+
+    &-desktop {
+      display: none;
+    }
+
+    &-mobile {
+      display: flex;
+    }
+
+    &-copyright {
+      font-size: $fs-m-0;
+      padding: $s-6 0 $s-6 0;
+    }
+  }
+}

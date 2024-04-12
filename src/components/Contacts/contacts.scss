@@ -1,0 +1,46 @@
+@import "@styles/variables.scss";
+
+.contacts {
+  padding-bottom: $s-20;
+  text-align: center;
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: $s-6;
+    margin: $s-6 auto 0 auto;
+
+    &-item {
+      flex: 1 1 0px;
+    }
+  }
+
+  &-title {
+    font-weight: $fw-600;
+    font-size: $fs-l-2;
+  }
+
+  &-subtitle {
+    font-style: normal;
+    font-size: $fs-m-4;
+    font-weight: $fw-500;
+  }
+
+  &-info {
+    font-style: normal;
+    display: block;
+    margin-top: $s-2;
+    color: $text-color-minor;
+    font-size: $fs-m-0;
+  }
+}
+
+
+@media (max-width: $notebook) {
+  .contacts {
+    padding-bottom: $s-16;
+    &-wrapper {
+      flex-direction: column;
+    }
+  }
+}

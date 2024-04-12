@@ -1,4 +1,4 @@
-@import "../../styles/palette.scss";
+@import "@styles/variables.scss";
 
 /* The switch - the box around the slider */
 .switch {
@@ -6,6 +6,16 @@
   display: inline-block;
   width: 50px;
   height: 30px;
+
+  &:hover {
+    .switch-slider {
+      border: 2px solid $text-color-minor;
+
+      &:before {
+        border: 2px solid $text-color-minor;
+      }
+    }
+  }
 }
 
 /* Hide default HTML checkbox */
@@ -25,25 +35,25 @@
   bottom: 0;
   background-color: transparent;
   transition: .4s;
-  border: 2px solid $slate-white;
-}
+  border: 2px solid $text-color-main;
 
-.switch-slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: -2px;
-  bottom: -2px;
-  border: 2px solid $slate-white;
-  transition: .4s;
+  &:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: -2px;
+    bottom: -2px;
+    border: 2px solid $text-color-main;
+    transition: .4s;
+  }
 }
 
 input:checked + .switch-slider {
-  border-color: $slate-black;
+  // border-color: $slate-black;
 
   &:before {
-    border-color: $slate-black;
+    // border-color: $slate-black;
     transform: translateX(20px);
   }
 }

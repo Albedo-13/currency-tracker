@@ -1,15 +1,17 @@
-@import "styles/palette.scss";
+@import "styles/variables.scss";
+@import "styles/themes.scss";
 
 :root {
   font-family: "Poppins", sans-serif;
-  font-weight: 400;
+  font-weight: $fw-400;
   color-scheme: dark;
+  background-color: $background-color;
 }
 
 .container {
   max-width: 1180px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 $s-4;
 }
 
 ul {
@@ -27,6 +29,14 @@ h3,
 h4,
 h5,
 h6,
+hr,
 p {
   margin: 0;
+}
+
+.gradient-text {
+  background: $gradient-color;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
 }

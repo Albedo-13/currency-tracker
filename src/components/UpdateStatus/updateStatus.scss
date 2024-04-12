@@ -1,16 +1,18 @@
+@import "@styles/variables.scss";
+
 .update-status {
-  padding: 55px 0;
-  
+  padding: $s-11 0;
+
   &-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: $s-5;
   }
 
   &-lamp {
     position: relative;
-    width: 20px;
+    min-width: 20px;
     height: 20px;
     background-color: #00bc4fbf;
     border-radius: 100%;
@@ -21,7 +23,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 20px;
+      min-width: 20px;
       height: 20px;
       border: 10px solid #00bc4f50;
       border-radius: 100%;
@@ -29,7 +31,16 @@
   }
 
   &-text {
-    font-weight: 300;
-    font-size: 32px;
+    font-weight: $fw-300;
+    font-size: $fs-l-2;
+    text-align: center;
+  }
+}
+
+@media (max-width: $phone) {
+  .update-status {
+    &-text {
+      font-size: $fs-m-4;
+    }
   }
 }

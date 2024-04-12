@@ -18,8 +18,19 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@api/*": ["src/api/*"],
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@styles/*": ["src/styles/*"],
+      "@constants/*": ["src/constants/*"],
+      "@types": ["src/types/types"],
+      "@utils/*": ["src/utils/*"]
+    }
   },
-  "include": ["src"],
+  "include": ["src", "public/chartjs-chart-financial.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

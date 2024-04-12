@@ -1,0 +1,18 @@
+@import "@styles/variables.scss";
+
+.currency-cards-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: $s-11;
+  padding-bottom: $s-19;
+}
+
+
+@media (max-width: $notebook) {
+  .currency-card {
+    &s-list {
+      padding-bottom: $s-10;
+    }
+  }
+}

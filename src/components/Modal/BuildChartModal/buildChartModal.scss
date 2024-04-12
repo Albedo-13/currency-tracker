@@ -1,0 +1,33 @@
+@import "@styles/variables.scss";
+
+.modal {
+  &-label_small {
+    font-size: $fs-m-2;
+    text-transform: uppercase;
+  }
+
+  &-input_small {
+    max-width: $s-8;
+    font-size: $fs-s-8;
+  }
+
+  &-input-group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-input-line {
+    margin-bottom: $s-4;
+
+    &-date {
+      font-size: 20px;
+      font-weight: $fw-600;
+      color: $text-color-minor;
+    }
+  }
+
+  &-build {
+    display: block;
+    margin: 0 auto;
+  }
+}

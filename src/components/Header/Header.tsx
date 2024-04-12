@@ -1,34 +1,59 @@
 import "./header.scss";
-import Switch from "../Switch/Switch";
+
+import { shouldDisableScroll } from "@utils/modalHelpers";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import logo from "/logo.svg";
 
+import Modal from "../Modal/Modal";
+import ModalPortal from "../Modal/ModalPortal";
+import Switch from "../Switch/Switch";
+import { HeaderNav } from "./HeaderNav";
+
 export default function Header() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleModalShow = () => {
+    setShowModal(true);
+  };
+
+  const handleModalClose = () => {
+    setShowModal(false);
+  };
+
+  shouldDisableScroll(showModal);
   return (
     <header className="header">
       <div className="container">
         <div className="header-wrapper">
-          <a href="/" className="header-link">
+          <Link to="/" className="header-link">
             <img src={logo} alt="currency tracker logo" />
-          </a>
-          <nav className="header-nav">
-            <ul>
-              <li>
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="#">Timelone</a>
-              </li>
-              <li>
-                <a href="#">Bank card</a>
-              </li>
-              <li>
-                <a href="#">Contato</a>
-              </li>
-            </ul>
-          </nav>
+          </Link>
+          <div className="header-nav-desktop">
+            <HeaderNav />
+          </div>
+          <div className="header-nav-mobile">
+            <div onClick={handleModalShow} className="header-burger">
+              <span className="header-burger-line"></span>
+              <span className="header-burger-line"></span>
+              <span className="header-burger-line"></span>
+            </div>
+            {showModal && (
+              <ModalPortal
+                children={
+                  <Modal onClose={handleModalClose}>
+                    <HeaderNav onClose={handleModalClose} className="header-nav-vertical" />
+                  </Modal>
+                }
+              />
+            )}
+          </div>
           <Switch />
         </div>
       </div>
     </header>
   );
 }
+
+

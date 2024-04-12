@@ -1,9 +1,8 @@
-@import "../../styles/palette.scss";
+@import "@styles/variables.scss";
 
 .header {
-  background-color: $slate-dark;
   min-height: 50px;
-  padding: 25px 0;
+  padding: $s-5 0;
 
   &-wrapper {
     display: flex;
@@ -21,11 +20,16 @@
       width: auto;
       vertical-align: middle;
     }
+
+    &-active {
+      background: $gradient-color;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
   }
 
   &-nav {
-    flex-grow: 0.3;
-
     ul {
       display: flex;
       justify-content: space-between;
@@ -33,14 +37,60 @@
 
     a {
       text-decoration: none;
-      color: $slate-white;
-      font-weight: 300;
-      font-size: 20px;
+      color: $text-color-main;
+      font-weight: $fw-300;
+      font-size: $fs-m-0;
       transition: 0.4s;
 
       &:hover {
-        color: $slate-gray-text;
+        color: $text-color-minor;
         transition: 0.4s;
+      }
+    }
+
+    &-desktop {
+      flex-grow: 0.3;
+    }
+
+    &-mobile {
+      display: none;
+    }
+
+    &-vertical {
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $s-6;
+      }
+    }
+  }
+
+  &-burger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    &-line {
+      width: 100%;
+      height: 3px;
+      background-color: $text-color-main;
+    }
+  }
+}
+
+@media (max-width: $tablet) {
+  .header {
+    &-nav {
+      &-desktop {
+        display: none;
+      }
+
+      &-mobile {
+        display: block;
       }
     }
   }

@@ -1,0 +1,71 @@
+@import "@styles/variables.scss";
+
+// SELECT
+.ui-select {
+  appearance: none;
+  outline: none;
+  background: transparent;
+  border: none;
+  line-height: inherit;
+  font-size: inherit;
+  padding-right: $s-3;
+  font-size: $fs-l-0;
+  font-weight: $fw-500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ui-select-base {
+  display: inline-block;
+  height: 44px;
+  min-width: 250px;
+  padding: 0 $s-2;
+  font-size: $fs-s-8;
+  line-height: 44px;
+
+  select {
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background-color: $card-color;
+  }
+}
+
+.ui-select-basic {
+  select {
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+}
+
+.ui-select-extended-icon {
+  /* <span> */
+  overflow: hidden;
+  position: relative;
+  background-color: $card-color;
+  border-radius: 3px;
+  box-shadow: 0 0 3px rgba(#000, 0.22);
+  transition: all 0.25s ease;
+
+  &:after {
+    content: "⮟";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 9; // a key to the puzzle
+    width: 44px;
+    font-size: inherit; // get this from the span
+    line-height: inherit; // also get this from the span
+    text-align: center;
+    background-color: inherit;
+    pointer-events: none; // major key to the puzzle
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  select {
+    width: 92%;
+    color: inherit;
+    cursor: pointer; // this now applies to the entire wrapped element.
+  }
+}

@@ -1,0 +1,69 @@
+// COLORS
+$green: #00ce2c;
+$yellow: #a3dc00;
+$main-text-gradient: linear-gradient(92deg, $green 0%, #aedf23 49.26%, $yellow 100%);
+
+$slate-black: #000000;
+$slate-dark: #030304;
+$slate-blue: #1b2028;
+$slate-gray-card: #202025;
+$slate-gray-card-border: #474747;
+$slate-gray-text: #898989;
+$slate-gray-text-2: #a7b2c3;
+$slate-light: #d9d9d9;
+$slate-white: #ffffff;
+
+// THEME COLORS
+$gradient-color: var(--gradient-color);
+$background-color: var(--background-color);
+$text-color-main: var(--text-color-main);
+$text-color-minor: var(--text-color-minor);
+$text-color-minor-2: var(--text-color-minor-2);
+$accent-color: var(--accent-color);
+$card-color: var(--card-color);
+$card-blue-color: var(--card-blue-color);
+$card-border-color: var(--card-border-color);
+
+// SPACINGS
+// 1 = 5px
+$s-1: 5px;
+$s-2: 10px;
+$s-3: 15px;
+$s-4: 20px;
+$s-5: 25px;
+$s-6: 30px;
+$s-7: 35px;
+$s-8: 40px;
+$s-10: 50px;
+$s-11: 55px;
+$s-12: 60px;
+$s-13: 65px;
+$s-16: 80px;
+$s-17: 85px;
+$s-19: 95px;
+$s-20: 100px;
+
+// FONT SIZES (small=10+, medium=20+, large=30+)
+// 18, 20, 22, 24, 28, 30, 32, 35, 76
+$fs-s-8: 18px;
+$fs-m-0: 20px;
+$fs-m-2: 22px;
+$fs-m-4: 24px;
+$fs-m-5: 25px;
+$fs-m-8: 28px;
+$fs-l-0: 30px;
+$fs-l-2: 32px;
+$fs-l-5: 35px;
+$fs-l-8: 38px;
+$fs-7xl-6: 76px;
+
+// SCREENS WIDTH
+$notebook: 1024px;
+$tablet: 768px;
+$phone: 425px;
+
+// FONT WEIGHTS
+$fw-300: 300;
+$fw-400: 400;
+$fw-500: 500;
+$fw-600: 600;
