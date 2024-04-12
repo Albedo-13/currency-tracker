@@ -1,16 +1,47 @@
-import { Route, Routes } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import Header from "../Header/Header";
+import Welcome from "../Welcome/Welcome";
+import Footer from "../Footer/Footer";
+import UpdateStatus from "../UpdateStatus/UpdateStatus";
+import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import MainPage from "../../pages/MainPage";
 import TimelinePage from "../../pages/TimelinePage";
 import BankCardPage from "../../pages/BankCardPage";
 import ContactPage from "../../pages/ContactPage";
 
-export function Root() {
+export const BrowserRoutes = [
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <MainPage />,
+      },
+      {
+        path: "/timeline",
+        element: <TimelinePage />,
+      },
+      {
+        path: "/bank-card",
+        element: <BankCardPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
+      },
+    ],
+  },
+];
+
+export function Layout() {
   return (
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/timeline" element={<TimelinePage />} />
-      <Route path="/bank-card" element={<BankCardPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-    </Routes>
+    <ErrorBoundary>
+      <Header />
+      <Welcome />
+      <UpdateStatus />
+      <Outlet />
+      <Footer />
+    </ErrorBoundary>
   );
 }

@@ -4,9 +4,10 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { staleTime } from "../../constants/constants";
-import { Root } from "./Routes";
+import { BrowserRoutes } from "./Routes";
 
-const router = createBrowserRouter([{ path: "*", Component: Root }]);
+const router = createBrowserRouter(BrowserRoutes);
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
