@@ -1,8 +1,7 @@
 import { HttpResponse, http } from "msw";
-import { baseUrl, apiKey } from "../../api/currencyapi.api";
 import { currenciesCodes } from "../../constants/constants";
 
-export default http.get(`${baseUrl}/currencies?apikey=&${apiKey}currencies=${currenciesCodes}`, (req) => {
+export default http.get(`${import.meta.env.VITE_BASE_URL}/currencies?apikey=&${import.meta.env.VITE_API_KEY}currencies=${currenciesCodes}`, (req) => {
   console.log('Captured a "currencies" request', req.request.url);
   return HttpResponse.json({
     "data": {

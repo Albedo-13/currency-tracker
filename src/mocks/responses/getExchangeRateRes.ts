@@ -1,8 +1,7 @@
 import { HttpResponse, http } from "msw";
 import { currenciesCodes } from "../../constants/constants";
-import { baseUrl, apiKey } from "../../api/currencyapi.api";
 
-export default http.get(`${baseUrl}/latest?apikey=&${apiKey}currencies=${currenciesCodes}`, (req) => {
+export default http.get(`${import.meta.env.VITE_BASE_URL}/latest?apikey=&${import.meta.env.VITE_API_KEY}currencies=${currenciesCodes}`, (req) => {
   console.log('Captured a "latest" request', req.request.url);
   return HttpResponse.json({
     "meta": {

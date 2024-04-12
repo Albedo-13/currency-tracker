@@ -1,11 +1,5 @@
-// https://api.currencyapi.com/v3/latest?apikey=cur_live_McVPn095O6nn3dK3OZmnrHf7puqxlPHC7YdDhrBY
-// cur_live_McVPn095O6nn3dK3OZmnrHf7puqxlPHC7YdDhrBY
-
 import axios from "axios";
 import { currenciesCodes } from "../constants/constants";
-
-export const baseUrl = "https://api.currencyapi.com/v3";
-export const apiKey = "cur_live_McVPn095O6nn3dK3OZmnrHf7puqxlPHC7YdDhrBY";
 
 export async function getCurrencyData() {
   await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -13,13 +7,12 @@ export async function getCurrencyData() {
   return axios({
     method: "get",
     maxBodyLength: Infinity,
-    url: `${baseUrl}/currencies`,
+    url: `${import.meta.env.VITE_BASE_URL}/currencies`,
     params: {
-      apikey: apiKey,
+      apikey: import.meta.env.VITE_API_KEY,
       currencies: currenciesCodes,
     },
   }).then((res) => {
-    console.log("ping /currencies api route");
     return res;
   });
 }
@@ -30,13 +23,12 @@ export async function getExchangeRate() {
   return axios({
     method: "get",
     maxBodyLength: Infinity,
-    url: `${baseUrl}/latest`,
+    url: `${import.meta.env.VITE_BASE_URL}/latest`,
     params: {
-      apikey: apiKey,
+      apikey: import.meta.env.VITE_API_KEY,
       currencies: currenciesCodes,
     },
   }).then((res) => {
-    console.log("ping /latest api route");
     return res;
   });
 }
