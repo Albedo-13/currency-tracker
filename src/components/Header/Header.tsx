@@ -1,10 +1,10 @@
-import { headerLinks } from "@/constants/constants";
 import { shouldDisableScroll } from "@utils/modalHelpers";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
 import Switch from "../Switch/Switch";
+import { HeaderNav } from "./HeaderNav";
 import "./header.scss";
 import logo from "/logo.svg";
 
@@ -40,7 +40,7 @@ export default function Header() {
               <ModalPortal
                 children={
                   <Modal onClose={handleModalClose}>
-                    <HeaderNav className="header-nav-vertical" />
+                    <HeaderNav onClose={handleModalClose} className="header-nav-vertical" />
                   </Modal>
                 }
               />
@@ -53,24 +53,4 @@ export default function Header() {
   );
 }
 
-type HeaderNavProps = {
-  className?: string;
-};
 
-export function HeaderNav({ className }: HeaderNavProps) {
-  return (
-    <nav className={`header-nav ${className}`}>
-      <ul>
-        {headerLinks.map((link) => {
-          return (
-            <li key={link.route}>
-              <NavLink to={link.route} className={({ isActive }) => (isActive ? "gradient-text" : "")}>
-                {link.text}
-              </NavLink>
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
-  );
-}
