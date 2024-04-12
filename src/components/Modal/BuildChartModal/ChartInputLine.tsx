@@ -1,3 +1,4 @@
+import { dayInMs } from "@/constants/constants";
 import { XOHLCType } from "@/types/types";
 import { dateAdapter } from "@utils/chartAdapter";
 import { Component, type ChangeEvent } from "react";
@@ -19,7 +20,7 @@ class ChartInputLine extends Component<ChartInputLineProps> {
 
     return (
       <div className="modal-input-line">
-        <p className="modal-input-line-date">{dateAdapter(Date.now() - index * 24 * 60 * 60 * 1000)}</p>
+        <p className="modal-input-line-date">{dateAdapter(Date.now() - index * dayInMs)}</p>
         <div className="modal-input-group">
           <ChartInputItem value="o" data={data} onInputChange={this.handleInputChange} />
           <ChartInputItem value="h" data={data} onInputChange={this.handleInputChange} />

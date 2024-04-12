@@ -1,17 +1,17 @@
 import { Component } from "react";
 
+import currenciesChartData from "@constants/chartData";
+import { chartDays, dayInMs } from "@constants/constants";
+import { XOHLCType } from "@types";
+import { dateAdapter, randomBar } from "@utils/chartAdapter";
+import { shouldDisableScroll } from "@utils/modalHelpers";
+import observable from "@utils/toastObserver";
 import Chart from "chart.js/auto";
 import "chartjs-adapter-moment";
 import { CandlestickController, CandlestickElement, OhlcController, OhlcElement } from "chartjs-chart-financial";
 import { Chart as ChartComponent } from "react-chartjs-2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import currenciesChartData from "@constants/chartData";
-import { chartDays } from "@constants/constants";
-import { XOHLCType } from "@types";
-import { dateAdapter, randomBar } from "@utils/chartAdapter";
-import { shouldDisableScroll } from "@utils/modalHelpers";
-import observable from "@utils/toastObserver";
 import { ChartInputList } from "../Modal/BuildChartModal/BuildChartModal";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
@@ -107,7 +107,7 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
     for (let i = 0; i < inputs.length; i++) {
       let { o, h, l, c }: XOHLCType = inputs[i];
       l = l && h ? (l > h ? h : l) : l;
-      newChartData.push({ x: Date.parse(dateAdapter(Date.now() - i * 24 * 60 * 60 * 1000)), o, h, l, c });
+      newChartData.push({ x: Date.parse(dateAdapter(Date.now() - i * dayInMs)), o, h, l, c });
     }
 
     this.setState({ chartData: newChartData });
@@ -191,3 +191,4 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
 }
 
 export { CandlestickChart };
+

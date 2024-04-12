@@ -39,6 +39,8 @@ export const maxInputLength = 16;
 
 export const chartDays = 14;
 
+export const dayInMs = 1000 * 60 * 60 * 24;
+
 export const currenciesStaticInfo = {
   USD: { code: "USD", name: "US Dollar", decimal_digits: 2, thumb: "/currency-icons/Dollar Icon.svg" },
   ARS: { code: "ARS", name: "Argentine Peso", decimal_digits: 2, thumb: "/currency-icons/Peso Argentino Icon.svg" },

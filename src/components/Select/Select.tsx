@@ -1,5 +1,5 @@
-import type { Dispatch, SetStateAction } from "react";
 import { currenciesStaticInfo } from "@constants/constants";
+import type { Dispatch, SetStateAction } from "react";
 import "./select.scss";
 
 type SelectProps = {
@@ -13,9 +13,10 @@ export default function Select({ select, setSelect }: SelectProps) {
     <span className="ui-select-base ui-select-extended-icon ui-select-basic">
       <select name="select-four" className="ui-select" value={select} onChange={(e) => setSelect(e.target.value)}>
         {Object.entries(currenciesStaticInfo).map(([key, value]) => {
+          const { name, code } = value;
           return (
-            <option value={value.code} key={key}>
-              {value.name}
+            <option value={code} key={key}>
+              {name}
             </option>
           );
         })}

@@ -1,11 +1,8 @@
-import { createPortal } from "react-dom";
 import { modalRoot } from "@constants/constants";
+import { PropsWithChildren } from "react";
+import { createPortal } from "react-dom";
 
-type ModalPortalProps = {
-  children: React.ReactNode;
-}
-
-export default function ModalPortal({ children }: ModalPortalProps) {
+export default function ModalPortal({ children }: PropsWithChildren) {
   return createPortal(
     children,
     modalRoot as HTMLElement
