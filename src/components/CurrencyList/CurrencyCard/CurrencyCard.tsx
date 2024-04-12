@@ -1,14 +1,14 @@
-import type { TCurrency } from "@types";
+import type { CurrencyType } from "@types";
 import { formatCurrency } from "@utils/currencyFormatter";
 import "./currencyCard.scss";
 
-type TProps = {
-  currency: TCurrency;
+type CurrencyCardProps = {
+  currency: CurrencyType;
   exchangeValue: number;
   onClick: () => void;
 };
 
-export default function CurrencyCard({ currency, exchangeValue, onClick }: TProps) {
+export default function CurrencyCard({ currency, exchangeValue, onClick }: CurrencyCardProps) {
   return (
     <button className="currency-card" onClick={onClick}>
       <div className="container">

@@ -5,11 +5,11 @@ import { maxInputLength } from "@constants/constants";
 import { convertCurrency } from "@utils/currencyFormatter";
 import Select from "@components/Select/Select";
 
-type TProps = {
+type ExchangeModalProps = {
   currencyCode: string;
 };
 
-export default function ExchangeModal({ currencyCode }: TProps) {
+export default function ExchangeModal({ currencyCode }: ExchangeModalProps) {
   const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
   const exchangeRatesData = exchangeRates.data?.data.data;
 

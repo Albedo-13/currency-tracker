@@ -1,10 +1,10 @@
 import "./currencyGroup.scss";
 
-type TProps = {
+type CurrencyGroupProps = {
   group: string;
 };
 
-export default function CurrencyGroup({ group }: TProps) {
+export default function CurrencyGroup({ group }: CurrencyGroupProps) {
   return (
     <div className="currency-group">
       <h2 className="currency-group-title">{group}</h2>

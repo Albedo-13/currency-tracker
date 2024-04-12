@@ -98,12 +98,12 @@ export default function Footer() {
   );
 }
 
-type TAccordionProps = {
+type AccordionProps = {
   title: string;
   children: React.ReactNode;
 };
 
-function Accordion({ title, children }: TAccordionProps) {
+function Accordion({ title, children }: AccordionProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleAccordion = () => {

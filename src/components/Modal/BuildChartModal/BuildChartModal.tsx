@@ -1,23 +1,23 @@
 import { Component, type ChangeEvent } from "react";
-import type { TXOHLC } from "@types";
+import type { XOHLCType } from "@types";
 import { dateAdapter } from "@utils/chartAdapter";
 import "./buildChartModal.scss";
 
-type TChartInputListProps = { onBuildClick: (inputs: TXOHLC[]) => void };
+type ChartInputListProps = { onBuildClick: (inputs: XOHLCType[]) => void };
 
-class ChartInputList extends Component<TChartInputListProps> {
+class ChartInputList extends Component<ChartInputListProps> {
   state = {
     inputsList: [{}, {}, {}, {}],
   };
 
-  onChange = (index: number) => (someNewData: TXOHLC) => {
+  onChange = (index: number) => (someNewData: XOHLCType) => {
     const { inputsList } = this.state;
     const newInputsList = [...inputsList];
     newInputsList[index] = { ...newInputsList[index], ...someNewData };
     this.setState({ inputsList: newInputsList });
   };
 
-  handleBuildClick = (inputsList: TXOHLC[]) => {
+  handleBuildClick = (inputsList: XOHLCType[]) => {
     const { onBuildClick } = this.props;
     onBuildClick(inputsList);
     inputsList.map((input) => {
@@ -46,13 +46,13 @@ class ChartInputList extends Component<TChartInputListProps> {
 
 export default ChartInputList;
 
-type TChartInputLineProps = {
-  data: TXOHLC;
-  onChange: (someNewData: TXOHLC) => void;
+type ChartInputLineProps = {
+  data: XOHLCType;
+  onChange: (someNewData: XOHLCType) => void;
   index: number;
 };
 
-class ChartInputLine extends Component<TChartInputLineProps> {
+class ChartInputLine extends Component<ChartInputLineProps> {
   handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { onChange } = this.props;
     onChange({ [e.target.name]: e.target.value });
@@ -75,13 +75,13 @@ class ChartInputLine extends Component<TChartInputLineProps> {
   }
 }
 
-type TChartInputItemProps = {
-  data: TXOHLC;
+type ChartInputItemProps = {
+  data: XOHLCType;
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
   value: string;
 };
 
-class ChartInputItem extends Component<TChartInputItemProps> {
+class ChartInputItem extends Component<ChartInputItemProps> {
   render() {
     const { data, onInputChange, value } = this.props;
 
@@ -90,7 +90,7 @@ class ChartInputItem extends Component<TChartInputItemProps> {
         {value}:
         <input
           className="modal-input modal-input_small"
-          value={data[value as keyof TXOHLC] || ""}
+          value={data[value as keyof XOHLCType] || ""}
           onChange={onInputChange}
           name={value}
           type="number"

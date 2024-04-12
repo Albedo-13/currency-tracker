@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 
-type TThemeProvider = {
+type ThemeProviderType = {
   children: React.ReactNode;
 };
 
@@ -9,7 +9,7 @@ export const ThemeContext = createContext({
   toggleTheme: () => {},
 });
 
-export default function ThemeProvider({ children }: TThemeProvider) {
+export default function ThemeProvider({ children }: ThemeProviderType) {
   const [theme, setTheme] = useState(localStorage.getItem("currency-tracker-theme") === "light" ? false : true);
 
   useEffect(() => {

@@ -1,27 +1,27 @@
-export type TCurrency = {
+export type CurrencyType = {
   code: string;
   name: string;
   thumb: string;
   decimal_digits: number;
 };
 
-export type TExchangeRate = {
+export type ExchangeRateType = {
   code: string;
   value: number;
 };
 
-export type TExchangeRatesData = {
-  [key: string]: TExchangeRate;
+export type ExchangeRatesDataType = {
+  [key: string]: ExchangeRateType;
 };
 
-export type TBank = {
+export type BankType = {
   name: string;
   address: string;
-  currencies: TCurrency[];
+  currencies: CurrencyType[];
   coordinates: number[];
 };
 
-export type TXOHLC = {
+export type XOHLCType = {
   x?: number;
   o?: number;
   h?: number;

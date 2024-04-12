@@ -59,11 +59,11 @@ export default function Header() {
   );
 }
 
-type THeaderNavProps = {
+type HeaderNavProps = {
   className?: string;
 };
 
-export function HeaderNav({ className }: THeaderNavProps) {
+export function HeaderNav({ className }: HeaderNavProps) {
   return (
     <nav className={`header-nav ${className}`}>
       <ul>

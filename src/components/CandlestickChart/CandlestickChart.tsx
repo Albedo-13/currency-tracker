@@ -8,7 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import currenciesChartData from "@constants/chartData";
 import { chartDays } from "@constants/constants";
-import { TXOHLC } from "@types";
+import { XOHLCType } from "@types";
 import { dateAdapter, randomBar } from "@utils/chartAdapter";
 import { shouldDisableScroll } from "@utils/modalHelpers";
 import observable from "@utils/toastObserver";
@@ -31,13 +31,13 @@ function toastify(data: string) {
 
 observable.subscribe(toastify);
 
-type TCandlestickChartState = {
+type CandlestickChartState = {
   selectCurrencyInput: string;
-  chartData: TXOHLC[];
+  chartData: XOHLCType[];
   showModal: boolean;
 };
 
-class CandlestickChart extends Component<any, TCandlestickChartState> {
+class CandlestickChart extends Component<any, CandlestickChartState> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -52,7 +52,7 @@ class CandlestickChart extends Component<any, TCandlestickChartState> {
     this.setChartData(selectCurrencyInput);
   }
 
-  componentDidUpdate(_: any, prevState: TCandlestickChartState) {
+  componentDidUpdate(_: any, prevState: CandlestickChartState) {
     const { selectCurrencyInput } = this.state;
     if (prevState.selectCurrencyInput !== selectCurrencyInput) {
       this.setChartData(selectCurrencyInput);
@@ -79,7 +79,7 @@ class CandlestickChart extends Component<any, TCandlestickChartState> {
 
   handleRandomClick = () => {
     const { chartData } = this.state;
-    const newGeneratedData: TXOHLC[] = [];
+    const newGeneratedData: XOHLCType[] = [];
     for (let i = chartDays; i > 0; i--) {
       newGeneratedData.push(randomBar(chartData, i, new Date(`2024-04-${i + 1}`), 221.13));
     }
@@ -101,11 +101,11 @@ class CandlestickChart extends Component<any, TCandlestickChartState> {
     this.setState({ chartData: newFilteredData });
   };
 
-  handleBuildClick = (inputs: TXOHLC[]) => {
+  handleBuildClick = (inputs: XOHLCType[]) => {
     const newChartData = [];
 
     for (let i = 0; i < inputs.length; i++) {
-      let { o, h, l, c }: TXOHLC = inputs[i];
+      let { o, h, l, c }: XOHLCType = inputs[i];
       l = l && h ? (l > h ? h : l) : l;
       newChartData.push({ x: Date.parse(dateAdapter(Date.now() - i * 24 * 60 * 60 * 1000)), o, h, l, c });
     }

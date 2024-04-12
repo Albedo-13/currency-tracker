@@ -1,17 +1,17 @@
 import React, { ErrorInfo } from "react";
 import "./errorBoundary.scss";
 
-type TProps = {
+type ErrorBoundaryProps = {
   children: React.ReactNode;
 };
 
-type TState = {
+type ErrorBoundaryState = {
   error: Error | null;
   errorInfo: ErrorInfo | null;
 };
 
-export default class ErrorBoundary extends React.Component<TProps, TState> {
-  constructor(props: TProps) {
+export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { error: null, errorInfo: null };
   }

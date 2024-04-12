@@ -2,17 +2,17 @@ import { ChangeEvent, Component } from "react";
 import { zeroPrefix } from "@utils/chartAdapter";
 import "./chartFilters.scss";
 
-type TChartFiltersProps = {
+type ChartFiltersProps = {
   onFilterClick: (from: number, to: number) => void;
 };
 
-type TChartFiltersState = {
+type ChartFiltersState = {
   from: number;
   to: number;
 };
 
-class ChartFilters extends Component<TChartFiltersProps, TChartFiltersState> {
-  constructor(props: TChartFiltersProps) {
+class ChartFilters extends Component<ChartFiltersProps, ChartFiltersState> {
+  constructor(props: ChartFiltersProps) {
     super(props);
     this.state = {
       from: 0,

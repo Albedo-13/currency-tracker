@@ -1,12 +1,12 @@
 import { SyntheticEvent, useEffect } from "react";
 import "./modal.scss";
 
-type TProps = {
+type ModalProps = {
   onClose: () => void;
   children: React.ReactNode;
 };
 
-export default function Modal({ onClose, children }: TProps) {
+export default function Modal({ onClose, children }: ModalProps) {
   const handleCloseClick = (e: SyntheticEvent) => {
     if (e.target === e.currentTarget) {
       onClose();

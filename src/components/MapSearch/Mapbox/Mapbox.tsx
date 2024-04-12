@@ -3,25 +3,25 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Component, MutableRefObject, createRef } from "react";
 import { banksStaticInfo } from "@constants/constants";
-import { TBank } from "@types";
+import { BankType } from "@types";
 import { findBanksByCurrencyCodeOrName } from "@utils/currencyFormatter";
 import "./mapbox.scss";
 
 mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
 
-type TProps = {
+type MapboxProps = {
   searchString: string;
 };
 const lngLat: [number, number] = [27.6, 53.9];
 const zoom: number = 10;
 
-export default class Mapbox extends Component<TProps> {
+export default class Mapbox extends Component<MapboxProps> {
   markersList: mapboxgl.Marker[];
   mapContainer: MutableRefObject<HTMLDivElement | null>;
   map: mapboxgl.Map | null;
-  filteredBanks: TBank[];
+  filteredBanks: BankType[];
 
-  constructor(props: TProps) {
+  constructor(props: MapboxProps) {
     super(props);
     this.markersList = [];
     this.mapContainer = createRef();
@@ -45,7 +45,7 @@ export default class Mapbox extends Component<TProps> {
     this.updateMarkers();
   }
 
-  createMarkersBasedOnBanks = (banks: TBank[]) => {
+  createMarkersBasedOnBanks = (banks: BankType[]) => {
     banks.map((bank) => {
       const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
         `

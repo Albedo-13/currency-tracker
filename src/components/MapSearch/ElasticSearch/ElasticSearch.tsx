@@ -3,13 +3,13 @@ import { Component } from "react";
 import "./elasticSearch.scss";
 import searchIcon from "/icons/search-icon.svg";
 
-type TProps = {
+type ElasticSearchProps = {
   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const debounceDelay = 700;
 
-export default class ElasticSearch extends Component<TProps> {
+export default class ElasticSearch extends Component<ElasticSearchProps> {
   render() {
     const { handleSearchChange } = this.props;
     return (

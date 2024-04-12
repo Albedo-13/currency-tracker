@@ -1,4 +1,4 @@
-import type { TBank, TExchangeRatesData } from "../types/types";
+import type { BankType, ExchangeRatesDataType } from "../types/types";
 
 export function formatCurrency(value: number, currencyCode: string, decimalDigits: number): string {
   const options = {
@@ -14,11 +14,11 @@ export function formatCurrency(value: number, currencyCode: string, decimalDigit
     : value.toLocaleString("en-US", options);
 }
 
-export function convertCurrency(value: number, fromCurrencyCode: string, toCurrencyCode: string, exchangeRates: TExchangeRatesData): string {
+export function convertCurrency(value: number, fromCurrencyCode: string, toCurrencyCode: string, exchangeRates: ExchangeRatesDataType): string {
   return (value / exchangeRates[fromCurrencyCode].value * exchangeRates[toCurrencyCode].value).toFixed(4);
 }
 
-export function findBanksByCurrencyCodeOrName(searchString = "", banks: TBank[]): TBank[] {
+export function findBanksByCurrencyCodeOrName(searchString = "", banks: BankType[]): BankType[] {
   return banks.filter((bank) => {
     return bank.currencies.some((currency) => {
       return (
