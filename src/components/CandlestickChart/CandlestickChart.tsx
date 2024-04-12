@@ -12,7 +12,7 @@ import { XOHLCType } from "@types";
 import { dateAdapter, randomBar } from "@utils/chartAdapter";
 import { shouldDisableScroll } from "@utils/modalHelpers";
 import observable from "@utils/toastObserver";
-import ChartInputList from "../Modal/BuildChartModal/BuildChartModal";
+import { ChartInputList } from "../Modal/BuildChartModal/BuildChartModal";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
 import Select from "../Select/Select";
