@@ -1,8 +1,10 @@
+import "./footer.scss";
+
+import logo from "/logo.svg";
 import { footerLinks } from "@/constants/constants";
+
 import { Accordion } from "./Accordion";
 import { FooterNav } from "./FooterNav";
-import "./footer.scss";
-import logo from "/logo.svg";
 
 export default function Footer() {
   return (

@@ -1,5 +1,6 @@
-import { getExchangeRate } from "@/api/currencyapi.api";
 import { useQuery } from "@tanstack/react-query";
+
+import { getExchangeRate } from "@/api/currencyapi.api";
 
 export function useExchangeRates() {
   const queryKeys = ["exchangeRates"];

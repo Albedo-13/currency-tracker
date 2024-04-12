@@ -1,4 +1,5 @@
 import "./welcome.scss";
+
 import logo from "/logo.svg";
 
 export default function Welcome() {

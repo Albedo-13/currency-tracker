@@ -1,6 +1,8 @@
+import "./elasticSearch.scss";
+
 import debounce from "debounce";
 import { Component } from "react";
-import "./elasticSearch.scss";
+
 import searchIcon from "/icons/search-icon.svg";
 
 type ElasticSearchProps = {

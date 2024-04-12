@@ -1,7 +1,9 @@
+import "./buildChartModal.scss";
+
 import type { XOHLCType } from "@types";
 import { Component } from "react";
+
 import { ChartInputLine } from "./ChartInputLine";
-import "./buildChartModal.scss";
 
 type ChartInputListProps = { onBuildClick: (inputs: XOHLCType[]) => void };
 

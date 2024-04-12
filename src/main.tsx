@@ -1,6 +1,8 @@
-import ReactDOM from "react-dom/client";
-import App from "./components/App/App";
 import "./index.scss";
+
+import ReactDOM from "react-dom/client";
+
+import App from "./components/App/App";
 import ThemeProvider from "./components/Providers/ThemeProvider";
 
 async function enableMocking() {
@@ -14,7 +16,7 @@ async function enableMocking() {
 enableMocking().then(() => {
   ReactDOM.createRoot(document.getElementById("root")!).render(
     <ThemeProvider>
-        <App />
+      <App />
     </ThemeProvider>
   );
 });

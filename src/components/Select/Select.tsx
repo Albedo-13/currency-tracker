@@ -1,6 +1,7 @@
+import "./select.scss";
+
 import { currenciesStaticInfo } from "@constants/constants";
 import type { Dispatch, SetStateAction } from "react";
-import "./select.scss";
 
 type SelectProps = {
   select: string;

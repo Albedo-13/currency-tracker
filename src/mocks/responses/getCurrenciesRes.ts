@@ -1,5 +1,5 @@
-import { HttpResponse, http } from "msw";
 import { currenciesCodes } from "@constants/constants";
+import { http,HttpResponse } from "msw";
 
 export default http.get(`${import.meta.env.VITE_BASE_URL}/currencies?apikey=&${import.meta.env.VITE_CURRENCIES_API_KEY}currencies=${currenciesCodes}`, (req) => {
   console.log('Captured a "currencies" request', req.request.url);

@@ -1,8 +1,9 @@
-import { useExchangeRates } from "@/hooks/useExchangeRates";
 import Select from "@components/Select/Select";
 import { maxInputLength } from "@constants/constants";
 import { convertCurrency } from "@utils/currencyFormatter";
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { type ChangeEvent,useEffect, useRef, useState } from "react";
+
+import { useExchangeRates } from "@/hooks/useExchangeRates";
 
 type ExchangeModalProps = {
   currencyCode: string;

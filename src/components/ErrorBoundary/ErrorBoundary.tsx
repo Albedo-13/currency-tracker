@@ -1,5 +1,6 @@
-import React, { ErrorInfo } from "react";
 import "./errorBoundary.scss";
+
+import React, { ErrorInfo } from "react";
 
 type ErrorBoundaryProps = {
   children: React.ReactNode;

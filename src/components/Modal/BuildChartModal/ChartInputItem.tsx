@@ -1,5 +1,6 @@
+import { type ChangeEvent,Component } from "react";
+
 import { XOHLCType } from "@/types/types";
-import { Component, type ChangeEvent } from "react";
 
 type ChartInputItemProps = {
   data: XOHLCType;

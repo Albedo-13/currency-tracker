@@ -1,12 +1,15 @@
+import "./header.scss";
+
 import { shouldDisableScroll } from "@utils/modalHelpers";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import logo from "/logo.svg";
+
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
 import Switch from "../Switch/Switch";
 import { HeaderNav } from "./HeaderNav";
-import "./header.scss";
-import logo from "/logo.svg";
 
 export default function Header() {
   const [showModal, setShowModal] = useState(false);

@@ -1,7 +1,9 @@
+import { dateAdapter } from "@utils/chartAdapter";
+import { type ChangeEvent,Component } from "react";
+
 import { dayInMs } from "@/constants/constants";
 import { XOHLCType } from "@/types/types";
-import { dateAdapter } from "@utils/chartAdapter";
-import { Component, type ChangeEvent } from "react";
+
 import { ChartInputItem } from "./ChartInputItem";
 
 type ChartInputLineProps = {

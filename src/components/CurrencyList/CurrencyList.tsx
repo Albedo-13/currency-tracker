@@ -1,13 +1,16 @@
-import { useExchangeRates } from "@/hooks/useExchangeRates";
+import "./currencyList.scss";
+
 import { currenciesStaticInfo } from "@constants/constants";
 import { shouldDisableScroll } from "@utils/modalHelpers";
 import { useState } from "react";
+
+import { useExchangeRates } from "@/hooks/useExchangeRates";
+
 import ExchangeModal from "../Modal/ExchangeModal/ExchangeModal";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
 import CurrencyCard from "./CurrencyCard/CurrencyCard";
 import CurrencyGroup from "./CurrencyGroup/CurrencyGroup";
-import "./currencyList.scss";
 
 export default function CurrencyList() {
   const [showModal, setShowModal] = useState(false);

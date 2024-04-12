@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import ElasticSearch from "./ElasticSearch/ElasticSearch";
 import Mapbox from "./Mapbox/Mapbox";
 

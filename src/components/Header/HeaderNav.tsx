@@ -1,5 +1,6 @@
-import { headerLinks } from "@/constants/constants";
 import { NavLink } from "react-router-dom";
+
+import { headerLinks } from "@/constants/constants";
 
 type HeaderNavProps = {
   className?: string;

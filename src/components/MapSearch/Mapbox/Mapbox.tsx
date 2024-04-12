@@ -1,11 +1,12 @@
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
-import { Component, MutableRefObject, createRef } from "react";
+import "./mapbox.scss";
+
 import { banksStaticInfo } from "@constants/constants";
 import { BankType } from "@types";
 import { findBanksByCurrencyCodeOrName } from "@utils/currencyFormatter";
-import "./mapbox.scss";
+import mapboxgl from "mapbox-gl";
+import { Component, createRef,MutableRefObject } from "react";
 
 mapboxgl.accessToken = import.meta.env.VITE_CURRENCIES_API_KEY;
 

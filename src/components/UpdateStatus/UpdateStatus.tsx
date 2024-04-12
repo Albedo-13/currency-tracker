@@ -1,5 +1,6 @@
-import { useExchangeRates } from "@/hooks/useExchangeRates";
 import "./updateStatus.scss";
+
+import { useExchangeRates } from "@/hooks/useExchangeRates";
 
 export default function UpdateStatus() {
   const { dataUpdatedAt } = useExchangeRates();

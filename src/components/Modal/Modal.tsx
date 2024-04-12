@@ -1,5 +1,6 @@
-import { SyntheticEvent, useEffect } from "react";
 import "./modal.scss";
+
+import { SyntheticEvent, useEffect } from "react";
 
 type ModalProps = {
   onClose: () => void;

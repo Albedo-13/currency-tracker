@@ -1,6 +1,7 @@
+import "./currencyCard.scss";
+
 import type { CurrencyType } from "@types";
 import { formatCurrency } from "@utils/currencyFormatter";
-import "./currencyCard.scss";
 
 type CurrencyCardProps = {
   currency: CurrencyType;

@@ -1,6 +1,7 @@
-import { ChangeEvent, Component } from "react";
-import { zeroPrefix } from "@utils/chartAdapter";
 import "./chartFilters.scss";
+
+import { zeroPrefix } from "@utils/chartAdapter";
+import { ChangeEvent, Component } from "react";
 
 type ChartFiltersProps = {
   onFilterClick: (from: number, to: number) => void;
