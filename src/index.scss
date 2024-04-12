@@ -5,7 +5,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: $fw-400;
   color-scheme: dark;
-  background-color: var(--background-color);
+  background-color: $background-color;
 }
 
 .container {
@@ -35,7 +35,7 @@ p {
 }
 
 .gradient-text {
-  background: var(--gradient-color);
+  background: $gradient-color;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;

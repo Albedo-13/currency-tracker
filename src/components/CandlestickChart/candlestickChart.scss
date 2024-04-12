@@ -26,12 +26,12 @@
   &-name {
     font-weight: $fw-400;
     font-size: $fs-l-5;
-    color: var(--accent-color);
+    color: $accent-color;
   }
 
   &-short {
     font-weight: $fw-500;
-    color: var(--text-color-main);
+    color: $text-color-main;
     opacity: 0.7;
     font-size: $fs-m-2;
   }
@@ -51,8 +51,8 @@
   }
 
   &-button {
-    color: var(--text-color-main);
-    background: var(--card-color);
+    color: $text-color-main;
+    background: $card-color;
     border: none;
     padding: 0 $s-3;
     border-radius: 3px;
@@ -63,7 +63,7 @@
 
     &:hover {
       cursor: pointer;
-      color: var(--text-color-minor);
+      color: $text-color-minor;
       transition: 0.25s all;
     }
   }

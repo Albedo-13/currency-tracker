@@ -9,10 +9,10 @@
 
   &:hover {
     .switch-slider {
-      border: 2px solid var(--text-color-minor);
+      border: 2px solid $text-color-minor;
 
       &:before {
-        border: 2px solid var(--text-color-minor);
+        border: 2px solid $text-color-minor;
       }
     }
   }
@@ -35,7 +35,7 @@
   bottom: 0;
   background-color: transparent;
   transition: .4s;
-  border: 2px solid var(--text-color-main);
+  border: 2px solid $text-color-main;
 
   &:before {
     position: absolute;
@@ -44,7 +44,7 @@
     width: 26px;
     left: -2px;
     bottom: -2px;
-    border: 2px solid var(--text-color-main);
+    border: 2px solid $text-color-main;
     transition: .4s;
   }
 }

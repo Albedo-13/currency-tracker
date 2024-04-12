@@ -13,6 +13,17 @@ $slate-gray-text-2: #a7b2c3;
 $slate-light: #d9d9d9;
 $slate-white: #ffffff;
 
+// THEME COLORS
+$gradient-color: var(--gradient-color);
+$background-color: var(--background-color);
+$text-color-main: var(--text-color-main);
+$text-color-minor: var(--text-color-minor);
+$text-color-minor-2: var(--text-color-minor-2);
+$accent-color: var(--accent-color);
+$card-color: var(--card-color);
+$card-blue-color: var(--card-blue-color);
+$card-border-color: var(--card-border-color);
+
 // SPACINGS
 // 1 = 5px
 $s-1: 5px;

@@ -40,14 +40,14 @@
     font-weight: $fw-300;
     font-size: $fs-m-4;
     line-height: 150%;
-    color: var(--text-color-main);
+    color: $text-color-main;
   }
 
   &-nav {
     &-title {
       font-weight: $fw-400;
       font-size: $fs-m-8;
-      color: var(--text-color-main);
+      color: $text-color-main;
     }
 
     &-list {
@@ -69,7 +69,7 @@
     transition: 0.4s;
 
     &:hover {
-      color: var(--gradient-color);
+      color: $gradient-color;
     }
   }
 
@@ -91,7 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--text-color-minor);
+    border-bottom: 1px solid $text-color-minor;
     padding: $s-3 $s-8 $s-3 0;
     margin-bottom: 5px;
   }

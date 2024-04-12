@@ -28,3 +28,11 @@ export type XOHLCType = {
   l?: number;
   c?: number;
 };
+
+export type FooterLinkType = {
+  label: string;
+  links: {
+    name: string;
+    href: string;
+  }[];
+};

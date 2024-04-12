@@ -1,41 +1,11 @@
+import { footerLinks } from "@/constants/constants";
+import { FooterLinkType } from "@/types/types";
 import { useState } from "react";
 import "./footer.scss";
 import logo from "/logo.svg";
 
-type TLink = {
-  label: string;
-  links: {
-    name: string;
-    href: string;
-  }[];
-};
-
-const footerLinks: TLink[] = [
-  {
-    label: "General",
-    links: [
-      { name: "Market", href: "#" },
-      { name: "Service", href: "#" },
-    ],
-  },
-  {
-    label: "Product",
-    links: [
-      { name: "Sparks", href: "#" },
-      { name: "Snaps", href: "#" },
-    ],
-  },
-  {
-    label: "Community",
-    links: [
-      { name: "Ideas", href: "#" },
-      { name: "Streams", href: "#" },
-    ],
-  },
-];
-
 export default function Footer() {
-  function renderFooterLinks(linksList: TLink[]) {
+  function renderFooterLinks(linksList: FooterLinkType[]) {
     return linksList.map((section) => {
       return (
         <div className="footer-nav" key={section.label}>
@@ -122,3 +92,4 @@ function Accordion({ title, children }: AccordionProps) {
 }
 
 export { Accordion };
+

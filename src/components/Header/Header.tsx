@@ -1,18 +1,12 @@
+import { headerLinks } from "@/constants/constants";
+import { shouldDisableScroll } from "@utils/modalHelpers";
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { shouldDisableScroll } from "@utils/modalHelpers";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
 import Switch from "../Switch/Switch";
 import "./header.scss";
 import logo from "/logo.svg";
-
-const headerLinks = [
-  { route: "/", text: "Home" },
-  { route: "/timeline", text: "Timeline" },
-  { route: "/bank-card", text: "Bank card" },
-  { route: "/contact", text: "Contact" },
-];
 
 export default function Header() {
   const [showModal, setShowModal] = useState(false);

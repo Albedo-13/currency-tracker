@@ -6,7 +6,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba($color: var(--background-color), $alpha: 0.75);
+  background-color: rgba($color: $background-color, $alpha: 0.75);
   backdrop-filter: blur(6px);
   z-index: 10;
 
@@ -16,9 +16,9 @@
 }
 
 .modal {
-  background-color: var(--background-color);
+  background-color: $background-color;
   max-width: 330px;
-  border: 3px solid var(--card-border-color);
+  border: 3px solid $card-border-color;
   position: relative;
   top: 50%;
   left: 50%;
@@ -45,13 +45,13 @@
     border: none;
     border-radius: 8px;
     min-height: 45px;
-    background-color: var(--card-color);
+    background-color: $card-color;
     max-width: calc(100% - $s-4);
     padding: 0 $s-2;
     font-size: $fs-l-0;
 
     &_readonly {
-      color: var(--text-color-minor);
+      color: $text-color-minor;
       outline: none;
     }
 

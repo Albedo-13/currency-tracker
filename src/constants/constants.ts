@@ -1,3 +1,34 @@
+export const headerLinks = [
+  { route: "/", text: "Home" },
+  { route: "/timeline", text: "Timeline" },
+  { route: "/bank-card", text: "Bank card" },
+  { route: "/contact", text: "Contact" },
+];
+
+export const footerLinks = [
+  {
+    label: "General",
+    links: [
+      { name: "Market", href: "#" },
+      { name: "Service", href: "#" },
+    ],
+  },
+  {
+    label: "Product",
+    links: [
+      { name: "Sparks", href: "#" },
+      { name: "Snaps", href: "#" },
+    ],
+  },
+  {
+    label: "Community",
+    links: [
+      { name: "Ideas", href: "#" },
+      { name: "Streams", href: "#" },
+    ],
+  },
+];
+
 export const currenciesCodes = ["USD", "ARS", "CAD", "JPY", "AUD", "CNY", "EUR", "BTC", "GBP"].join(",");
 
 export const staleTime = 1000 * 60 * 2;
