@@ -7,7 +7,7 @@ import { BankType } from "@types";
 import { findBanksByCurrencyCodeOrName } from "@utils/currencyFormatter";
 import "./mapbox.scss";
 
-mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";
+mapboxgl.accessToken = import.meta.env.VITE_CURRENCIES_API_KEY;
 
 type MapboxProps = {
   searchString: string;
