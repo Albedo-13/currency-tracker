@@ -3,7 +3,7 @@ import Welcome from "../components/Welcome/Welcome";
 import UpdateStatus from "../components/UpdateStatus/UpdateStatus";
 import Footer from "../components/Footer/Footer";
 import Contacts from "../components/Contacts/Contacts";
-import ErrorBoundary from "../utils/ErrorBoundary";
+import ErrorBoundary from "../components/ErrorBoundary/ErrorBoundary";
 
 export default function MainPage() {
   return (

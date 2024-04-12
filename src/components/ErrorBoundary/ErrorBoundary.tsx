@@ -1,4 +1,5 @@
 import React, { ErrorInfo } from "react";
+import "./errorBoundary.scss";
 
 type TProps = {
   children: React.ReactNode;
@@ -27,7 +28,7 @@ export default class ErrorBoundary extends React.Component<TProps, TState> {
       return (
         <div>
           <h2>Something went wrong.</h2>
-          <details style={{ whiteSpace: "pre-wrap" }}>
+          <details className="error-b-details">
             {this.state.error && this.state.error.toString()}
             <br />
             {this.state.errorInfo.componentStack}
