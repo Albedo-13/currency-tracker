@@ -1,9 +1,5 @@
-import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import MainPage from "../../pages/MainPage";
-import TimelinePage from "../../pages/TimelinePage";
-import BankCardPage from "../../pages/BankCardPage";
-import ContactPage from "../../pages/ContactPage";
 import { ThemeContext } from "../../utils/ThemeProvider";
 import { useContext, useEffect } from "react";
 
@@ -12,6 +8,7 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 import { staleTime } from "../../constants/constants";
+import { Root } from "./Routes";
 
 const router = createBrowserRouter([{ path: "*", Component: Root }]);
 const queryClient = new QueryClient({
@@ -29,17 +26,6 @@ const queryClient = new QueryClient({
 const persister = createSyncStoragePersister({
   storage: window.localStorage,
 });
-
-function Root() {
-  return (
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path="/timeline" element={<TimelinePage />} />
-      <Route path="/bank-card" element={<BankCardPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-    </Routes>
-  );
-}
 
 function App() {
   const { theme } = useContext(ThemeContext);
