@@ -1,4 +1,4 @@
-import CandlestickChart from "../components/CandlestickChart/CandlestickChart";
+import { CandlestickChart } from "../components/CandlestickChart/CandlestickChart";
 
 export default function TimelinePage() {
   return (

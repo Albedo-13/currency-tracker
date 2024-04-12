@@ -37,7 +37,7 @@ class ChartInputList extends Component<TChartInputListProps> {
           <ChartInputLine data={e} onChange={this.onChange(index)} index={index} key={index} />
         ))}
         <button onClick={() => this.handleBuildClick(inputsList)} className="chart-button modal-build">
-          🔨Build
+          Build
         </button>
       </>
     );

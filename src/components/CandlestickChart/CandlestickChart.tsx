@@ -16,7 +16,7 @@ import ChartInputList from "../Modal/BuildChartModal/BuildChartModal";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
 import Select from "../Select/Select";
-import ChartFilters from "./ChartFilters/ChartFilters";
+import { ChartFilters } from "./ChartFilters/ChartFilters";
 import "./candlestickChart.scss";
 
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
@@ -37,8 +37,8 @@ type TCandlestickChartState = {
   showModal: boolean;
 };
 
-class CandlestickChart extends Component<never, TCandlestickChartState> {
-  constructor(props: never) {
+class CandlestickChart extends Component<any, TCandlestickChartState> {
+  constructor(props: any) {
     super(props);
     this.state = {
       selectCurrencyInput: "USD",
@@ -163,10 +163,10 @@ class CandlestickChart extends Component<never, TCandlestickChartState> {
 
           <div className="chart-block chart-button-group">
             <button onClick={this.handleModalShow} className="chart-button">
-              ✏️Custom data
+              Custom data
             </button>
             <button onClick={this.handleRandomClick} className="chart-button">
-              🎲Random
+              Random
             </button>
           </div>
 
@@ -190,4 +190,4 @@ class CandlestickChart extends Component<never, TCandlestickChartState> {
   }
 }
 
-export default CandlestickChart;
+export { CandlestickChart };
