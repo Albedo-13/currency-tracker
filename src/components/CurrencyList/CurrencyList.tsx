@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query";
 import { currenciesStaticInfo } from "../../constants/constants";
 import ModalPortal from "../Modal/ModalPortal";
 import ExchangeModal from "../Modal/ExchangeModal/ExchangeModal";
+import { shouldDisableScroll } from "../../utils/modalHelpers";
 
 export default function CurrencyList() {
   const [showModal, setShowModal] = useState(false);
@@ -25,6 +26,7 @@ export default function CurrencyList() {
     setShowModal(false);
   };
 
+  shouldDisableScroll(showModal);
   return (
     <section className="currency">
       <div className="container">

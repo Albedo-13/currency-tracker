@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import ModalPortal from "../Modal/ModalPortal";
 import Modal from "../Modal/Modal";
 import { useState } from "react";
+import { shouldDisableScroll } from "../../utils/modalHelpers";
 
 const headerLinks = [
   { route: "/", text: "Home" },
@@ -24,6 +25,7 @@ export default function Header() {
     setShowModal(false);
   };
 
+  shouldDisableScroll(showModal);
   return (
     <header className="header">
       <div className="container">

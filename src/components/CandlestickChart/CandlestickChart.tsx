@@ -17,6 +17,7 @@ import Select from "../Select/Select";
 import observable from "../../utils/toastObserver";
 import "react-toastify/dist/ReactToastify.css";
 import "./candlestickChart.scss";
+import { shouldDisableScroll } from "../../utils/modalHelpers";
 
 Chart.register(OhlcElement, OhlcController, CandlestickElement, CandlestickController);
 
@@ -29,7 +30,6 @@ function toastify(data: string) {
 }
 
 observable.subscribe(toastify);
-
 
 type TCandlestickChartProps = {};
 
@@ -59,6 +59,7 @@ class CandlestickChart extends Component<TCandlestickChartProps, TCandlestickCha
     if (prevState.selectCurrencyInput !== selectCurrencyInput) {
       this.setChartData(selectCurrencyInput);
     }
+    shouldDisableScroll(this.state.showModal);
   }
 
   setChartData = (currency: string) => {
@@ -163,8 +164,12 @@ class CandlestickChart extends Component<TCandlestickChartProps, TCandlestickCha
           </div>
 
           <div className="chart-block chart-button-group">
-            <button onClick={this.handleModalShow} className="chart-button">✏️Custom data</button>
-            <button onClick={this.handleRandomClick} className="chart-button">🎲Random</button>
+            <button onClick={this.handleModalShow} className="chart-button">
+              ✏️Custom data
+            </button>
+            <button onClick={this.handleRandomClick} className="chart-button">
+              🎲Random
+            </button>
           </div>
 
           <div className="chart-wrapper">
