@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 type TThemeProvider = {
   children: React.ReactNode;
@@ -11,6 +11,11 @@ export const ThemeContext = createContext({
 
 export default function ThemeProvider({ children }: TThemeProvider) {
   const [theme, setTheme] = useState(localStorage.getItem("currency-tracker-theme") === "light" ? false : true);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");
+    localStorage.setItem("currency-tracker-theme", theme ? "dark" : "light");
+  }, [theme]);
 
   const toggleThemeHandler = () => {
     setTheme((prevState) => !prevState);

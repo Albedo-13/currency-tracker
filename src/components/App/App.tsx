@@ -1,8 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import { ThemeContext } from "../../utils/ThemeProvider";
-import { useContext, useEffect } from "react";
-
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -28,13 +24,6 @@ const persister = createSyncStoragePersister({
 });
 
 function App() {
-  const { theme } = useContext(ThemeContext);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");
-    localStorage.setItem("currency-tracker-theme", theme ? "dark" : "light");
-  }, [theme]);
-
   return (
     <>
       <PersistQueryClientProvider client={queryClient} persistOptions={{ persister }}>
