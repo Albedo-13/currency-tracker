@@ -1,16 +1,15 @@
-import { useQuery } from "@tanstack/react-query";
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
-import { getExchangeRate } from "@api/currencyapi.api";
+import { useExchangeRates } from "@/hooks/useExchangeRates";
+import Select from "@components/Select/Select";
 import { maxInputLength } from "@constants/constants";
 import { convertCurrency } from "@utils/currencyFormatter";
-import Select from "@components/Select/Select";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 
 type ExchangeModalProps = {
   currencyCode: string;
 };
 
 export default function ExchangeModal({ currencyCode }: ExchangeModalProps) {
-  const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
+  const exchangeRates = useExchangeRates();
   const exchangeRatesData = exchangeRates.data?.data.data;
 
   const [textInputFrom, setTextInputFrom] = useState("");

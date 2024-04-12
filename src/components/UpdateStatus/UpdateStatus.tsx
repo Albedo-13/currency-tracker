@@ -1,9 +1,8 @@
-import { useQuery } from "@tanstack/react-query";
-import { getExchangeRate } from "@api/currencyapi.api";
+import { useExchangeRates } from "@/hooks/useExchangeRates";
 import "./updateStatus.scss";
 
 export default function UpdateStatus() {
-  const { dataUpdatedAt } = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
+  const { dataUpdatedAt } = useExchangeRates();
 
   const lastFetchData = () => {
     if (!dataUpdatedAt) return ". . .";

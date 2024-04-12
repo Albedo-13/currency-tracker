@@ -1,8 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
-import { getExchangeRate } from "@api/currencyapi.api";
+import { useExchangeRates } from "@/hooks/useExchangeRates";
 import { currenciesStaticInfo } from "@constants/constants";
 import { shouldDisableScroll } from "@utils/modalHelpers";
+import { useState } from "react";
 import ExchangeModal from "../Modal/ExchangeModal/ExchangeModal";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
@@ -14,7 +13,7 @@ export default function CurrencyList() {
   const [showModal, setShowModal] = useState(false);
   const [currencyCode, setCurrencyCode] = useState("");
 
-  const exchangeRates = useQuery({ queryKey: ["exchangeRates"], queryFn: getExchangeRate });
+  const exchangeRates = useExchangeRates();
   const exchangeRatesData = exchangeRates.data?.data.data;
 
   const handleModalShow = (key: string) => {
