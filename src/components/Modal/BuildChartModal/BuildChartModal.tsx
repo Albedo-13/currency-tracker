@@ -18,8 +18,7 @@ class ChartInputList extends Component<ChartInputListProps> {
   };
 
   handleBuildClick = (inputsList: XOHLCType[]) => {
-    const { onBuildClick } = this.props;
-    onBuildClick(inputsList);
+    this.props.onBuildClick(inputsList);
     inputsList.map((input) => {
       input.o = input.o ?? 0;
       input.h = input.h ?? 0;
@@ -54,8 +53,7 @@ type ChartInputLineProps = {
 
 class ChartInputLine extends Component<ChartInputLineProps> {
   handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { onChange } = this.props;
-    onChange({ [e.target.name]: e.target.value });
+    this.props.onChange({ [e.target.name]: e.target.value });
   };
 
   render() {
