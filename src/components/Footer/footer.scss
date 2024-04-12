@@ -37,7 +37,7 @@
 
   &-description {
     margin-top: calc($s-4 - 2px);
-    font-weight: 300;
+    font-weight: $fw-300;
     font-size: $fs-m-4;
     line-height: 150%;
     color: var(--text-color-main);
@@ -45,7 +45,7 @@
 
   &-nav {
     &-title {
-      font-weight: 400;
+      font-weight: $fw-400;
       font-size: $fs-m-8;
       color: var(--text-color-main);
     }
@@ -74,7 +74,7 @@
   }
 
   &-copyright {
-    font-weight: 400;
+    font-weight: $fw-400;
     font-size: $fs-m-4;
     color: $slate-gray-text;
     text-align: center;
@@ -97,7 +97,7 @@
   }
 
   &-title {
-    font-weight: 400;
+    font-weight: $fw-400;
   }
 
   &-icon {

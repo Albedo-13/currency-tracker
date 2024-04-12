@@ -16,14 +16,14 @@
   }
 
   &-title {
-    font-weight: 600;
+    font-weight: $fw-600;
     font-size: $fs-l-2;
   }
 
   &-subtitle {
     font-style: normal;
     font-size: $fs-m-4;
-    font-weight: 500;
+    font-weight: $fw-500;
   }
 
   &-info {

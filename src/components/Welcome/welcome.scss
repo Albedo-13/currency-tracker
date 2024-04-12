@@ -31,13 +31,13 @@
   }
 
   &-title {
-    font-weight: 600;
+    font-weight: $fw-600;
     font-size: $fs-7xl-6;
     text-align: right;
   }
 
   &-text {
-    font-weight: 300;
+    font-weight: $fw-300;
     font-size: $fs-m-5;
     line-height: 187%;
     text-align: center;

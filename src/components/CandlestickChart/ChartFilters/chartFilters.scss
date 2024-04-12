@@ -16,12 +16,12 @@
     padding: 0 $s-3;
     border-radius: 3px;
     font-size: $fs-l-0;
-    font-weight: 500;
+    font-weight: $fw-500;
   }
 
   &-label {
     font-size: $fs-m-8;
-    font-weight: 700;
+    font-weight: $fw-600;
     text-transform: uppercase;
   }
 }

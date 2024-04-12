@@ -24,13 +24,13 @@
   }
 
   &-name {
-    font-weight: 400;
+    font-weight: $fw-400;
     font-size: $fs-l-5;
     color: var(--accent-color);
   }
 
   &-short {
-    font-weight: 500;
+    font-weight: $fw-500;
     color: var(--text-color-main);
     opacity: 0.7;
     font-size: $fs-m-2;
@@ -57,7 +57,7 @@
     padding: 0 $s-3;
     border-radius: 3px;
     font-size: $fs-l-0;
-    font-weight: 500;
+    font-weight: $fw-500;
     padding: calc($s-1 - 3px) $s-2;
     transition: 0.25s all;
 

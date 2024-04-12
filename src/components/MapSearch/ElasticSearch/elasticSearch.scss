@@ -5,7 +5,7 @@
   padding: $s-11 0;
 
   &-title {
-    font-weight: 400;
+    font-weight: $fw-400;
     font-size: $fs-l-8;
     color: var(--text-color-main);
     margin-bottom: calc($s-5 - 1px);

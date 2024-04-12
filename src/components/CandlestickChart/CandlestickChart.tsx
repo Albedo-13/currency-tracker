@@ -31,16 +31,14 @@ function toastify(data: string) {
 
 observable.subscribe(toastify);
 
-type TCandlestickChartProps = {};
-
 type TCandlestickChartState = {
   selectCurrencyInput: string;
   chartData: TXOHLC[];
   showModal: boolean;
 };
 
-class CandlestickChart extends Component<TCandlestickChartProps, TCandlestickChartState> {
-  constructor(props: TCandlestickChartProps) {
+class CandlestickChart extends Component<never, TCandlestickChartState> {
+  constructor(props: never) {
     super(props);
     this.state = {
       selectCurrencyInput: "USD",
@@ -54,7 +52,7 @@ class CandlestickChart extends Component<TCandlestickChartProps, TCandlestickCha
     this.setChartData(selectCurrencyInput);
   }
 
-  componentDidUpdate(_: TCandlestickChartProps, prevState: TCandlestickChartState) {
+  componentDidUpdate(_: any, prevState: TCandlestickChartState) {
     const { selectCurrencyInput } = this.state;
     if (prevState.selectCurrencyInput !== selectCurrencyInput) {
       this.setChartData(selectCurrencyInput);
