@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { currenciesStaticInfo } from "../../constants/constants";
+import { currenciesStaticInfo } from "@constants/constants";
 import "./select.scss";
 
 type TProps = {

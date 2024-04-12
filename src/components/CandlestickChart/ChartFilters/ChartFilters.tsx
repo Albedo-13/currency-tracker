@@ -1,5 +1,5 @@
 import { ChangeEvent, Component } from "react";
-import { zeroPrefix } from "../../../utils/chartAdapter";
+import { zeroPrefix } from "@utils/chartAdapter";
 import "./chartFilters.scss";
 
 type TChartFiltersProps = {

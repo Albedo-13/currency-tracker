@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
-import BankCardPage from "../../pages/BankCardPage";
-import ContactPage from "../../pages/ContactPage";
-import MainPage from "../../pages/MainPage";
-import TimelinePage from "../../pages/TimelinePage";
+import BankCardPage from "@pages/BankCardPage";
+import ContactPage from "@pages/ContactPage";
+import MainPage from "@pages/MainPage";
+import TimelinePage from "@pages/TimelinePage";
 import ErrorBoundary from "../ErrorBoundary/ErrorBoundary";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";

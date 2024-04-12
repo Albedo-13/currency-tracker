@@ -2,9 +2,9 @@ import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { Component, MutableRefObject, createRef } from "react";
-import { banksStaticInfo } from "../../../constants/constants";
-import { TBank } from "../../../types/types";
-import { findBanksByCurrencyCodeOrName } from "../../../utils/currencyFormatter";
+import { banksStaticInfo } from "@constants/constants";
+import { TBank } from "@types";
+import { findBanksByCurrencyCodeOrName } from "@utils/currencyFormatter";
 import "./mapbox.scss";
 
 mapboxgl.accessToken = "pk.eyJ1IjoiYWxiZWRvLTEzIiwiYSI6ImNsdG81czNxODA1cnMybm1oNHlpMWwzbzYifQ.TzBIU653JOAB9ehp-co3pA";

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../utils/ThemeProvider";
+import { ThemeContext } from "@utils/ThemeProvider";
 import "./switch.scss";
 
 export default function Switch() {

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { shouldDisableScroll } from "../../utils/modalHelpers";
+import { shouldDisableScroll } from "@utils/modalHelpers";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";
 import Switch from "../Switch/Switch";

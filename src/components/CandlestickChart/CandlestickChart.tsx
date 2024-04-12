@@ -6,12 +6,12 @@ import { CandlestickController, CandlestickElement, OhlcController, OhlcElement 
 import { Chart as ChartComponent } from "react-chartjs-2";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import currenciesChartData from "../../constants/chartData";
-import { chartDays } from "../../constants/constants";
-import { TXOHLC } from "../../types/types";
-import { dateAdapter, randomBar } from "../../utils/chartAdapter";
-import { shouldDisableScroll } from "../../utils/modalHelpers";
-import observable from "../../utils/toastObserver";
+import currenciesChartData from "@constants/chartData";
+import { chartDays } from "@constants/constants";
+import { TXOHLC } from "@types";
+import { dateAdapter, randomBar } from "@utils/chartAdapter";
+import { shouldDisableScroll } from "@utils/modalHelpers";
+import observable from "@utils/toastObserver";
 import ChartInputList from "../Modal/BuildChartModal/BuildChartModal";
 import Modal from "../Modal/Modal";
 import ModalPortal from "../Modal/ModalPortal";

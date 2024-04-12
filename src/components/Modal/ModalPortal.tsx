@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom";
-import { modalRoot } from "../../constants/constants";
+import { modalRoot } from "@constants/constants";
 
 type TProps = {
   children: React.ReactNode;

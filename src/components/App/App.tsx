@@ -3,7 +3,7 @@ import { QueryClient } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { staleTime } from "../../constants/constants";
+import { staleTime } from "@constants/constants";
 import { BrowserRoutes } from "./Routes";
 
 const router = createBrowserRouter(BrowserRoutes);

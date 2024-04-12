@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { getExchangeRate } from "../../api/currencyapi.api";
+import { getExchangeRate } from "@api/currencyapi.api";
 import "./updateStatus.scss";
 
 export default function UpdateStatus() {
