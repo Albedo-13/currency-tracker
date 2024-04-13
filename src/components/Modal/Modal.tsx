@@ -3,7 +3,7 @@ import "./modal.scss";
 import { PropsWithChildren, ReactNode, SyntheticEvent, useEffect } from "react";
 
 type ModalProps = {
-  onClose: () => void;
+  onClose: VoidFunction;
   children: PropsWithChildren<ReactNode>;
 };
 

@@ -35,6 +35,7 @@ observable.subscribe(toastify);
 type CandlestickChartState = {
   selectCurrencyInput: string;
   chartData: XOHLCType[];
+  filteredChartData: XOHLCType[];
   showModal: boolean;
 };
 
@@ -44,6 +45,7 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
     this.state = {
       selectCurrencyInput: "USD",
       chartData: currenciesChartData["USD"],
+      filteredChartData: currenciesChartData["USD"],
       showModal: false,
     };
   }
@@ -99,7 +101,7 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
       return date.getTime() >= from && date.getTime() <= to;
     });
 
-    this.setState({ chartData: newFilteredData });
+    this.setState({ filteredChartData: newFilteredData });
   };
 
   handleBuildClick = (inputs: XOHLCType[]) => {
@@ -118,14 +120,14 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
   };
 
   render() {
-    const { selectCurrencyInput, chartData, showModal } = this.state;
+    const { selectCurrencyInput, filteredChartData, showModal } = this.state;
 
     const data = {
       datasets: [
         {
           type: "candlestick" as const,
           label: "Candlestick Chart",
-          data: chartData,
+          data: filteredChartData,
           borderColor: "rgba(128, 128, 128, 1)",
           borderWidth: 2,
         },
