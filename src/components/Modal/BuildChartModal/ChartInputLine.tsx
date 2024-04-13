@@ -1,8 +1,8 @@
+import { XOHLCType } from "@types";
 import { dateAdapter } from "@utils/chartAdapter";
 import { type ChangeEvent,Component } from "react";
 
 import { dayInMs } from "@/constants/constants";
-import { XOHLCType } from "@/types/types";
 
 import { ChartInputItem } from "./ChartInputItem";
 

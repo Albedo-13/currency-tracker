@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { PropsWithChildren, ReactNode, useState } from "react";
 
 type AccordionProps = {
   title: string;
-  children: React.ReactNode;
+  children: PropsWithChildren<ReactNode>;
 };
 
 export function Accordion({ title, children }: AccordionProps) {

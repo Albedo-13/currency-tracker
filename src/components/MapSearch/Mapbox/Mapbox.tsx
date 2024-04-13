@@ -3,7 +3,7 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./mapbox.scss";
 
 import { banksStaticInfo } from "@constants/constants";
-import { BankType } from "@types";
+import type { BankType } from "@types";
 import { findBanksByCurrencyCodeOrName } from "@utils/currencyFormatter";
 import mapboxgl from "mapbox-gl";
 import { Component, createRef,MutableRefObject } from "react";

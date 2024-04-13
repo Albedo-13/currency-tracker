@@ -6,7 +6,7 @@ import { formatCurrency } from "@utils/currencyFormatter";
 type CurrencyCardProps = {
   currency: CurrencyType;
   exchangeValue: number;
-  onClick: () => void;
+  onClick: () => VoidFunction;
 };
 
 export default function CurrencyCard({ currency, exchangeValue, onClick }: CurrencyCardProps) {

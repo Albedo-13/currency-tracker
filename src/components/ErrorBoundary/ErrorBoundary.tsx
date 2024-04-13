@@ -1,9 +1,9 @@
 import "./errorBoundary.scss";
 
-import React, { ErrorInfo } from "react";
+import { Component, ErrorInfo, PropsWithChildren, ReactNode } from "react";
 
 type ErrorBoundaryProps = {
-  children: React.ReactNode;
+  children: PropsWithChildren<ReactNode>;
 };
 
 type ErrorBoundaryState = {
@@ -11,13 +11,13 @@ type ErrorBoundaryState = {
   errorInfo: ErrorInfo | null;
 };
 
-export default class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { error: null, errorInfo: null };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     this.setState({
       error: error,
       errorInfo: errorInfo,

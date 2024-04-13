@@ -4,7 +4,7 @@ import { headerLinks } from "@/constants/constants";
 
 type HeaderNavProps = {
   className?: string;
-  onClose?: () => void;
+  onClose?: () => VoidFunction;
 };
 
 export function HeaderNav({ className, onClose }: HeaderNavProps) {

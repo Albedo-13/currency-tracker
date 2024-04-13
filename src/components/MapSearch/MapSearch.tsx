@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { ChangeEvent, Component } from "react";
 
 import ElasticSearch from "./ElasticSearch/ElasticSearch";
 import Mapbox from "./Mapbox/Mapbox";
@@ -8,7 +8,7 @@ export default class MapSearch extends Component {
     searchString: "",
   };
 
-  handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     this.setState({ searchString: e.target.value });
   };
 

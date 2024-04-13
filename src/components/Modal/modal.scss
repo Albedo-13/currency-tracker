@@ -9,8 +9,6 @@
   background-color: rgba($color: $background-color, $alpha: 0.75);
   backdrop-filter: blur(6px);
   z-index: 10;
-
-  // body {}
   height: 100vh;
   overflow-y: hidden;
 }
@@ -25,7 +23,6 @@
   transform: translate(-50%, -50%);
   padding: $s-8 $s-3 $s-6 $s-3;
   border-radius: 8px;
-  // overflow-y: hidden;
 
   &-close {
     position: absolute;

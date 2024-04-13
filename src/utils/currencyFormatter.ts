@@ -1,4 +1,4 @@
-import type { BankType, ExchangeRatesDataType } from "../types/types";
+import type { BankType, ExchangeRatesDataType } from "@types";
 
 export function formatCurrency(value: number, currencyCode: string, decimalDigits: number): string {
   const options = {

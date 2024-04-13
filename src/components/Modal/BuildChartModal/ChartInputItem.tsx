@@ -1,6 +1,5 @@
-import { type ChangeEvent,Component } from "react";
-
-import { XOHLCType } from "@/types/types";
+import type { XOHLCType } from "@types";
+import { type ChangeEvent, Component } from "react";
 
 type ChartInputItemProps = {
   data: XOHLCType;
@@ -29,4 +28,3 @@ class ChartInputItem extends Component<ChartInputItemProps> {
 }
 
 export { ChartInputItem };
-

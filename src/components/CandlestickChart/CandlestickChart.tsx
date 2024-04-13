@@ -4,15 +4,15 @@ import "./candlestickChart.scss";
 
 import currenciesChartData from "@constants/chartData";
 import { chartDays, dayInMs } from "@constants/constants";
-import { XOHLCType } from "@types";
+import type { XOHLCType } from "@types";
 import { dateAdapter, randomBar } from "@utils/chartAdapter";
 import { shouldDisableScroll } from "@utils/modalHelpers";
 import observable from "@utils/toastObserver";
 import Chart from "chart.js/auto";
 import { CandlestickController, CandlestickElement, OhlcController, OhlcElement } from "chartjs-chart-financial";
-import { Component } from "react";
+import { Component, ComponentProps } from "react";
 import { Chart as ChartComponent } from "react-chartjs-2";
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 import { ChartInputList } from "../Modal/BuildChartModal/BuildChartModal";
 import Modal from "../Modal/Modal";
@@ -38,8 +38,8 @@ type CandlestickChartState = {
   showModal: boolean;
 };
 
-class CandlestickChart extends Component<any, CandlestickChartState> {
-  constructor(props: any) {
+class CandlestickChart extends Component<ComponentProps<typeof Component>, CandlestickChartState> {
+  constructor(props: ComponentProps<typeof Component>) {
     super(props);
     this.state = {
       selectCurrencyInput: "USD",
@@ -53,7 +53,7 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
     this.setChartData(selectCurrencyInput);
   }
 
-  componentDidUpdate(_: any, prevState: CandlestickChartState) {
+  componentDidUpdate(_: ComponentProps<typeof Component>, prevState: CandlestickChartState) {
     const { selectCurrencyInput } = this.state;
     if (prevState.selectCurrencyInput !== selectCurrencyInput) {
       this.setChartData(selectCurrencyInput);
@@ -94,7 +94,7 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
       return;
     }
 
-    const newFilteredData = chartData.filter((item) => {
+    const newFilteredData = chartData.filter((item: XOHLCType) => {
       const date = new Date(item.x as number);
       return date.getTime() >= from && date.getTime() <= to;
     });
@@ -106,7 +106,8 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
     const newChartData = [];
 
     for (let i = 0; i < inputs.length; i++) {
-      let { o, h, l, c }: XOHLCType = inputs[i];
+      let { l }: XOHLCType = inputs[i];
+      const { o, h, c }: XOHLCType = inputs[i];
       l = l && h ? (l > h ? h : l) : l;
       newChartData.push({ x: Date.parse(dateAdapter(Date.now() - i * dayInMs)), o, h, l, c });
     }
@@ -192,4 +193,3 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
 }
 
 export { CandlestickChart };
-

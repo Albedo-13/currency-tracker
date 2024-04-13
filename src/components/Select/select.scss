@@ -1,13 +1,10 @@
 @import "@styles/variables.scss";
 
-// SELECT
 .ui-select {
   appearance: none;
   outline: none;
   background: transparent;
   border: none;
-  line-height: inherit;
-  font-size: inherit;
   padding-right: $s-3;
   font-size: $fs-l-0;
   font-weight: $fw-500;
@@ -38,7 +35,6 @@
 }
 
 .ui-select-extended-icon {
-  /* <span> */
   overflow: hidden;
   position: relative;
   background-color: $card-color;
@@ -52,20 +48,15 @@
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 9; // a key to the puzzle
+    z-index: 9;
     width: 44px;
-    font-size: inherit; // get this from the span
-    line-height: inherit; // also get this from the span
     text-align: center;
-    background-color: inherit;
-    pointer-events: none; // major key to the puzzle
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    pointer-events: none;
   }
 
   select {
     width: 92%;
     color: inherit;
-    cursor: pointer; // this now applies to the entire wrapped element.
+    cursor: pointer;
   }
 }

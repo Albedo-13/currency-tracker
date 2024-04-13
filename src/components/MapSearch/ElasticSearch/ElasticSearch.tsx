@@ -1,12 +1,12 @@
 import "./elasticSearch.scss";
 
 import debounce from "debounce";
-import { Component } from "react";
+import { ChangeEvent, Component } from "react";
 
 import searchIcon from "/icons/search-icon.svg";
 
 type ElasticSearchProps = {
-  handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const debounceDelay = 700;

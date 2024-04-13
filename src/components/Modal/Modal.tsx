@@ -1,10 +1,10 @@
 import "./modal.scss";
 
-import { SyntheticEvent, useEffect } from "react";
+import { PropsWithChildren, ReactNode, SyntheticEvent, useEffect } from "react";
 
 type ModalProps = {
   onClose: () => void;
-  children: React.ReactNode;
+  children: PropsWithChildren<ReactNode>;
 };
 
 export default function Modal({ onClose, children }: ModalProps) {
