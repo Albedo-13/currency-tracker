@@ -11,7 +11,7 @@
     font-size: $fs-s-8;
   }
 
-  &-input-group {
+  &-input__group {
     display: flex;
     justify-content: space-between;
   }
@@ -19,8 +19,8 @@
   &-input-line {
     margin-bottom: $s-4;
 
-    &-date {
-      font-size: 20px;
+    &__date {
+      font-size: $fs-m-0;
       font-weight: $fw-600;
       color: $text-color-minor;
     }

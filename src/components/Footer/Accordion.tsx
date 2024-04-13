@@ -14,11 +14,11 @@ export function Accordion({ title, children }: AccordionProps) {
 
   return (
     <div className="accordion">
-      <div className="accordion-header" onClick={toggleAccordion}>
-        <h2 className="accordion-title">{title}</h2>
-        <span className={`accordion-icon ${isOpen ? "accordion-open" : ""}`}></span>
+      <div className="accordion__header" onClick={toggleAccordion}>
+        <h2 className="accordion__title">{title}</h2>
+        <span className={`accordion__icon ${isOpen ? "accordion__open" : ""}`}></span>
       </div>
-      {isOpen && <div className="accordion-content">{children}</div>}
+      {isOpen && children}
     </div>
   );
 }

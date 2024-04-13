@@ -34,6 +34,7 @@ $s-5: 25px;
 $s-6: 30px;
 $s-7: 35px;
 $s-8: 40px;
+$s-9: 45px;
 $s-10: 50px;
 $s-11: 55px;
 $s-12: 60px;
@@ -55,6 +56,7 @@ $fs-l-0: 30px;
 $fs-l-2: 32px;
 $fs-l-5: 35px;
 $fs-l-8: 38px;
+$fs-5xl-0: 50px;
 $fs-7xl-6: 76px;
 
 // SCREENS WIDTH
@@ -67,3 +69,7 @@ $fw-300: 300;
 $fw-400: 400;
 $fw-500: 500;
 $fw-600: 600;
+
+// Z-INDEXES (LAYERS)
+$layer-1-top: 9;
+$layer-2-bottom: 10;

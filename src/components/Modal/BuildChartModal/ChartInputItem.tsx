@@ -12,7 +12,7 @@ class ChartInputItem extends Component<ChartInputItemProps> {
     const { data, onInputChange, value } = this.props;
 
     return (
-      <label className="modal-label_small">
+      <label className="modal-label modal-label_small">
         {value}:
         <input
           className="modal-input modal-input_small"

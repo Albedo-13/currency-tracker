@@ -50,9 +50,9 @@ export default class Mapbox extends Component<MapboxProps> {
     banks.map(({ name, address, coordinates, currencies }) => {
       const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
         `
-        <p class="mapboxgl-popup-name">${name}</p>
-        <p class="mapboxgl-popup-address">${address}</p>
-        <p class="mapboxgl-popup-currencies">
+        <p class="mapboxgl-popup__name">${name}</p>
+        <p class="mapboxgl-popup__address">${address}</p>
+        <p class="mapboxgl-popup__currencies">
           ${currencies.map(({ code }) => `${code}`).join(", ")}
         </p>
         `

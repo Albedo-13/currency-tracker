@@ -27,14 +27,14 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
   render() {
     if (this.state.errorInfo && process.env.NODE_ENV !== "development") {
       return (
-        <div>
+        <section className="error-b">
           <h2>Something went wrong.</h2>
-          <details className="error-b-details">
+          <details className="error-b__details">
             {this.state.error && this.state.error.toString()}
             <br />
             {this.state.errorInfo.componentStack}
           </details>
-        </div>
+        </section>
       );
     }
     return this.props.children;

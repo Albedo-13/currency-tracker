@@ -10,16 +10,16 @@
     gap: $s-6;
   }
 
-  &-date {
+  &__date {
     background-color: $card-color;
     border: none;
     padding: 0 $s-3;
-    border-radius: 3px;
+    border-radius: calc($s-1 - 2px);
     font-size: $fs-l-0;
     font-weight: $fw-500;
   }
 
-  &-label {
+  &__label {
     font-size: $fs-m-8;
     font-weight: $fw-600;
     text-transform: uppercase;

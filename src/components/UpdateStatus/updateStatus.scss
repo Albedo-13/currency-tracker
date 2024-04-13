@@ -10,10 +10,10 @@
     gap: $s-5;
   }
 
-  &-lamp {
+  &__lamp {
     position: relative;
-    min-width: 20px;
-    height: 20px;
+    min-width: $s-4;
+    height: $s-4;
     background-color: #00bc4fbf;
     border-radius: 100%;
 
@@ -23,14 +23,14 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      min-width: 20px;
-      height: 20px;
-      border: 10px solid #00bc4f50;
+      min-width: $s-4;
+      height: $s-4;
+      border: $s-2 solid #00bc4f50;
       border-radius: 100%;
     }
   }
 
-  &-text {
+  &__text {
     font-weight: $fw-300;
     font-size: $fs-l-2;
     text-align: center;
@@ -39,7 +39,7 @@
 
 @media (max-width: $phone) {
   .update-status {
-    &-text {
+    &__text {
       font-size: $fs-m-4;
     }
   }

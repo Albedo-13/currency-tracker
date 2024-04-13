@@ -15,18 +15,18 @@
     }
   }
 
-  &-title {
+  &__title {
     font-weight: $fw-600;
     font-size: $fs-l-2;
   }
 
-  &-subtitle {
+  &__subtitle {
     font-style: normal;
     font-size: $fs-m-4;
     font-weight: $fw-500;
   }
 
-  &-info {
+  &__info {
     font-style: normal;
     display: block;
     margin-top: $s-2;

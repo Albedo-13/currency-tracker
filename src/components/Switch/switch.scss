@@ -3,8 +3,8 @@
 .switch {
   position: relative;
   display: inline-block;
-  width: 50px;
-  height: 30px;
+  width: $s-10;
+  height: $s-6;
 
   &:hover {
     .switch-slider {
@@ -37,8 +37,8 @@
   &:before {
     position: absolute;
     content: "";
-    height: 26px;
-    width: 26px;
+    height: calc($s-5 + 1px);
+    width: calc($s-5 + 1px);
     left: -2px;
     bottom: -2px;
     border: 2px solid $text-color-main;
@@ -49,14 +49,14 @@
 input:checked + .switch-slider {
 
   &:before {
-    transform: translateX(20px);
+    transform: translateX($s-4);
   }
 }
 
-.switch-slider.round {
-  border-radius: 34px;
+.switch-slider_round {
+  border-radius: calc($s-7 - 1px);
 }
 
-.switch-slider.round:before {
+.switch-slider_round:before {
   border-radius: 50%;
 }

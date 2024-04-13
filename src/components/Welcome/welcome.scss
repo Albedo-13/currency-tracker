@@ -30,13 +30,13 @@
     }
   }
 
-  &-title {
+  &__title {
     font-weight: $fw-600;
     font-size: $fs-7xl-6;
     text-align: right;
   }
 
-  &-text {
+  &__text {
     font-weight: $fw-300;
     font-size: $fs-m-5;
     line-height: 187%;
@@ -47,7 +47,7 @@
     right: -$s-12;
   }
 
-  &-img {
+  &__img {
     min-width: 300px;
     height: auto;
     img {
@@ -65,16 +65,16 @@
       justify-content: center;
     }
 
-    &-img {
+    &__img {
       display: none;
     }
 
-    &-title {
+    &__title {
       text-align: center;
-      font-size: 50px;
+      font-size: $fs-5xl-0;
     }
 
-    &-text {
+    &__text {
       right: 0;
       margin: 0 auto;
     }

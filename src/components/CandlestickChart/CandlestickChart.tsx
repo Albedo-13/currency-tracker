@@ -167,11 +167,11 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
             <ChartFilters onFilterClick={this.handleFilterClick} />
           </div>
 
-          <div className="chart-block chart-button-group">
-            <button onClick={this.handleModalShow} className="chart-button">
+          <div className="chart-block chart__button-group">
+            <button onClick={this.handleModalShow} className="chart__button">
               Custom data
             </button>
-            <button onClick={this.handleRandomClick} className="chart-button">
+            <button onClick={this.handleRandomClick} className="chart__button">
               Random
             </button>
           </div>

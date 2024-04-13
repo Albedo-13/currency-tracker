@@ -10,7 +10,7 @@ export default function Switch() {
   return (
     <label className="switch" htmlFor="switch-theme">
       <input id="switch-theme" type="checkbox" onChange={toggleTheme} checked={!theme} />
-      <span className="switch-slider round"></span>
+      <span className="switch-slider switch-slider_round"></span>
     </label>
   );
 }

@@ -20,8 +20,8 @@ export default function UpdateStatus() {
     <section className="update-status">
       <div className="container">
         <div className="update-status-wrapper">
-          <div className="update-status-lamp"></div>
-          <h2 className="update-status-text">Last Updated at {lastFetchData()}</h2>
+          <div className="update-status__lamp"></div>
+          <h2 className="update-status__text">Last Updated at {lastFetchData()}</h2>
         </div>
       </div>
     </section>
