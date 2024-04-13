@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { currenciesCodes } from "../constants/constants";
 
 export async function getCurrencyData() {

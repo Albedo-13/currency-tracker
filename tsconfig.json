@@ -27,7 +27,7 @@
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
       "@constants/*": ["src/constants/*"],
-      "@types": ["src/types/types"],
+      "@types": ["src/types/index.ts"],
       "@utils/*": ["src/utils/*"]
     }
   },

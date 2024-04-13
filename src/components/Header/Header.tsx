@@ -27,7 +27,7 @@ export default function Header() {
     <header className="header">
       <div className="container">
         <div className="header-wrapper">
-          <Link to="/" className="header-link">
+          <Link to="/" className="header__link">
             <img src={logo} alt="currency tracker logo" />
           </Link>
           <div className="header-nav-desktop">
@@ -35,15 +35,15 @@ export default function Header() {
           </div>
           <div className="header-nav-mobile">
             <div onClick={handleModalShow} className="header-burger">
-              <span className="header-burger-line"></span>
-              <span className="header-burger-line"></span>
-              <span className="header-burger-line"></span>
+              <span className="header-burger__line"></span>
+              <span className="header-burger__line"></span>
+              <span className="header-burger__line"></span>
             </div>
             {showModal && (
               <ModalPortal
                 children={
                   <Modal onClose={handleModalClose}>
-                    <HeaderNav onClose={handleModalClose} className="header-nav-vertical" />
+                    <HeaderNav onClose={handleModalClose} className="header-nav header-nav_vertical" />
                   </Modal>
                 }
               />

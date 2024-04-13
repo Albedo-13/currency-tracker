@@ -22,6 +22,7 @@ class ChartFilters extends Component<ChartFiltersProps, ChartFiltersState> {
   }
 
   handleDateChange = (e: ChangeEvent<HTMLInputElement>, setter: (value: number) => void) => {
+    this.props.onFilterClick(this.state.from, this.state.to);
     const inputDate = new Date(e.target.value);
     const dateString = `${inputDate.getFullYear()}-${zeroPrefix(inputDate.getMonth() + 1)}-${zeroPrefix(
       inputDate.getDate()
@@ -33,22 +34,39 @@ class ChartFilters extends Component<ChartFiltersProps, ChartFiltersState> {
     this.props.onFilterClick(this.state.from, this.state.to);
   };
 
-  handleChangePickedDate = (e: ChangeEvent<HTMLInputElement>) => {
-    return this.handleDateChange(e, (value) => this.setState({ from: value }));
+  handleChangePickedDate = (e: ChangeEvent<HTMLInputElement>, key: string) => {
+    return this.handleDateChange(e, (value) =>
+      this.setState((prevState) => ({
+        ...prevState,
+        [key]: value,
+      }))
+    );
   };
 
   render() {
     return (
       <section className="chart-filters">
-        <label className="chart-filters-label">
+        <label className="chart-filters__label">
           from:
-          <input type="date" onChange={(e) => this.handleChangePickedDate(e)} className="chart-filters-date" />
+          <input
+            type="date"
+            min="2024-03-27"
+            max="2024-04-09"
+            onChange={(e) => this.handleChangePickedDate(e, "from")}
+            className="chart-filters__date"
+          />
         </label>
-        <label className="chart-filters-label">
+        <label className="chart-filters__label">
           to:
-          <input type="date" onChange={(e) => this.handleChangePickedDate(e)} className="chart-filters-date" />
+          <input
+            type="date"
+            min="2024-03-27"
+            max="2024-04-09"
+            onChange={(e) => this.handleChangePickedDate(e, "to")}
+            className="chart-filters__date"
+          />
         </label>
-        <button onClick={this.handleFilterClick} className="chart-button">
+        <button onClick={this.handleFilterClick} className="chart__button">
           Filter
         </button>
       </section>

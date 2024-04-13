@@ -1,10 +1,10 @@
 import "./modal.scss";
 
-import { SyntheticEvent, useEffect } from "react";
+import { PropsWithChildren, ReactNode, SyntheticEvent, useEffect } from "react";
 
 type ModalProps = {
-  onClose: () => void;
-  children: React.ReactNode;
+  onClose: VoidFunction;
+  children: PropsWithChildren<ReactNode>;
 };
 
 export default function Modal({ onClose, children }: ModalProps) {
@@ -29,7 +29,7 @@ export default function Modal({ onClose, children }: ModalProps) {
   return (
     <aside aria-modal="true" className="overlay" onMouseDown={handleCloseClick}>
       <div className="modal">
-        <span className="modal-close" onMouseDown={handleCloseClick} tabIndex={0}>
+        <span className="modal__close" onMouseDown={handleCloseClick} tabIndex={0}>
           &times;
         </span>
         {children}

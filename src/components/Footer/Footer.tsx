@@ -11,29 +11,28 @@ export default function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer-wrapper">
-          <div className="footer-wrapper-left">
+          <div className="footer-wrapper__left">
             <div className="footer-logo-wrapper">
-              <a href="/" className="footer-img footer-link">
+              <a href="/" className="footer__img footer__link">
                 <img src={logo} alt="currency tracker logo" />
               </a>
-              <h2 className="footer-title gradient-text">Modsen Currency Tracker</h2>
+              <h2 className="gradient-text">Modsen Currency Tracker</h2>
             </div>
-            <p className="footer-description">
+            <p className="footer__description">
               Since then, the company has grown organically to. Starsup is the world's largest trading platform, with
               $12 billion worth of currency trading and 500,000 tickets sold daily to tens of thousands of traders
               worldwide.
             </p>
           </div>
-          <nav className="footer-wrapper-right footer-desktop">{<FooterNav />}</nav>
-          <nav className="footer-wrapper-right footer-mobile">
-            {footerLinks.map((section) => {
+          <nav className="footer-wrapper__right footer-desktop">{<FooterNav />}</nav>
+          <nav className="footer-wrapper__right footer-mobile">
+            {footerLinks.map(({ label, links }) => {
               return (
-                <Accordion title={section.label} key={section.label}>
-                  {section.links.map((link) => {
-                    const { name, href } = link;
+                <Accordion title={label} key={label}>
+                  {links.map(({ name, href }) => {
                     return (
-                      <div className="footer-nav-list-item" key={name}>
-                        <a href={href} className="footer-link">
+                      <div className="footer-nav__list-item" key={name}>
+                        <a href={href} className="footer__link">
                           {name}
                         </a>
                       </div>
@@ -44,7 +43,7 @@ export default function Footer() {
             })}
           </nav>
         </div>
-        <p className="footer-copyright">Startsup © 2023-2024, All Rights Reserved</p>
+        <p className="footer__copyright">Startsup © 2023-2024, All Rights Reserved</p>
       </div>
     </footer>
   );

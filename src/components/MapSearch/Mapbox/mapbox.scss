@@ -19,21 +19,21 @@
     padding: $s-4 $s-4 $s-3;
   }
 
-  .mapboxgl-popup-name {
+  .mapboxgl-popup__name {
     color: $slate-black;
     
     font-size: $fs-m-4;
     font-weight: $fw-600;
   }
 
-  .mapboxgl-popup-address {
+  .mapboxgl-popup__address {
     margin-top: $s-2;
     font-size: $fs-m-0;
     font-weight: $fw-400;
     color: $slate-gray-card-border;
   }
 
-  .mapboxgl-popup-currencies {
+  .mapboxgl-popup__currencies {
     margin-top: $s-2;
     font-size: $fs-m-0;
     font-weight: $fw-400;

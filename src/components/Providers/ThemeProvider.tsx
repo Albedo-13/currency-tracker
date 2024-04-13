@@ -1,7 +1,7 @@
-import React, { createContext, useEffect,useState } from "react";
+import { createContext, PropsWithChildren, ReactNode, useEffect, useState } from "react";
 
 type ThemeProviderType = {
-  children: React.ReactNode;
+  children: PropsWithChildren<ReactNode>;
 };
 
 export const ThemeContext = createContext({
@@ -10,7 +10,7 @@ export const ThemeContext = createContext({
 });
 
 export default function ThemeProvider({ children }: ThemeProviderType) {
-  const [theme, setTheme] = useState(localStorage.getItem("currency-tracker-theme") === "light" ? false : true);
+  const [theme, setTheme] = useState(localStorage.getItem("currency-tracker-theme") === "dark");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");

@@ -1,6 +1,5 @@
-import { type ChangeEvent,Component } from "react";
-
-import { XOHLCType } from "@/types/types";
+import type { XOHLCType } from "@types";
+import { type ChangeEvent, Component } from "react";
 
 type ChartInputItemProps = {
   data: XOHLCType;
@@ -13,7 +12,7 @@ class ChartInputItem extends Component<ChartInputItemProps> {
     const { data, onInputChange, value } = this.props;
 
     return (
-      <label className="modal-label_small">
+      <label className="modal-label modal-label_small">
         {value}:
         <input
           className="modal-input modal-input_small"
@@ -29,4 +28,3 @@ class ChartInputItem extends Component<ChartInputItemProps> {
 }
 
 export { ChartInputItem };
-

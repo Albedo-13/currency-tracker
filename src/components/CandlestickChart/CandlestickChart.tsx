@@ -4,15 +4,15 @@ import "./candlestickChart.scss";
 
 import currenciesChartData from "@constants/chartData";
 import { chartDays, dayInMs } from "@constants/constants";
-import { XOHLCType } from "@types";
+import type { XOHLCType } from "@types";
 import { dateAdapter, randomBar } from "@utils/chartAdapter";
 import { shouldDisableScroll } from "@utils/modalHelpers";
 import observable from "@utils/toastObserver";
 import Chart from "chart.js/auto";
 import { CandlestickController, CandlestickElement, OhlcController, OhlcElement } from "chartjs-chart-financial";
-import { Component } from "react";
+import { Component, ComponentProps } from "react";
 import { Chart as ChartComponent } from "react-chartjs-2";
-import { toast,ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 
 import { ChartInputList } from "../Modal/BuildChartModal/BuildChartModal";
 import Modal from "../Modal/Modal";
@@ -35,15 +35,17 @@ observable.subscribe(toastify);
 type CandlestickChartState = {
   selectCurrencyInput: string;
   chartData: XOHLCType[];
+  filteredChartData: XOHLCType[];
   showModal: boolean;
 };
 
-class CandlestickChart extends Component<any, CandlestickChartState> {
-  constructor(props: any) {
+class CandlestickChart extends Component<ComponentProps<typeof Component>, CandlestickChartState> {
+  constructor(props: ComponentProps<typeof Component>) {
     super(props);
     this.state = {
       selectCurrencyInput: "USD",
       chartData: currenciesChartData["USD"],
+      filteredChartData: currenciesChartData["USD"],
       showModal: false,
     };
   }
@@ -51,12 +53,14 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
   componentDidMount() {
     const { selectCurrencyInput } = this.state;
     this.setChartData(selectCurrencyInput);
+    this.setFilteredChartData(currenciesChartData[selectCurrencyInput as keyof typeof currenciesChartData]);
   }
 
-  componentDidUpdate(_: any, prevState: CandlestickChartState) {
+  componentDidUpdate(_: ComponentProps<typeof Component>, prevState: CandlestickChartState) {
     const { selectCurrencyInput } = this.state;
     if (prevState.selectCurrencyInput !== selectCurrencyInput) {
       this.setChartData(selectCurrencyInput);
+      this.setFilteredChartData(currenciesChartData[selectCurrencyInput as keyof typeof currenciesChartData]);
     }
     shouldDisableScroll(this.state.showModal);
   }
@@ -64,6 +68,10 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
   setChartData = (currency: string) => {
     const chartData = currenciesChartData[currency as keyof typeof currenciesChartData];
     this.setState({ chartData });
+  };
+
+  setFilteredChartData = (data: any) => {
+    this.setState({ filteredChartData: data });
   };
 
   setSelectCurrencyInput = (value: string) => {
@@ -85,6 +93,7 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
       newGeneratedData.push(randomBar(chartData, i, new Date(`2024-04-${i + 1}`), 221.13));
     }
 
+    this.setState({ filteredChartData: newGeneratedData });
     this.setState({ chartData: newGeneratedData });
   };
 
@@ -94,37 +103,39 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
       return;
     }
 
-    const newFilteredData = chartData.filter((item) => {
+    const newFilteredData = chartData.filter((item: XOHLCType) => {
       const date = new Date(item.x as number);
       return date.getTime() >= from && date.getTime() <= to;
     });
 
-    this.setState({ chartData: newFilteredData });
+    this.setState({ filteredChartData: newFilteredData });
   };
 
   handleBuildClick = (inputs: XOHLCType[]) => {
     const newChartData = [];
 
     for (let i = 0; i < inputs.length; i++) {
-      let { o, h, l, c }: XOHLCType = inputs[i];
+      let { l }: XOHLCType = inputs[i];
+      const { o, h, c }: XOHLCType = inputs[i];
       l = l && h ? (l > h ? h : l) : l;
       newChartData.push({ x: Date.parse(dateAdapter(Date.now() - i * dayInMs)), o, h, l, c });
     }
 
     this.setState({ chartData: newChartData });
+    this.setState({ filteredChartData: newChartData });
     this.handleModalClose();
     observable.notify("Chart build successful");
   };
 
   render() {
-    const { selectCurrencyInput, chartData, showModal } = this.state;
+    const { selectCurrencyInput, filteredChartData, showModal } = this.state;
 
     const data = {
       datasets: [
         {
           type: "candlestick" as const,
           label: "Candlestick Chart",
-          data: chartData,
+          data: filteredChartData,
           borderColor: "rgba(128, 128, 128, 1)",
           borderWidth: 2,
         },
@@ -152,6 +163,7 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
       },
     };
 
+    console.log("render with", selectCurrencyInput)
     return (
       <section className="chart">
         <div className="container">
@@ -162,11 +174,11 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
             <ChartFilters onFilterClick={this.handleFilterClick} />
           </div>
 
-          <div className="chart-block chart-button-group">
-            <button onClick={this.handleModalShow} className="chart-button">
+          <div className="chart-block chart__button-group">
+            <button onClick={this.handleModalShow} className="chart__button">
               Custom data
             </button>
-            <button onClick={this.handleRandomClick} className="chart-button">
+            <button onClick={this.handleRandomClick} className="chart__button">
               Random
             </button>
           </div>
@@ -192,4 +204,3 @@ class CandlestickChart extends Component<any, CandlestickChartState> {
 }
 
 export { CandlestickChart };
-

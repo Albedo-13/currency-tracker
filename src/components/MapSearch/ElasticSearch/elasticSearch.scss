@@ -4,7 +4,7 @@
   text-align: center;
   padding: $s-11 0;
 
-  &-title {
+  &__title {
     font-weight: $fw-400;
     font-size: $fs-l-8;
     color: $text-color-main;
@@ -15,8 +15,8 @@
     position: relative;
   }
 
-  &-input {
-    border-radius: 8px;
+  &__input {
+    border-radius: calc($s-2 - 2px);
     border: none;
     padding: $s-4;
     min-width: 450px;
@@ -30,10 +30,10 @@
     }
   }
 
-  &-icon {
+  &__icon {
     pointer-events: none;
     position: absolute;
-    right: 10px;
+    right: $s-2;
     top: 50%;
     transform: translateY(-50%);
   }
@@ -42,11 +42,11 @@
 @media (max-width: $tablet) {
   .bank-search {
     padding: $s-5 0;
-    &-title {
+    &__title {
         font-size: $fs-m-5  ;
     }
 
-    &-input {
+    &__input {
       min-width: calc(100% - $s-8);
       max-width: 100%;
     }

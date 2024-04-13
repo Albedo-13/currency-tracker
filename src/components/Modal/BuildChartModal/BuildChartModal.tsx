@@ -20,13 +20,14 @@ class ChartInputList extends Component<ChartInputListProps> {
   };
 
   handleBuildClick = (inputsList: XOHLCType[]) => {
-    this.props.onBuildClick(inputsList);
-    inputsList.map((input) => {
-      input.o = input.o ?? 0;
-      input.h = input.h ?? 0;
-      input.l = input.l ?? 0;
-      input.c = input.c ?? 0;
+    inputsList.map(({ o, h, l, c }, index) => {
+      inputsList[index].o = o ?? 0;
+      inputsList[index].h = h ?? 0;
+      inputsList[index].l = l ?? 0;
+      inputsList[index].c = c ?? 0;
     });
+
+    this.props.onBuildClick(inputsList);
   };
 
   render() {
@@ -37,7 +38,7 @@ class ChartInputList extends Component<ChartInputListProps> {
         {inputsList.map((e, index) => (
           <ChartInputLine data={e} onChange={this.onChange(index)} index={index} key={index} />
         ))}
-        <button onClick={() => this.handleBuildClick(inputsList)} className="chart-button modal-build">
+        <button onClick={() => this.handleBuildClick(inputsList)} className="chart__button modal-build">
           Build
         </button>
       </>
@@ -46,4 +47,3 @@ class ChartInputList extends Component<ChartInputListProps> {
 }
 
 export { ChartInputList };
-

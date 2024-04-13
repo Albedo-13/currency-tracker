@@ -3,12 +3,12 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "./mapbox.scss";
 
 import { banksStaticInfo } from "@constants/constants";
-import { BankType } from "@types";
+import type { BankType } from "@types";
 import { findBanksByCurrencyCodeOrName } from "@utils/currencyFormatter";
 import mapboxgl from "mapbox-gl";
-import { Component, createRef,MutableRefObject } from "react";
+import { Component, createRef, MutableRefObject } from "react";
 
-mapboxgl.accessToken = import.meta.env.VITE_CURRENCIES_API_KEY;
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOXGL_API_KEY;
 
 type MapboxProps = {
   searchString: string;
@@ -47,18 +47,18 @@ export default class Mapbox extends Component<MapboxProps> {
   }
 
   createMarkersBasedOnBanks = (banks: BankType[]) => {
-    banks.map((bank) => {
+    banks.map(({ name, address, coordinates, currencies }) => {
       const popup = new mapboxgl.Popup({ offset: 25 }).setHTML(
         `
-        <p class="mapboxgl-popup-name">${bank.name}</p>
-        <p class="mapboxgl-popup-address">${bank.address}</p>
-        <p class="mapboxgl-popup-currencies">
-          ${bank.currencies.map((currency) => `${currency.code}`).join(", ")}
+        <p class="mapboxgl-popup__name">${name}</p>
+        <p class="mapboxgl-popup__address">${address}</p>
+        <p class="mapboxgl-popup__currencies">
+          ${currencies.map(({ code }) => `${code}`).join(", ")}
         </p>
         `
       );
       const marker = new mapboxgl.Marker()
-        .setLngLat([bank.coordinates[0], bank.coordinates[1]])
+        .setLngLat([coordinates[0], coordinates[1]])
         .setPopup(popup)
         .addTo(this.map as mapboxgl.Map);
       this.markersList.push(marker);

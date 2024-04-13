@@ -8,9 +8,7 @@
   bottom: 0;
   background-color: rgba($color: $background-color, $alpha: 0.75);
   backdrop-filter: blur(6px);
-  z-index: 10;
-
-  // body {}
+  z-index: $layer-2-bottom;
   height: 100vh;
   overflow-y: hidden;
 }
@@ -24,10 +22,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: $s-8 $s-3 $s-6 $s-3;
-  border-radius: 8px;
-  // overflow-y: hidden;
+  border-radius: calc($s-2 - 2px);
 
-  &-close {
+  &__close {
     position: absolute;
     top: 0px;
     right: 7px;
@@ -43,8 +40,8 @@
 
   &-input {
     border: none;
-    border-radius: 8px;
-    min-height: 45px;
+    border-radius: calc($s-2 - 2px);
+    min-height: $s-9;
     background-color: $card-color;
     max-width: calc(100% - $s-4);
     padding: 0 $s-2;
