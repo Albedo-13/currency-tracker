@@ -87,6 +87,7 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
       newGeneratedData.push(randomBar(chartData, i, new Date(`2024-04-${i + 1}`), 221.13));
     }
 
+    this.setState({ filteredChartData: newGeneratedData });
     this.setState({ chartData: newGeneratedData });
   };
 
@@ -115,6 +116,7 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
     }
 
     this.setState({ chartData: newChartData });
+    this.setState({ filteredChartData: newChartData });
     this.handleModalClose();
     observable.notify("Chart build successful");
   };

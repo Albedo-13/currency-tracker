@@ -8,7 +8,7 @@ import { findBanksByCurrencyCodeOrName } from "@utils/currencyFormatter";
 import mapboxgl from "mapbox-gl";
 import { Component, createRef, MutableRefObject } from "react";
 
-mapboxgl.accessToken = import.meta.env.VITE_CURRENCIES_API_KEY;
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOXGL_API_KEY;
 
 type MapboxProps = {
   searchString: string;

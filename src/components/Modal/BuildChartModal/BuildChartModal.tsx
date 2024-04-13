@@ -20,13 +20,14 @@ class ChartInputList extends Component<ChartInputListProps> {
   };
 
   handleBuildClick = (inputsList: XOHLCType[]) => {
-    this.props.onBuildClick(inputsList);
-    inputsList.map(({ o, h, l, c }) => {
-      o = o ?? 0;
-      h = h ?? 0;
-      l = l ?? 0;
-      c = c ?? 0;
+    inputsList.map(({ o, h, l, c }, index) => {
+      inputsList[index].o = o ?? 0;
+      inputsList[index].h = h ?? 0;
+      inputsList[index].l = l ?? 0;
+      inputsList[index].c = c ?? 0;
     });
+
+    this.props.onBuildClick(inputsList);
   };
 
   render() {
