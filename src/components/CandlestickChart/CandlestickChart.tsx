@@ -53,12 +53,14 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
   componentDidMount() {
     const { selectCurrencyInput } = this.state;
     this.setChartData(selectCurrencyInput);
+    this.setFilteredChartData(currenciesChartData[selectCurrencyInput as keyof typeof currenciesChartData]);
   }
 
   componentDidUpdate(_: ComponentProps<typeof Component>, prevState: CandlestickChartState) {
     const { selectCurrencyInput } = this.state;
     if (prevState.selectCurrencyInput !== selectCurrencyInput) {
       this.setChartData(selectCurrencyInput);
+      this.setFilteredChartData(currenciesChartData[selectCurrencyInput as keyof typeof currenciesChartData]);
     }
     shouldDisableScroll(this.state.showModal);
   }
@@ -66,6 +68,10 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
   setChartData = (currency: string) => {
     const chartData = currenciesChartData[currency as keyof typeof currenciesChartData];
     this.setState({ chartData });
+  };
+
+  setFilteredChartData = (data: any) => {
+    this.setState({ filteredChartData: data });
   };
 
   setSelectCurrencyInput = (value: string) => {
@@ -157,6 +163,7 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
       },
     };
 
+    console.log("render with", selectCurrencyInput)
     return (
       <section className="chart">
         <div className="container">
