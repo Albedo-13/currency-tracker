@@ -11,15 +11,10 @@ export function HeaderNav({ className, onClose }: HeaderNavProps) {
   return (
     <nav className={`header-nav ${className}`}>
       <ul>
-        {headerLinks.map((link) => {
-          const { route, text } = link;
+        {headerLinks.map(({ route, text }) => {
           return (
             <li key={route}>
-              <NavLink
-                to={route}
-                className={({ isActive }) => (isActive ? "gradient-text" : "")}
-                onClick={onClose}
-              >
+              <NavLink to={route} className={({ isActive }) => (isActive ? "gradient-text" : "")} onClick={onClose}>
                 {text}
               </NavLink>
             </li>

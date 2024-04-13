@@ -1,16 +1,16 @@
 import { footerLinks } from "@/constants/constants";
 
 export function FooterNav() {
-  return footerLinks.map((section) => {
+  return footerLinks.map(({ label, links }) => {
     return (
-      <div className="footer-nav" key={section.label}>
-        <h3 className="footer-nav-title">{section.label}</h3>
+      <div className="footer-nav" key={label}>
+        <h3 className="footer-nav-title">{label}</h3>
         <ul className="footer-nav-list">
-          {section.links.map((link) => {
+          {links.map(({ name, href }) => {
             return (
-              <li className="footer-nav-list-item" key={link.name}>
-                <a href={link.href} className="footer-link">
-                  {link.name}
+              <li className="footer-nav-list-item" key={name}>
+                <a href={href} className="footer-link">
+                  {name}
                 </a>
               </li>
             );

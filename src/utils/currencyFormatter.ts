@@ -14,16 +14,21 @@ export function formatCurrency(value: number, currencyCode: string, decimalDigit
     : value.toLocaleString("en-US", options);
 }
 
-export function convertCurrency(value: number, fromCurrencyCode: string, toCurrencyCode: string, exchangeRates: ExchangeRatesDataType): string {
-  return (value / exchangeRates[fromCurrencyCode].value * exchangeRates[toCurrencyCode].value).toFixed(4);
+export function convertCurrency(
+  value: number,
+  fromCurrencyCode: string,
+  toCurrencyCode: string,
+  exchangeRates: ExchangeRatesDataType
+): string {
+  return ((value / exchangeRates[fromCurrencyCode].value) * exchangeRates[toCurrencyCode].value).toFixed(4);
 }
 
 export function findBanksByCurrencyCodeOrName(searchString = "", banks: BankType[]): BankType[] {
-  return banks.filter((bank) => {
-    return bank.currencies.some((currency) => {
+  return banks.filter(({ currencies }) => {
+    return currencies.some(({ name, code }) => {
       return (
-        currency.name.toLowerCase().includes(searchString.trim().toLowerCase()) ||
-        currency.code.toLowerCase().includes(searchString.trim().toLowerCase())
+        name.toLowerCase().includes(searchString.trim().toLowerCase()) ||
+        code.toLowerCase().includes(searchString.trim().toLowerCase())
       );
     });
   });

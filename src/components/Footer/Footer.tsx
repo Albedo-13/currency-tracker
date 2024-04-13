@@ -26,11 +26,10 @@ export default function Footer() {
           </div>
           <nav className="footer-wrapper-right footer-desktop">{<FooterNav />}</nav>
           <nav className="footer-wrapper-right footer-mobile">
-            {footerLinks.map((section) => {
+            {footerLinks.map(({ label, links }) => {
               return (
-                <Accordion title={section.label} key={section.label}>
-                  {section.links.map((link) => {
-                    const { name, href } = link;
+                <Accordion title={label} key={label}>
+                  {links.map(({ name, href }) => {
                     return (
                       <div className="footer-nav-list-item" key={name}>
                         <a href={href} className="footer-link">

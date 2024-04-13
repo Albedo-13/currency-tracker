@@ -21,11 +21,11 @@ class ChartInputList extends Component<ChartInputListProps> {
 
   handleBuildClick = (inputsList: XOHLCType[]) => {
     this.props.onBuildClick(inputsList);
-    inputsList.map((input) => {
-      input.o = input.o ?? 0;
-      input.h = input.h ?? 0;
-      input.l = input.l ?? 0;
-      input.c = input.c ?? 0;
+    inputsList.map(({ o, h, l, c }) => {
+      o = o ?? 0;
+      h = h ?? 0;
+      l = l ?? 0;
+      c = c ?? 0;
     });
   };
 
@@ -46,4 +46,3 @@ class ChartInputList extends Component<ChartInputListProps> {
 }
 
 export { ChartInputList };
-
