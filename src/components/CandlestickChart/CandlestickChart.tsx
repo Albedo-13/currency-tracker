@@ -70,7 +70,7 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
     this.setState({ chartData });
   };
 
-  setFilteredChartData = (data: any) => {
+  setFilteredChartData = (data: XOHLCType[]) => {
     this.setState({ filteredChartData: data });
   };
 
