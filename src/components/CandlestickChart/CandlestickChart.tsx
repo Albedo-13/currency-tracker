@@ -163,7 +163,6 @@ class CandlestickChart extends Component<ComponentProps<typeof Component>, Candl
       },
     };
 
-    console.log("render with", selectCurrencyInput)
     return (
       <section className="chart">
         <div className="container">
