@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import react from "@vitejs/plugin-react";
 import path from 'path';
 import { defineConfig } from "vite";
@@ -17,4 +18,12 @@ export default defineConfig({
     },
   },
   plugins: [react()],
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: './tests/setup',
+    coverage: {
+      provider: 'v8' // or 'istanbul'
+    },
+  },
 });
