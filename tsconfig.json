@@ -31,6 +31,7 @@
       "@utils/*": ["src/utils/*"]
     }
   },
+  "types": ["vitest/globals"],
   "include": ["src", "public/chartjs-chart-financial.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
