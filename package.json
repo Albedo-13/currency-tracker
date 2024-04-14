@@ -8,8 +8,8 @@
     "build": "tsc && vite build",
     "lint": "eslint . --fix --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "test": "vitest --typecheck",
+    "coverage": "vitest run --coverage --typecheck"
   },
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^5.0.2",

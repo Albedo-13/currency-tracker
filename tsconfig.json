@@ -28,7 +28,8 @@
       "@styles/*": ["src/styles/*"],
       "@constants/*": ["src/constants/*"],
       "@types": ["src/types/index.ts"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@mocks/*": ["src/mocks/*"]
     }
   },
   "types": ["vitest/globals"],
