@@ -28,8 +28,8 @@ export default function Modal({ onClose, children }: ModalProps) {
 
   return (
     <aside aria-modal="true" className="overlay" onMouseDown={handleCloseClick}>
-      <div className="modal">
-        <span className="modal__close" onMouseDown={handleCloseClick} tabIndex={0}>
+      <div className="modal" data-testid="modal">
+        <span className="modal__close" onClick={handleCloseClick} tabIndex={0} data-testid="modal-close">
           &times;
         </span>
         {children}

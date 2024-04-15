@@ -28,9 +28,12 @@
       "@styles/*": ["src/styles/*"],
       "@constants/*": ["src/constants/*"],
       "@types": ["src/types/index.ts"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@mocks/*": ["src/mocks/*"]
     }
   },
+  "types": ["vitest/globals"],
   "include": ["src", "public/chartjs-chart-financial.js"],
+  "exclude": ["./cypress.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
