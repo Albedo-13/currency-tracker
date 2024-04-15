@@ -10,11 +10,11 @@ export const ThemeContext = createContext({
 });
 
 export default function ThemeProvider({ children }: ThemeProviderType) {
-  const [theme, setTheme] = useState(localStorage.getItem("currency-tracker-theme") === "dark");
+  const [theme, setTheme] = useState(localStorage.getItem("currency-tracker-theme") === "light");
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme ? "dark" : "light");
-    localStorage.setItem("currency-tracker-theme", theme ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme ? "light": "dark");
+    localStorage.setItem("currency-tracker-theme", theme ? "light" : "dark");
   }, [theme]);
 
   const toggleThemeHandler = () => {

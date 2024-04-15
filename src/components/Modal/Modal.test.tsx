@@ -1,9 +1,7 @@
 import "@testing-library/jest-dom";
 
-import { act, fireEvent, queryByTestId, render, screen, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
-import { keyboard } from "@testing-library/user-event/dist/cjs/setup/directApi.js";
-import { afterEach, describe, expect, it, test, vi } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it, test, vi } from "vitest";
 
 import Modal from "./Modal";
 
