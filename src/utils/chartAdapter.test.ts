@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 
-import { dateAdapter, randomBar, randomNumber, zeroPrefix } from "@/utils/chartAdapter";
 import { XOHLCType } from "@/types";
+import { dateAdapter, randomBar, randomNumber, zeroPrefix } from "@/utils/chartAdapter";
 
 describe("randomNumber", () => {
   it("should generate a random number within the specified range", () => {

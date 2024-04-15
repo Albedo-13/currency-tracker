@@ -19,7 +19,7 @@ class ChartInputList extends Component<ChartInputListProps> {
     this.setState({ inputsList: newInputsList });
   };
 
-  handleBuildClick = (inputsList: XOHLCType[]) => {
+  handleBuildClick = (inputsList: XOHLCType[]) => () => {
     inputsList.map(({ o, h, l, c }, index) => {
       inputsList[index].o = o ?? 0;
       inputsList[index].h = h ?? 0;
@@ -38,8 +38,7 @@ class ChartInputList extends Component<ChartInputListProps> {
         {inputsList.map((e, index) => (
           <ChartInputLine data={e} onChange={this.onChange(index)} index={index} key={index} />
         ))}
-        {/* TODO: search ) => */}
-        <button onClick={() => this.handleBuildClick(inputsList)} className="chart__button modal-build">
+        <button onClick={this.handleBuildClick(inputsList)} className="chart__button modal-build">
           Build
         </button>
       </>
