@@ -19,7 +19,7 @@ export default function CurrencyList() {
   const exchangeRates = useExchangeRates();
   const exchangeRatesData = exchangeRates.data?.data.data;
 
-  const handleModalShow = (key: string) => {
+  const handleModalShow = (key: string) => () => {
     setShowModal(true);
     setCurrencyCode(key);
   };
@@ -41,7 +41,7 @@ export default function CurrencyList() {
                   key={currenciesStaticInfo[key as keyof typeof currenciesStaticInfo]?.code}
                   currency={currenciesStaticInfo[key as keyof typeof currenciesStaticInfo]}
                   exchangeValue={exchangeRatesData[key]?.value}
-                  onClick={() => handleModalShow(key)}
+                  onClick={handleModalShow(key)}
                 />
               ))}
           </section>

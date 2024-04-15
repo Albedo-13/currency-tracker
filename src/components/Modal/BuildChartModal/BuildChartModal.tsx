@@ -38,6 +38,7 @@ class ChartInputList extends Component<ChartInputListProps> {
         {inputsList.map((e, index) => (
           <ChartInputLine data={e} onChange={this.onChange(index)} index={index} key={index} />
         ))}
+        {/* TODO: search ) => */}
         <button onClick={() => this.handleBuildClick(inputsList)} className="chart__button modal-build">
           Build
         </button>

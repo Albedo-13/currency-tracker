@@ -34,7 +34,7 @@ class ChartFilters extends Component<ChartFiltersProps, ChartFiltersState> {
     this.props.onFilterClick(this.state.from, this.state.to);
   };
 
-  handleChangePickedDate = (e: ChangeEvent<HTMLInputElement>, key: string) => {
+  handleChangePickedDate = (key: string) => (e: ChangeEvent<HTMLInputElement>) => {
     return this.handleDateChange(e, (value) =>
       this.setState((prevState) => ({
         ...prevState,
@@ -52,7 +52,7 @@ class ChartFilters extends Component<ChartFiltersProps, ChartFiltersState> {
             type="date"
             min="2024-03-27"
             max="2024-04-09"
-            onChange={(e) => this.handleChangePickedDate(e, "from")}
+            onChange={this.handleChangePickedDate("from")}
             className="chart-filters__date"
           />
         </label>
@@ -62,7 +62,7 @@ class ChartFilters extends Component<ChartFiltersProps, ChartFiltersState> {
             type="date"
             min="2024-03-27"
             max="2024-04-09"
-            onChange={(e) => this.handleChangePickedDate(e, "to")}
+            onChange={this.handleChangePickedDate("to")}
             className="chart-filters__date"
           />
         </label>
