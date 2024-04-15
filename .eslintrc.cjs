@@ -21,4 +21,7 @@ module.exports = {
     sourceType: "module",
     ecmaVersion: "latest",
   },
+  globals: {
+    cy: true,
+  },
 };

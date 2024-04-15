@@ -34,5 +34,6 @@
   },
   "types": ["vitest/globals"],
   "include": ["src", "public/chartjs-chart-financial.js"],
+  "exclude": ["./cypress.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
