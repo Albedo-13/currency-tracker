@@ -1,4 +1,4 @@
-import { CurrencyType } from "./currencies";
+import { CurrencyType } from "./currencyType";
 
 export type BankType = {
   name: string;
